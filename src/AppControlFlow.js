@@ -5,7 +5,7 @@ import AppNavigator from './AppNavigator';
 import Toast from './components/Toast';
 import { toastRef } from './util/action';
 
-const AppControlFlow: React.FC = () => {
+const AppControlFlow = () => {
   return (
     <SafeAreaProvider>
       <NavigationContainer>

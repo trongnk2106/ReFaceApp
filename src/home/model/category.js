@@ -1,15 +1,7 @@
 import { AppImages } from '../../assets';
 
-export interface CategoryType {
-  id: number;
-  imagePath: any;
-  title: string;
-  lessonCount: number;
-  money: number;
-  rating: number;
-}
 
-export const CATEGORY_LIST: CategoryType[] = [
+export const CATEGORY_LIST = [
   {
     id: 0,
     imagePath: AppImages.interFace1,
@@ -44,7 +36,7 @@ export const CATEGORY_LIST: CategoryType[] = [
   },
 ];
 
-export const POPULAR_COURSE_LIST: CategoryType[] = [
+export const POPULAR_COURSE_LIST = [
   {
     id: 0,
     imagePath: AppImages.interFace3,

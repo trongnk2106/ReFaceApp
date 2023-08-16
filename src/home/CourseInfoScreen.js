@@ -20,15 +20,15 @@ import Config from '../Config';
 
 const infoHeight = 364.0;
 
-const CourseInfoScreen: React.FC = () => {
+const CourseInfoScreen = () => {
   const window = useWindowDimensions();
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
 
-  const favIconScale = useRef<Animated.Value>(new Animated.Value(0.1));
-  const opacity1 = useRef<Animated.Value>(new Animated.Value(0));
-  const opacity2 = useRef<Animated.Value>(new Animated.Value(0));
-  const opacity3 = useRef<Animated.Value>(new Animated.Value(0));
+  const favIconScale = useRef(new Animated.Value(0.1));
+  const opacity1 = useRef(new Animated.Value(0));
+  const opacity2 = useRef(new Animated.Value(0));
+  const opacity3 = useRef(new Animated.Value(0));
 
   // const tempHeight = window.height - window.width / 1.2 + 24.0;
   const marginTop = Config.isIos
@@ -65,7 +65,7 @@ const CourseInfoScreen: React.FC = () => {
     ]).start();
   }, []);
 
-  const getTimeBoxUI = (text1: string, text2: string) => (
+  const getTimeBoxUI = (text1, text2) => (
     <View style={styles.timeBoxContainer}>
       <Text style={[styles.textStyle, styles.timeBoxTitle]}>{text1}</Text>
       <Text style={[styles.textStyle, { fontSize: 14 }]}>{text2}</Text>

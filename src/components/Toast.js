@@ -9,22 +9,21 @@ import {
   Platform,
 } from 'react-native';
 
-interface Props {}
 
 export const DURATION = {
   LENGTH_SHORT: 2000,
   FOREVER: 0,
 };
 
-const Toast: React.FC<Props> = React.forwardRef((_props, ref) => {
+const Toast = React.forwardRef((_props, ref) => {
   const { height } = useWindowDimensions();
 
-  const [isShow, setShow] = useState<boolean>(false);
-  const [toastText, setToastText] = useState<string>('');
-  const opacityValue = useRef<Animated.Value>(new Animated.Value(1)).current;
-  let animation: Animated.CompositeAnimation | null = null;
-  let timer: NodeJS.Timeout | null = null;
-  let isShowing: boolean = false;
+  const [isShow, setShow] = useState(false);
+  const [toastText, setToastText] = useState('');
+  const opacityValue = useRef(new Animated.Value(1)).current;
+  let animation = null;
+  let timer = null;
+  let isShowing = false;
 
   useEffect(() => {
     return () => {
@@ -34,14 +33,14 @@ const Toast: React.FC<Props> = React.forwardRef((_props, ref) => {
   }, [animation, timer]);
 
   useImperativeHandle(ref, () => ({
-    show: (text: string) => {
+    show: (text) => {
       Platform.OS === 'android'
         ? ToastAndroid.show(text, ToastAndroid.SHORT)
         : show(text);
     },
   }));
 
-  const show = (text: string) => {
+  const show = (text) => {
     setShow(true);
     setToastText(text);
 

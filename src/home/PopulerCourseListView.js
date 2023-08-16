@@ -4,68 +4,50 @@ import {
   View,
   Text,
   Animated,
-  Image,
   ListRenderItemInfo,
+  Image,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import MyPressable from '../components/MyPressable';
 import { CategoryType } from './model/category';
 
-interface Props {
-  data: ListRenderItemInfo<CategoryType>;
-  onScreenClicked: () => void;
-}
 
-const CategoryListView: React.FC<Props> = ({ data, onScreenClicked }) => {
+const PopulerCourseListView = ({ data, onScreenClicked }) => {
   const { index, item } = data;
 
-  const translateX = useRef<Animated.Value>(new Animated.Value(50));
-  const opacity = useRef<Animated.Value>(new Animated.Value(0));
+  const translateY = useRef(new Animated.Value(50)).current;
+  const opacity = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     Animated.parallel([
-      Animated.timing(translateX.current, {
+      Animated.timing(translateY, {
         toValue: 0,
         duration: 1000,
         delay: index * (1000 / 3),
         useNativeDriver: true,
       }),
-      Animated.timing(opacity.current, {
+      Animated.timing(opacity, {
         toValue: 1,
         duration: 1000,
         delay: index * (1000 / 3),
         useNativeDriver: true,
       }),
     ]).start();
-  }, [index]);
+  });
 
   return (
     <Animated.View
-      style={[
-        styles.container,
-        {
-          opacity: opacity.current,
-          transform: [{ translateX: translateX.current }],
-        },
-      ]}
+      style={[styles.container, { opacity, transform: [{ translateY }] }]}
+      renderToHardwareTextureAndroid // just to avoid UI glitch when animating view with elevation
     >
       <MyPressable
-        style={{ height: 134, width: 280 }}
+        style={{ flex: 1, aspectRatio: 0.8 }}
         touchOpacity={0.6}
         onPress={onScreenClicked}
       >
         <View style={styles.bgColorView} />
-
-        <View
-          style={{ ...StyleSheet.absoluteFillObject, flexDirection: 'row' }}
-        >
-          <View style={{ paddingVertical: 24, paddingLeft: 16 }}>
-            <Image
-              style={{ flex: 1, borderRadius: 16, aspectRatio: 1.0 }}
-              source={item.imagePath}
-            />
-          </View>
-          <View style={{ flex: 1, paddingLeft: 16, paddingVertical: 16 }}>
+        <View style={{ ...StyleSheet.absoluteFillObject }}>
+          <View style={{ padding: 16 }}>
             <Text style={styles.title}>{item.title}</Text>
             <View style={styles.lessionCountRatingContainer}>
               <Text style={[styles.textStyle, { flex: 1, fontSize: 12 }]}>
@@ -74,14 +56,14 @@ const CategoryListView: React.FC<Props> = ({ data, onScreenClicked }) => {
               <Text style={styles.textStyle}>{item.rating}</Text>
               <Icon name="star" size={20} color="rgb(0, 182, 240)" />
             </View>
-            <View style={{ flexDirection: 'row', paddingRight: 16 }}>
-              <Text style={[styles.textStyle, styles.moneyText]}>
-                ${item.money}
-              </Text>
-              <View style={styles.addIconView}>
-                <Icon name="add" size={20} color="white" />
-              </View>
-            </View>
+          </View>
+          <View style={{ flex: 1, alignItems: 'center' }}>
+            <Animated.View style={[styles.imageContainer /*, { opacity }, */]}>
+              <Image
+                style={{ height: '100%', borderRadius: 16, aspectRatio: 1.28 }}
+                source={item.imagePath}
+              />
+            </Animated.View>
           </View>
         </View>
       </MyPressable>
@@ -90,10 +72,15 @@ const CategoryListView: React.FC<Props> = ({ data, onScreenClicked }) => {
 };
 
 const styles = StyleSheet.create({
-  container: { borderRadius: 16, overflow: 'hidden' },
+  container: {
+    flex: 1,
+    borderRadius: 16,
+    overflow: 'hidden',
+    marginHorizontal: 16,
+  },
   bgColorView: {
     flex: 1,
-    marginLeft: 48,
+    marginBottom: 48,
     borderRadius: 16,
     backgroundColor: '#F8FAFB',
   },
@@ -106,8 +93,7 @@ const styles = StyleSheet.create({
   lessionCountRatingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingRight: 16,
-    paddingBottom: 8,
+    paddingTop: 8,
   },
   textStyle: {
     fontSize: 18,
@@ -115,16 +101,17 @@ const styles = StyleSheet.create({
     letterSpacing: 0.27,
     color: 'rgb(58, 81, 96)',
   },
-  moneyText: {
-    flex: 1,
-    fontFamily: 'WorkSans-SemiBold',
-    color: 'rgb(0, 182, 240)',
-  },
-  addIconView: {
-    padding: 4,
-    backgroundColor: 'rgb(0, 182, 240)',
-    borderRadius: 8,
+  imageContainer: {
+    borderRadius: 16,
+    marginHorizontal: 16,
+    marginBottom: 4,
+    backgroundColor: 'white',
+    elevation: 2,
+    shadowColor: 'grey',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.22,
+    shadowRadius: 6.0,
   },
 });
 
-export default CategoryListView;
+export default PopulerCourseListView;

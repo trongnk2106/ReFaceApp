@@ -21,15 +21,10 @@ import Config from '../Config';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-interface CategoryBtn {
-  text: string;
-  selectedCat: string;
-  onPress: () => void;
-}
 
 const CATEGORIES = ['Feature A', 'Feature B', 'Feature C', 'Feature D', 'Feature E', 'Feature F'];
 
-const CategoryButton = ({ text, selectedCat, onPress }: CategoryBtn) => (
+const CategoryButton = ({ text, selectedCat, onPress }) => (
   <View style={{ margin: 7 }}>
     <View style={styleCatrgory(selectedCat === text).categoryBtnContainer}>
       <MyPressable touchOpacity={0.6} onPress={onPress}>
@@ -41,10 +36,10 @@ const CategoryButton = ({ text, selectedCat, onPress }: CategoryBtn) => (
   </View>
 );
 
-const HomeDesignCourse: React.FC = () => {
+const HomeDesignCourse= () => {
   const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
-  const navigation = useNavigation<any>();
+  const navigation = useNavigation();
 
   const [selectedCategory, setSelectedCategory] = useState('Ui/Ux');
 
@@ -205,7 +200,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const styleCatrgory = (selected: boolean) =>
+const styleCatrgory = (selected) =>
   StyleSheet.create({
     categoryBtnContainer: {
       flex: 1,
