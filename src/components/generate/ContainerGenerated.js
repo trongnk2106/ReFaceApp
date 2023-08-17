@@ -22,7 +22,9 @@ const ContainerGenerate = () => {
 
   const { CATEGORIES_PERSONALIZE,
     selectedCategoryPerson,
-    setSelectedCategoryPerson } = useData()
+    setSelectedCategoryPerson,
+    imageGenerate,
+    setImageGenerate, } = useData()
 
   const handleTryNow = async () => {
     navigation.navigate('Generate')
@@ -44,7 +46,7 @@ const ContainerGenerate = () => {
           <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
             selectedCategory={selectedCategoryPerson}
             setSelectedCategory={setSelectedCategoryPerson}></RenderList>
-          <Top title="Your result" />
+          <Top title="Your result" srcImage={imageGenerate} />
           <BottomImage />
           <View style={
             {

@@ -13,7 +13,9 @@ import { AppImages } from '../../assets';
 
 export default function Bottom(
     {
-        title
+        title,
+        onPress,
+        srcImage
     }
 ) {
     const navigation = useNavigation();
@@ -26,11 +28,12 @@ export default function Bottom(
             paddingTop: insert.top,
             paddingBottom: insert.bottom,
         }]}>
-            <ImageButton text={title} />
+            <ImageButton text={title} onPress={onPress} />
         </View>
         <Image
             style={{ flex: 1, paddingLeft: insert.left, width: '90%', alignSelf: 'center', height: window.width / 2 }}
-            source={AppImages.webInterFace}
+            source={srcImage ? { uri: srcImage } : AppImages.webInterFace}
+            resizeMode={srcImage ? "contain" : "cover"}
         >
         </Image>
     </>

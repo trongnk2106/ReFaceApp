@@ -22,7 +22,9 @@ const ContainerEnhanced = () => {
 
   const { CATEGORIES_PERSONALIZE,
     selectedCategoryPerson,
-    setSelectedCategoryPerson } = useData()
+    setSelectedCategoryPerson,
+    imageEnhance,
+    setImageEnhance, } = useData()
 
   const handleTryAgain = async () => {
     navigation.navigate('FaceEnhance')
@@ -44,7 +46,7 @@ const ContainerEnhanced = () => {
           <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
             selectedCategory={selectedCategoryPerson}
             setSelectedCategory={setSelectedCategoryPerson}></RenderList>
-          <Top title="Source Image" />
+          <Top title="Source Image" srcImage={imageEnhance} />
           <BottomNone />
           <View style={
             {

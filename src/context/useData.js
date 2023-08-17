@@ -7,6 +7,10 @@ export const DataProvider = ({ children }) => {
   const CATEGORIES_PROTECT = ['Face Checking', 'Feature B', 'Feature C', 'Feature D', 'Feature E', 'Feature F'];
   const [selectedCategoryPerson, setSelectedCategoryPerson] = useState('Ui/Ux');
   const [selectedCategoryProtect, setSelectedCategoryProtect] = useState('Ui/Ux');
+  const [imageEnhance, setImageEnhance] = useState();
+  const [imageGenerate, setImageGenerate] = useState();
+  const [imageSourceSwap, setImageSourceSwap] = useState();
+  const [imageTargetSwap, setImageTargetSwap] = useState();
 
 
   const contextValue = {
@@ -15,7 +19,15 @@ export const DataProvider = ({ children }) => {
     selectedCategoryPerson,
     setSelectedCategoryPerson,
     selectedCategoryProtect,
-    setSelectedCategoryProtect
+    setSelectedCategoryProtect,
+    imageEnhance,
+    setImageEnhance,
+    imageGenerate,
+    setImageGenerate,
+    imageSourceSwap,
+    setImageSourceSwap,
+    imageTargetSwap,
+    setImageTargetSwap
   };
 
   return (

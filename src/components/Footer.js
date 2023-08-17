@@ -3,26 +3,31 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { AppImages } from '../assets';
 import Button from '../misc/Button';
+import { useData } from '../context/useData';
 
 export default function Footer({
 }) {
+  const { setSelectedCategoryPerson } = useData()
   const navigation = useNavigation();
-    return (
-        <View style={styles.footer}>
-            <View style={{ flex: 1, justifyContent: 'center', flexDirection:'row',}}>
-              {/* <Text style={styles.headerTextBold}> {title}</Text> */}
-              <Button title='Home' onClick={() => navigation.navigate('Home')}></Button>
-              <Button title='Feature'></Button>
-              <Button title='History'></Button>
-              <Button title='Setting'></Button>
-            </View>
-        </View>
-      )
+  return (
+    <View style={styles.footer}>
+      <View style={{ flex: 1, justifyContent: 'center', flexDirection: 'row', }}>
+        {/* <Text style={styles.headerTextBold}> {title}</Text> */}
+        <Button title='Home' onClick={() => {
+          setSelectedCategoryPerson("None")
+          navigation.navigate('Home')
+        }}></Button>
+        <Button title='Feature'></Button>
+        <Button title='History'></Button>
+        <Button title='Setting'></Button>
+      </View>
+    </View>
+  )
 }
 
-const styles = StyleSheet.create({  
-    footer: {
-    flexDirection:'column',
+const styles = StyleSheet.create({
+  footer: {
+    flexDirection: 'column',
     paddingTop: 8,
     paddingHorizontal: 18,
     width: '100%',
@@ -39,4 +44,5 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: 'WorkSans-Bold',
     letterSpacing: 0.2,
-  },})
+  },
+})

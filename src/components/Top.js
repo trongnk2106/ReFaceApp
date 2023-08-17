@@ -16,6 +16,8 @@ const Top = ({
   title,
   width,
   height,
+  onPress,
+  srcImage
 }) => {
   const navigation = useNavigation();
   const insert = useSafeAreaInsets()
@@ -27,11 +29,12 @@ const Top = ({
       paddingTop: insert.top,
       paddingBottom: insert.bottom,
     }]}>
-      <ImageButton text={title} />
+      <ImageButton text={title} onPress={onPress} />
     </View>
     <Image
       style={{ flex: 1, paddingLeft: insert.left, width: width ? width : '90%', alignSelf: 'center', height: height ? height : window.width / 2 }}
-      source={AppImages.webInterFace}
+      source={srcImage ? { uri: srcImage } : AppImages.webInterFace}
+      resizeMode={srcImage ? "contain":"cover"}
     >
     </Image>
   </>

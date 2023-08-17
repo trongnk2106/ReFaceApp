@@ -22,7 +22,11 @@ const Container = () => {
     const window = useWindowDimensions()
     const { CATEGORIES_PERSONALIZE,
         selectedCategoryPerson,
-        setSelectedCategoryPerson } = useData()
+        setSelectedCategoryPerson,
+        imageSourceSwap,
+        setImageSourceSwap,
+        imageTargetSwap,
+        setImageTargetSwap } = useData()
 
     const handleTryAgain = async () => {
         navigation.navigate('FaceSwap')
@@ -46,10 +50,10 @@ const Container = () => {
                         setSelectedCategory={setSelectedCategoryPerson}></RenderList>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', flexGrow: 1 }}>
                         <View style={{ flex: 1 }}>
-                            <Top title='Source' height={window.width / 4} />
+                            <Top title='Source' height={window.width / 4} srcImage={imageSourceSwap} />
                         </View>
                         <View style={{ flex: 1 }}>
-                            <Top title='Target' height={window.width / 4} />
+                            <Top title='Target' height={window.width / 4} srcImage={imageTargetSwap}/>
                         </View>
                     </View>
 

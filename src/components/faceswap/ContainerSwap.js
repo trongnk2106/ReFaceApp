@@ -12,6 +12,7 @@ import Top from "../Top";
 import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
+import pickImage from '../../util/pickImage';
 
 
 const infoHeight = 364.0;
@@ -21,10 +22,24 @@ const Container = () => {
   const insets = useSafeAreaInsets();
   const { CATEGORIES_PERSONALIZE,
     selectedCategoryPerson,
-    setSelectedCategoryPerson } = useData()
+    setSelectedCategoryPerson,
+    imageSourceSwap,
+    setImageSourceSwap,
+    imageTargetSwap,
+    setImageTargetSwap } = useData()
 
   const handleTryNow = async () => {
     navigation.navigate('FaceSwaped')
+  }
+
+  const handleSources = async () => {
+    const { name, uri } = await pickImage()
+    setImageSourceSwap(uri)
+  }
+
+  const handleTarget = async () => {
+    const { name, uri } = await pickImage()
+    setImageTargetSwap(uri)
   }
 
   return (
@@ -43,8 +58,8 @@ const Container = () => {
           <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
             selectedCategory={selectedCategoryPerson}
             setSelectedCategory={setSelectedCategoryPerson}></RenderList>
-          <Top title="Source Image" />
-          <Bottom title="Target Image" />
+          <Top title="Source Image" onPress={handleSources} srcImage={imageSourceSwap} />
+          <Bottom title="Target Image" srcImage={imageTargetSwap} onPress={handleTarget} />
           <View style={
             {
               paddingTop: insets.top,

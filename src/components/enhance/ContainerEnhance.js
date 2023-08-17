@@ -14,6 +14,7 @@ import ImageButton from '../../misc/ImageButton';
 // import BottomPrompt from './BottomPrompt';
 import BottomCheckbox from './BottomCheckbox';
 import { useData } from '../../context/useData';
+import pickImage from '../../util/pickImage';
 
 
 const infoHeight = 364.0;
@@ -23,10 +24,17 @@ const ContainerEnhance = () => {
   const insets = useSafeAreaInsets();
   const { CATEGORIES_PERSONALIZE,
     selectedCategoryPerson,
-    setSelectedCategoryPerson } = useData()
+    setSelectedCategoryPerson,
+    imageEnhance,
+    setImageEnhance, } = useData()
 
   const handleTryNow = async () => {
     navigation.navigate('FaceEnhanced')
+  }
+
+  const handlePress = async () => {
+    const { name, uri } = await pickImage()
+    setImageEnhance(uri)
   }
 
   return (
@@ -45,7 +53,7 @@ const ContainerEnhance = () => {
           <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
             selectedCategory={selectedCategoryPerson}
             setSelectedCategory={setSelectedCategoryPerson}></RenderList>
-          <Top title="Source Image" />
+          <Top title="Source Image" srcImage={imageEnhance} onPress={handlePress} />
           <BottomCheckbox />
           <View style={
             {
