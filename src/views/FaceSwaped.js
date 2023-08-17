@@ -10,9 +10,9 @@ import { useNavigation } from '@react-navigation/native';
 import Config from '../Config';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import Container from '../components/faceswap/ContainerSwap';
+import Container from '../components/faceswap/ContainerSwaped';
 
-const FaceSwap = () => {
+const FaceSwaped = () => {
   const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default FaceSwap;
+export default FaceSwaped;
