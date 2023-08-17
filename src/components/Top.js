@@ -8,8 +8,8 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import ImageButton from '../../misc/ImageButton';
-import { AppImages } from '../../assets';
+import ImageButton from '../misc/ImageButton';
+import { AppImages } from '../assets';
 
 
 const Top = ({

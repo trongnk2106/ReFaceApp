@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import MyPressable from '../components/MyPressable';
 
-export default ({ text, selectedCat, onPress }) => {
+export default ({ text, onPress }) => {
 
     return (<View style={{ margin: 7 }}>
         <View style={styleCatrgory(true).categoryBtnContainer}>

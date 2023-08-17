@@ -1,12 +1,14 @@
 import React from 'react';
 import { StatusBar, StyleSheet, useWindowDimensions } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-// import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { CourseInfoScreen, HomeDesignCourse } from './home';
 import {
   FaceSwap,
-  FaceSwaped
-
+  FaceSwaped,
+  Generate,
+  Generated,
+  FaceEnhance,
+  FaceEnhanced
 } from './views';
 
 const Stack = createStackNavigator();
@@ -21,7 +23,10 @@ export default () => {
       />
 
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-
+        <Stack.Screen name="FaceEnhance" component={FaceEnhance} />
+        <Stack.Screen name="FaceEnhanced" component={FaceEnhanced} />
+        <Stack.Screen name="Generate" component={Generate} />
+        <Stack.Screen name="Generated" component={Generated} />
         <Stack.Screen name="FaceSwap" component={FaceSwap} />
         <Stack.Screen name="FaceSwaped" component={FaceSwaped} />
         <Stack.Screen name="DesignCourse" component={HomeDesignCourse} />

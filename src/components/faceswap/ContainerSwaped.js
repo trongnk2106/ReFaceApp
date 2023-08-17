@@ -9,7 +9,7 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import RenderList from '../../misc/RenderList';
-import Top from "./Top";
+import Top from "../Top";
 import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
 

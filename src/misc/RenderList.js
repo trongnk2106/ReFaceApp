@@ -1,9 +1,6 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native'
 import React from 'react'
 import CategoryButton from './CategoryButton'
-import { useSafeAreaInsets, useSafeAreaFrame } from 'react-native-safe-area-context';
-
-
 
 export default function RenderList({
     title = "Thai",

@@ -9,20 +9,22 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import RenderList from '../../misc/RenderList';
 import Top from "../Top";
-import Bottom from './Bottom';
+// import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
+// import BottomPrompt from './BottomPrompt';
+import BottomCheckbox from './BottomCheckbox';
 
 
 const CATEGORIES = ['Feature A', 'Feature B', 'Feature C', 'Feature D', 'Feature E', 'Feature F'];
 
 const infoHeight = 364.0;
 
-const Container = () => {
+const ContainerEnhance = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
 
   const handleTryNow = async () => {
-    navigation.navigate('FaceSwaped')
+    navigation.navigate('FaceEnhanced')
   }
 
   return (
@@ -39,8 +41,8 @@ const Container = () => {
           }}
         >
           <RenderList title='Personalize Face' data={CATEGORIES}></RenderList>
-          <Top title="Source Image"/>
-          <Bottom title="Target Image"/>
+          <Top title="Source Image" />
+          <BottomCheckbox/>
           <View style={
             {
               paddingTop: insets.top,
@@ -48,6 +50,7 @@ const Container = () => {
             }}>
             <ImageButton text="Try Now" onPress={handleTryNow} />
           </View>
+
         </ScrollView>
       </View>
     </View>
@@ -187,4 +190,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Container;
+export default ContainerEnhance;
