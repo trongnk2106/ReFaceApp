@@ -22,7 +22,9 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 
-const CATEGORIES = ['Feature A', 'Feature B', 'Feature C', 'Feature D', 'Feature E', 'Feature F'];
+const CATEGORIES_PERSONALIZE = ['Face Swap', 'Face Generator', 'Face Enhance'];
+const CATEGORIES_PROTECT = ['Face Checking', 'Feature B', 'Feature C', 'Feature D', 'Feature E', 'Feature F'];
+
 
 const CategoryButton = ({ text, selectedCat, onPress }) => (
   <View style={{ margin: 7 }}>
@@ -36,12 +38,14 @@ const CategoryButton = ({ text, selectedCat, onPress }) => (
   </View>
 );
 
-const HomeDesignCourse= () => {
+const HomeScreen= () => {
   const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
 
-  const [selectedCategory, setSelectedCategory] = useState('Ui/Ux');
+  const [selectedCategoryPerson, setSelectedCategoryPerson] = useState('Ui/Ux');
+  const [selectedCategoryProtect, setSelectedCategoryProtect] = useState('Ui/Ux');
+
 
   const paddingTop = Config.isIos
     ? Math.max(insets.top, 20)
@@ -49,7 +53,7 @@ const HomeDesignCourse= () => {
 
   const renderScrollableHeaderTop = ({
     title = "Personalize Face",
-    data = CATEGORIES
+    data = CATEGORIES_PERSONALIZE
   }) => {
     return (<>
 
@@ -63,8 +67,13 @@ const HomeDesignCourse= () => {
         renderItem={({ item }) => (
           <CategoryButton
             text={item}
-            selectedCat={selectedCategory}
-            onPress={() => setSelectedCategory(item)}
+            selectedCat={selectedCategoryPerson}
+            onPress={() => {setSelectedCategoryPerson(item)
+              if (item === 'Face Swap') navigation.navigate('FaceSwap')
+              else if (item === 'Face Generator') navigation.navigate('Generate')
+              else navigation.navigate('FaceEnhance')
+            
+            }}
           />
         )}
         keyExtractor={(item, index) => index.toString()}
@@ -73,7 +82,7 @@ const HomeDesignCourse= () => {
   }
   const renderScrollableHeaderBottom = ({
     title = "Protected Face",
-    data = CATEGORIES
+    data = CATEGORIES_PROTECT
   }) => {
     return (<>
 
@@ -87,8 +96,8 @@ const HomeDesignCourse= () => {
         renderItem={({ item }) => (
           <CategoryButton
             text={item}
-            selectedCat={selectedCategory}
-            onPress={() => setSelectedCategory(item)}
+            selectedCat={selectedCategoryProtect}
+            onPress={() => setSelectedCategoryProtect(item)}
           />
         )}
         keyExtractor={(item, index) => index.toString()}
@@ -221,4 +230,4 @@ const styleCatrgory = (selected) =>
     },
   });
 
-export default HomeDesignCourse;
+export default HomeScreen;

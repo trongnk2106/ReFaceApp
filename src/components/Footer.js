@@ -1,15 +1,17 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Alert } from 'react-native'
 import React from 'react'
+import { useNavigation } from '@react-navigation/native';
 import { AppImages } from '../assets';
 import Button from '../misc/Button';
 
 export default function Footer({
 }) {
+  const navigation = useNavigation();
     return (
         <View style={styles.footer}>
             <View style={{ flex: 1, justifyContent: 'center', flexDirection:'row',}}>
               {/* <Text style={styles.headerTextBold}> {title}</Text> */}
-              <Button title='Home'></Button>
+              <Button title='Home' onClick={() => navigation.navigate('Home')}></Button>
               <Button title='Feature'></Button>
               <Button title='History'></Button>
               <Button title='Setting'></Button>
