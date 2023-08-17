@@ -4,12 +4,15 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppNavigator from './AppNavigator';
 import Toast from './components/Toast';
 import { toastRef } from './util/action';
+import { DataProvider } from './context/useData';
 
 const AppControlFlow = () => {
   return (
     <SafeAreaProvider>
       <NavigationContainer>
-        <AppNavigator />
+        <DataProvider>
+          <AppNavigator />
+        </DataProvider>
       </NavigationContainer>
       <Toast {...{ ref: toastRef }} />
     </SafeAreaProvider>

@@ -12,14 +12,17 @@ import Top from "../Top";
 
 import ImageButton from '../../misc/ImageButton';
 import BottomNone from './BottomNone';
-
-const CATEGORIES = ['Feature A', 'Feature B', 'Feature C', 'Feature D', 'Feature E', 'Feature F'];
+import { useData } from '../../context/useData';
 
 const infoHeight = 364.0;
 
 const ContainerEnhanced = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
+
+  const { CATEGORIES_PERSONALIZE,
+    selectedCategoryPerson,
+    setSelectedCategoryPerson } = useData()
 
   const handleTryAgain = async () => {
     navigation.navigate('FaceEnhance')
@@ -38,7 +41,9 @@ const ContainerEnhanced = () => {
             minHeight: infoHeight,
           }}
         >
-          <RenderList title='Personalize Face' data={CATEGORIES}></RenderList>
+          <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
+            selectedCategory={selectedCategoryPerson}
+            setSelectedCategory={setSelectedCategoryPerson}></RenderList>
           <Top title="Source Image" />
           <BottomNone />
           <View style={

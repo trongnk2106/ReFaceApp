@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, FlatList } from 'react-native'
 import React from 'react'
 import CategoryButton from './CategoryButton'
+import { useNavigation } from '@react-navigation/native';
 
 export default function RenderList({
     title = "Thai",
@@ -8,6 +9,8 @@ export default function RenderList({
     selectedCategory,
     setSelectedCategory
 }) {
+    const navigation = useNavigation() 
+
     return (<View>
 
         <Text style={styles.sectionHeaderText}>{title}</Text>
@@ -21,7 +24,13 @@ export default function RenderList({
                 <CategoryButton
                     text={item}
                     selectedCat={selectedCategory}
-                    onPress={() => setSelectedCategory(item)}
+                    onPress={() => {
+                        setSelectedCategory(item)
+                        if (item === 'Face Swap') navigation.navigate('FaceSwap')
+                        else if (item === 'Face Generator') navigation.navigate('Generate')
+                        else navigation.navigate('FaceEnhance')
+
+                    }}
                 />
             )}
             keyExtractor={(item, index) => index.toString()}
@@ -39,5 +48,5 @@ const styles = StyleSheet.create({
         paddingLeft: 18,
         paddingRight: 16,
         marginBottom: 16,
-      },
+    },
 })

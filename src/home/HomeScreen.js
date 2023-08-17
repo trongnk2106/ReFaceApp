@@ -20,10 +20,7 @@ import { AppImages } from '../assets';
 import Config from '../Config';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-
-
-const CATEGORIES_PERSONALIZE = ['Face Swap', 'Face Generator', 'Face Enhance'];
-const CATEGORIES_PROTECT = ['Face Checking', 'Feature B', 'Feature C', 'Feature D', 'Feature E', 'Feature F'];
+import { useData } from '../context/useData';
 
 
 const CategoryButton = ({ text, selectedCat, onPress }) => (
@@ -38,14 +35,17 @@ const CategoryButton = ({ text, selectedCat, onPress }) => (
   </View>
 );
 
-const HomeScreen= () => {
+const HomeScreen = () => {
   const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
 
-  const [selectedCategoryPerson, setSelectedCategoryPerson] = useState('Ui/Ux');
-  const [selectedCategoryProtect, setSelectedCategoryProtect] = useState('Ui/Ux');
-
+  const { CATEGORIES_PERSONALIZE,
+    CATEGORIES_PROTECT,
+    selectedCategoryPerson,
+    setSelectedCategoryPerson,
+    selectedCategoryProtect,
+    setSelectedCategoryProtect } = useData()
 
   const paddingTop = Config.isIos
     ? Math.max(insets.top, 20)
@@ -68,11 +68,12 @@ const HomeScreen= () => {
           <CategoryButton
             text={item}
             selectedCat={selectedCategoryPerson}
-            onPress={() => {setSelectedCategoryPerson(item)
+            onPress={() => {
+              setSelectedCategoryPerson(item)
               if (item === 'Face Swap') navigation.navigate('FaceSwap')
               else if (item === 'Face Generator') navigation.navigate('Generate')
               else navigation.navigate('FaceEnhance')
-            
+
             }}
           />
         )}
@@ -141,7 +142,7 @@ const HomeScreen= () => {
         showsVerticalScrollIndicator={false}
         numColumns={2}
         data={POPULAR_COURSE_LIST}
-        ListHeaderComponent={renderScrollableHeaderBottom} 
+        ListHeaderComponent={renderScrollableHeaderBottom}
         ItemSeparatorComponent={() => <View style={{ height: 32 }} />}
         renderItem={data => (
           <PopulerCourseListView

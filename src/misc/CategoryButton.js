@@ -2,18 +2,17 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import MyPressable from '../components/MyPressable';
 
-export default ({ text, onPress }) => {
-
-    return (<View style={{ margin: 7 }}>
-        <View style={styleCatrgory(true).categoryBtnContainer}>
-            <MyPressable touchOpacity={0.6} onPress={onPress}>
-                <Text style={styleCatrgory(true).categoryBtnText}>
-                    {text}
-                </Text>
-            </MyPressable>
-        </View>
-    </View>)
-}
+export default ({ text, selectedCat, onPress }) => (
+    <View style={{ margin: 7 }}>
+      <View style={styleCatrgory(selectedCat === text).categoryBtnContainer}>
+        <MyPressable touchOpacity={0.6} onPress={onPress}>
+          <Text style={styleCatrgory(selectedCat === text).categoryBtnText}>
+            {text}
+          </Text>
+        </MyPressable>
+      </View>
+    </View>
+  );
 
 const styleCatrgory = (selected) =>
     StyleSheet.create({

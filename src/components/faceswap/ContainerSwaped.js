@@ -12,9 +12,7 @@ import RenderList from '../../misc/RenderList';
 import Top from "../Top";
 import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
-
-
-const CATEGORIES = ['Feature A', 'Feature B', 'Feature C', 'Feature D', 'Feature E', 'Feature F'];
+import { useData } from '../../context/useData';
 
 const infoHeight = 364.0;
 
@@ -22,7 +20,9 @@ const Container = () => {
     const navigation = useNavigation();
     const insets = useSafeAreaInsets();
     const window = useWindowDimensions()
-
+    const { CATEGORIES_PERSONALIZE,
+        selectedCategoryPerson,
+        setSelectedCategoryPerson } = useData()
 
     const handleTryAgain = async () => {
         navigation.navigate('FaceSwap')
@@ -41,7 +41,9 @@ const Container = () => {
                         minHeight: infoHeight,
                     }}
                 >
-                    <RenderList title='Personalize Face' data={CATEGORIES}></RenderList>
+                    <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
+                        selectedCategory={selectedCategoryPerson}
+                        setSelectedCategory={setSelectedCategoryPerson}></RenderList>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', flexGrow: 1 }}>
                         <View style={{ flex: 1 }}>
                             <Top title='Source' height={window.width / 4} />
