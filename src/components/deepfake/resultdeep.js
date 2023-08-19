@@ -23,6 +23,8 @@ export default function ResAnti(
     const insert = useSafeAreaInsets()
     const window = useWindowDimensions();
 
+    // console.log(Result)
+
     return (<>
         <View style={[styles.container,
         {
@@ -32,14 +34,14 @@ export default function ResAnti(
             <ImageButton text={title} onPress={onPress} />
         </View>
         <View
-            style={{ flex: 1, paddingLeft: insert.left, width: '90%', alignSelf: 'center', height: window.width / 2, paddingTop: 40}}
+            style={{ flex: 1, paddingLeft: insert.left, width: '90%', alignSelf: 'center', height: window.width / 2 , paddingTop : 40}}
             // source={srcImage ? { uri: srcImage.uri } : AppImages.webInterFace}
             // resizeMode={srcImage ? "contain" : "cover"}
             
         >
-            <Text style = {styles.categoryBtnText}> Predicted : {Result.Predicted}</Text>
-            <Text style = {styles.categoryBtnText}> Confidence : {Result.Confidence}</Text>
-            <Text style = {styles.categoryBtnText}> Face similarity : {Result.Similarity}</Text>
+            <Text style = {styles.categoryBtnText}> Predicted : {Result.res[0]}</Text>
+            <Text style = {styles.categoryBtnText}> Confidence : {Result.res[1]}</Text>
+            <Text style = {styles.categoryBtnText}> Face similarity : {Result.res[2]}</Text>
         </View>
     </>
     )

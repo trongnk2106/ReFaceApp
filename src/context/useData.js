@@ -24,6 +24,8 @@ export const DataProvider = ({ children }) => {
   const [imageResultSwap, setImageResultSwap] = useState();
   const [imageResultGenerate, setImageResultGenerate] = useState();
   const [imageResultEnhance, setImageResultEnhance] = useState();
+  const [resAnti, setResAnti] = useState();
+  const [resDeep, setResDeep] = useState();
 
   const contextValue = {
     CATEGORIES_PERSONALIZE,
@@ -58,7 +60,11 @@ export const DataProvider = ({ children }) => {
     imageSrcDeepFake, 
     setImageSrcDeepFake,
     imageRealFaceDeepFake,
-    setImageRealFaceDeepFake
+    setImageRealFaceDeepFake,
+    resAnti,
+    setResAnti,
+    resDeep,
+    setResDeep
   };
 
   return (

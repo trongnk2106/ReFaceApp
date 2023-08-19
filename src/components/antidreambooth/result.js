@@ -23,6 +23,8 @@ export default function ResAnti(
     const insert = useSafeAreaInsets()
     const window = useWindowDimensions();
 
+    // console.log(Result)
+
     return (<>
         <View style={[styles.container,
         {
@@ -37,9 +39,9 @@ export default function ResAnti(
             // resizeMode={srcImage ? "contain" : "cover"}
             
         >
-            <Text style = {styles.categoryBtnText}> Predicted : {Result.Predicted}</Text>
-            <Text style = {styles.categoryBtnText}> Confidence : {Result.Confidence}</Text>
-            <Text style = {styles.categoryBtnText}> Face similarity : {Result.Similarity}</Text>
+            <Text style = {styles.categoryBtnText}> Predicted : {Result.res[0]}</Text>
+            <Text style = {styles.categoryBtnText}> Confidence : {Result.res[1]}</Text>
+            <Text style = {styles.categoryBtnText}> Face similarity : {Result.res[2]}</Text>
         </View>
     </>
     )

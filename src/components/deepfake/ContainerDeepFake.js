@@ -28,31 +28,31 @@ const ContainerDeep = () => {
     setImageSrcDeepFake,
     imageRealFaceDeepFake,
     setImageRealFaceDeepFake,
-    imageResultSwap,
-    setImageResultSwap, } = useData()
+    resDeep,
+    setResDeep, } = useData()
 
   const uploadImage = async () => {
 
-    // const formData = new FormData();
+    const formData = new FormData();
     
-    // if (imageSrcDreambooth && imageRealFace) {
+    if (imageSrcDeepFake && imageRealFaceDeepFake) {
 
-    //   formData.append('source', imageSrcDreambooth)
-    //   formData.append('realface', imageRealFace)
+      formData.append('source', imageSrcDeepFake)
+      formData.append('real', imageRealFaceDeepFake)
 
-    //   try {
-    //     const response = await axios.post('http://192.168.108.126:8000/antidream', formData, {
-    //       headers: {
-    //         'Content-Type': 'multipart/form-data',
-    //       },
-    //     })
+      try {
+        const response = await axios.post('http://192.168.1.103:8000/deepfake', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
 
         
-    //     setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
-    //   } catch (error) {
-    //     console.error('Error uploading image: ', error);
-    //   }
-    // }
+        setResDeep(response.data)
+      } catch (error) {
+        console.error('Error uploading image: ', error);
+      }
+    }
   }
 
   const handleTryNow = async () => {

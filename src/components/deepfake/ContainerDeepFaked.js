@@ -24,12 +24,12 @@ const ContainerDeeped = () => {
     const { CATEGORIES_PROTECT,
         selectedCategoryProtect,
         setSelectedCategoryProtect,
-        imageSrcDreambooth,
-        setImageSrcDreambooth,
-        imageRealFace,
-        setImageRealFace,
-        imageResultSwap,
-        setImageResultSwap, } = useData()
+        imageSrcDeepFake, 
+        setImageSrcDeepFake,
+        imageRealFaceDeepFake,
+        setImageRealFaceDeepFake,
+        resDeep,
+        setResDeep } = useData()
 
     const handleTryAgain = async () => {
         navigation.navigate('DeepFake')
@@ -53,16 +53,16 @@ const ContainerDeeped = () => {
                         setSelectedCategory={setSelectedCategoryProtect}></RenderList>
                     <View style={{ flexDirection: 'row', justifyContent: 'center', flexGrow: 1 }}>
                         <View style={{ flex: 1 }}>
-                            <Top title='Source' height={window.width / 4} srcImage={imageSrcDreambooth} />
+                            <Top title='Source' height={window.width / 4} srcImage={imageSrcDeepFake} />
                         </View>
                         <View style={{ flex: 1 }}>
-                            <Top title='Real Face' height={window.width / 4} srcImage={imageRealFace} />
+                            <Top title='Real Face' height={window.width / 4} srcImage={imageRealFaceDeepFake} />
                         </View>
                     </View>
 
                     
                     {/* <Bottom title="Your result" srcImage={imageResultSwap ? { uri: imageResultSwap } : imageResultSwap} /> */}
-                    <ResAnti title = "Your result" Result={{"Predicted" : "True", "Confidence": 1, "Similarity" : 1}}/>
+                    <ResAnti title = "Your result" Result={resDeep}/>
                     <View style={
                         {
                             paddingTop: insets.top,

@@ -28,8 +28,8 @@ const ContainerAntiDreamboothed = () => {
         setImageSrcDreambooth,
         imageRealFace,
         setImageRealFace,
-        imageResultSwap,
-        setImageResultSwap, } = useData()
+        resAnti,
+        setResAnti, } = useData()
 
     const handleTryAgain = async () => {
         navigation.navigate('AntiDreamBooth')
@@ -62,7 +62,7 @@ const ContainerAntiDreamboothed = () => {
 
                     
                     {/* <Bottom title="Your result" srcImage={imageResultSwap ? { uri: imageResultSwap } : imageResultSwap} /> */}
-                    <ResAnti title = "Your result" Result={{"Predicted" : "True", "Confidence": 1, "Similarity" : 1}}/>
+                    <ResAnti title = "Your result" Result={resAnti}/>
                     <View style={
                         {
                             paddingTop: insets.top,
