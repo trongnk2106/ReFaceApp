@@ -98,7 +98,10 @@ const HomeScreen = () => {
           <CategoryButton
             text={item}
             selectedCat={selectedCategoryProtect}
-            onPress={() => setSelectedCategoryProtect(item)}
+            onPress={() => {setSelectedCategoryProtect(item)
+              if (item === 'Anti DreamBooth') navigation.navigate('AntiDreamBooth')
+              else if (item === 'DeepFake Detect') navigation.navigate('DeepFake')
+            }}
           />
         )}
         keyExtractor={(item, index) => index.toString()}

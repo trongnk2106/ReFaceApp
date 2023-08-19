@@ -4,13 +4,17 @@ export const DataContext = React.createContext({});
 
 export const DataProvider = ({ children }) => {
   const CATEGORIES_PERSONALIZE = ['Face Swap', 'Face Generator', 'Face Enhance'];
-  const CATEGORIES_PROTECT = ['Face Checking', 'Feature B', 'Feature C', 'Feature D', 'Feature E', 'Feature F'];
+  const CATEGORIES_PROTECT = ['Anti DreamBooth', 'DeepFake Detect'];
   const [selectedCategoryPerson, setSelectedCategoryPerson] = useState('Ui/Ux');
   const [selectedCategoryProtect, setSelectedCategoryProtect] = useState('Ui/Ux');
   const [imageEnhance, setImageEnhance] = useState();
   const [imageGenerate, setImageGenerate] = useState();
   const [imageSourceSwap, setImageSourceSwap] = useState();
   const [imageTargetSwap, setImageTargetSwap] = useState();
+  const [imageSrcDreambooth, setImageSrcDreambooth] = useState();
+  const [imageRealFace, setImageRealFace] = useState();
+  const [imageSrcDeepFake, setImageSrcDeepFake] = useState();
+  const [imageRealFaceDeepFake, setImageRealFaceDeepFake] = useState();
   const [prompt, setPrompt] = useState()
 
   const [isRemove, setIsRemove] = useState(false)
@@ -46,7 +50,15 @@ export const DataProvider = ({ children }) => {
     isEnhance, setIsEnhance,
     isUpscaler, setIsUpscaler,
     imageResultEnhance,
-    setImageResultEnhance
+    setImageResultEnhance,
+    imageSrcDreambooth,
+    setImageSrcDreambooth,
+    imageRealFace,
+    setImageRealFace,
+    imageSrcDeepFake, 
+    setImageSrcDeepFake,
+    imageRealFaceDeepFake,
+    setImageRealFaceDeepFake
   };
 
   return (

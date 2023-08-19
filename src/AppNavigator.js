@@ -8,8 +8,14 @@ import {
   Generate,
   Generated,
   FaceEnhance,
-  FaceEnhanced
+  FaceEnhanced,
+  AntiDreamBooth,
+  AntiDreamBoothed,
+  DeepFake,
+  DeepFaked
 } from './views';
+
+
 
 const Stack = createStackNavigator();
 
@@ -31,7 +37,12 @@ export default () => {
         <Stack.Screen name="FaceSwap" component={FaceSwap} />
         <Stack.Screen name="FaceSwaped" component={FaceSwaped} />
         <Stack.Screen name="DesignCourse" component={HomeScreen} />
-        <Stack.Screen name="CourseInfo" component={CourseInfoScreen} />
+        <Stack.Screen name="AntiDreamBooth" component={AntiDreamBooth} />
+        <Stack.Screen name="AntiDreamBoothed" component={AntiDreamBoothed} />
+        <Stack.Screen name="DeepFake" component={DeepFake}/>
+        <Stack.Screen name="DeepFaked" component={DeepFaked}/>
+
+        {/* <Stack.Screen name="CourseInfo" component={CourseInfoScreen} /> */}
 
       </Stack.Navigator>
     </>

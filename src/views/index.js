@@ -4,6 +4,10 @@ import Generate from "./Generate";
 import Generated from "./Generated";
 import FaceEnhance from "./FaceEnhance";
 import FaceEnhanced from "./FaceEnhanced";
+import AntiDreamBooth from "./AntiDreambooth";
+import AntiDreamBoothed from "./AntiDreamboothed";
+import DeepFake from "./DeepFake";
+import DeepFaked from "./DeepFaked";
 
 
 export {
@@ -12,5 +16,9 @@ export {
     Generate,
     Generated,
     FaceEnhance,
-    FaceEnhanced
+    FaceEnhanced,
+    AntiDreamBooth,
+    AntiDreamBoothed,
+    DeepFake,
+    DeepFaked
 }
