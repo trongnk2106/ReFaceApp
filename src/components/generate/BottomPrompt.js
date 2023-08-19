@@ -14,6 +14,8 @@ import Config from '../../Config';
 
 export default function BottomPrompt(
     {
+        prompt,
+        setprompt
     }
 ) {
     const navigation = useNavigation();
@@ -33,6 +35,8 @@ export default function BottomPrompt(
                             height: window.width / 2
                         }
                     ]}
+                    value={prompt}
+                    onChangeText={text => setprompt(text)}
                     autoCapitalize="none"
                     selectionColor="dodgerblue"
                     placeholderTextColor="#B9BABC"

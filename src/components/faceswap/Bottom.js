@@ -32,7 +32,7 @@ export default function Bottom(
         </View>
         <Image
             style={{ flex: 1, paddingLeft: insert.left, width: '90%', alignSelf: 'center', height: window.width / 2 }}
-            source={srcImage ? { uri: srcImage } : AppImages.webInterFace}
+            source={srcImage ? { uri: srcImage.uri } : AppImages.webInterFace}
             resizeMode={srcImage ? "contain" : "cover"}
         >
         </Image>

@@ -11,7 +11,15 @@ export const DataProvider = ({ children }) => {
   const [imageGenerate, setImageGenerate] = useState();
   const [imageSourceSwap, setImageSourceSwap] = useState();
   const [imageTargetSwap, setImageTargetSwap] = useState();
+  const [prompt, setPrompt] = useState()
 
+  const [isRemove, setIsRemove] = useState(false)
+  const [isEnhance, setIsEnhance] = useState(false)
+  const [isUpscaler, setIsUpscaler] = useState(false)
+
+  const [imageResultSwap, setImageResultSwap] = useState();
+  const [imageResultGenerate, setImageResultGenerate] = useState();
+  const [imageResultEnhance, setImageResultEnhance] = useState();
 
   const contextValue = {
     CATEGORIES_PERSONALIZE,
@@ -27,7 +35,18 @@ export const DataProvider = ({ children }) => {
     imageSourceSwap,
     setImageSourceSwap,
     imageTargetSwap,
-    setImageTargetSwap
+    setImageTargetSwap,
+    imageResultSwap,
+    setImageResultSwap,
+    prompt,
+    setPrompt,
+    imageResultGenerate,
+    setImageResultGenerate,
+    isRemove, setIsRemove,
+    isEnhance, setIsEnhance,
+    isUpscaler, setIsUpscaler,
+    imageResultEnhance,
+    setImageResultEnhance
   };
 
   return (

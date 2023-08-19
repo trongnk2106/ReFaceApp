@@ -24,7 +24,10 @@ const ContainerGenerate = () => {
     selectedCategoryPerson,
     setSelectedCategoryPerson,
     imageGenerate,
-    setImageGenerate, } = useData()
+    setImageGenerate,
+    imageResultGenerate,
+    setImageResultGenerate
+  } = useData()
 
   const handleTryNow = async () => {
     navigation.navigate('Generate')
@@ -47,7 +50,7 @@ const ContainerGenerate = () => {
             selectedCategory={selectedCategoryPerson}
             setSelectedCategory={setSelectedCategoryPerson}></RenderList>
           <Top title="Your result" srcImage={imageGenerate} />
-          <BottomImage />
+          <BottomImage imageResultGenerate={imageResultGenerate} />
           <View style={
             {
               paddingTop: insets.top,

@@ -11,15 +11,15 @@ import Checkbox from '../../misc/Checkbox';
 
 export default function BottomCheckbox(
     {
+        isRemove, setIsRemove,
+        isEnhance, setIsEnhance,
+        isUpscaler, setIsUpscaler
     }
 ) {
     const navigation = useNavigation();
     const insert = useSafeAreaInsets()
     const window = useWindowDimensions();
 
-    const [isRemove, setIsRemove] = useState(false)
-    const [isEnhance, setIsEnhance] = useState(false)
-    const [isUpscaler, setIsUpscaler] = useState(false)
 
     return (<>
         <View style={[styles.searchInputMainContainer, {

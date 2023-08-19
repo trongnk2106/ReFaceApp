@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -13,6 +13,7 @@ import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
 import pickImage from '../../util/pickImage';
+import axios from 'axios';
 
 
 const infoHeight = 364.0;
@@ -26,20 +27,54 @@ const Container = () => {
     imageSourceSwap,
     setImageSourceSwap,
     imageTargetSwap,
-    setImageTargetSwap } = useData()
+    setImageTargetSwap,
+    imageResultSwap,
+    setImageResultSwap, } = useData()
+
+  const uploadImage = async () => {
+
+    const formData = new FormData();
+    
+    if (imageSourceSwap && imageTargetSwap) {
+
+      formData.append('source', imageSourceSwap)
+      formData.append('target', imageTargetSwap)
+
+      try {
+        const response = await axios.post('http://192.168.108.126:8000/swapface', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+
+        setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
+      } catch (error) {
+        console.error('Error uploading image: ', error);
+      }
+    }
+  }
 
   const handleTryNow = async () => {
+    await uploadImage()
     navigation.navigate('FaceSwaped')
   }
 
   const handleSources = async () => {
-    const { name, uri } = await pickImage()
-    setImageSourceSwap(uri)
+    const { type, name, uri } = await pickImage()
+    setImageSourceSwap({
+      type: type,
+      name: name,
+      uri: uri,
+    })
   }
 
   const handleTarget = async () => {
-    const { name, uri } = await pickImage()
-    setImageTargetSwap(uri)
+    const { type, name, uri } = await pickImage()
+    setImageTargetSwap({
+      type: type,
+      name: name,
+      uri: uri,
+    })
   }
 
   return (

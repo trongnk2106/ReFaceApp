@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     },
     searchInputContainer: {
         flexDirection: 'column',
-        backgroundColor: '#F8FAFB',
+        backgroundColor: '#FFF',
         marginVertical: 8,
         borderRadius: 13,
         paddingHorizontal: 16,

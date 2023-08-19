@@ -26,7 +26,9 @@ const Container = () => {
         imageSourceSwap,
         setImageSourceSwap,
         imageTargetSwap,
-        setImageTargetSwap } = useData()
+        setImageTargetSwap,
+        imageResultSwap,
+        setImageResultSwap, } = useData()
 
     const handleTryAgain = async () => {
         navigation.navigate('FaceSwap')
@@ -53,11 +55,11 @@ const Container = () => {
                             <Top title='Source' height={window.width / 4} srcImage={imageSourceSwap} />
                         </View>
                         <View style={{ flex: 1 }}>
-                            <Top title='Target' height={window.width / 4} srcImage={imageTargetSwap}/>
+                            <Top title='Target' height={window.width / 4} srcImage={imageTargetSwap} />
                         </View>
                     </View>
 
-                    <Bottom title="Your result" />
+                    <Bottom title="Your result" srcImage={imageResultSwap ? { uri: imageResultSwap } : imageResultSwap} />
                     <View style={
                         {
                             paddingTop: insets.top,

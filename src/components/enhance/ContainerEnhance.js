@@ -15,6 +15,7 @@ import ImageButton from '../../misc/ImageButton';
 import BottomCheckbox from './BottomCheckbox';
 import { useData } from '../../context/useData';
 import pickImage from '../../util/pickImage';
+import axios from 'axios';
 
 
 const infoHeight = 364.0;
@@ -26,15 +27,57 @@ const ContainerEnhance = () => {
     selectedCategoryPerson,
     setSelectedCategoryPerson,
     imageEnhance,
-    setImageEnhance, } = useData()
+    setImageEnhance,
+    isRemove, setIsRemove,
+    isEnhance, setIsEnhance,
+    isUpscaler, setIsUpscaler,
+    imageResultEnhance,
+    setImageResultEnhance } = useData()
+
+  const uploadImage = async () => {
+
+    const formData = new FormData();
+
+    if (imageEnhance) {
+
+      const options = {
+        rm_background: isRemove,
+        enhance_faces: isEnhance,
+        upscaler: isUpscaler,
+      }
+      console.log(options)
+
+      formData.append('source', imageEnhance)
+      formData.append('rm_background', isRemove)
+      formData.append('enhance_faces', isEnhance)
+      formData.append('upscaler', isUpscaler)
+
+      try {
+        const response = await axios.post('http://192.168.108.126:8000/enhance', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+
+        setImageResultEnhance(`data:image/png;base64,${response.data.image_data}`)
+      } catch (error) {
+        console.error('Error uploading image: ', error);
+      }
+    }
+  }
 
   const handleTryNow = async () => {
+    await uploadImage()
     navigation.navigate('FaceEnhanced')
   }
 
   const handlePress = async () => {
-    const { name, uri } = await pickImage()
-    setImageEnhance(uri)
+    const { type, name, uri } = await pickImage()
+    setImageEnhance({
+      type: type,
+      name: name,
+      uri: uri,
+    })
   }
 
   return (
@@ -54,7 +97,10 @@ const ContainerEnhance = () => {
             selectedCategory={selectedCategoryPerson}
             setSelectedCategory={setSelectedCategoryPerson}></RenderList>
           <Top title="Source Image" srcImage={imageEnhance} onPress={handlePress} />
-          <BottomCheckbox />
+          <BottomCheckbox isRemove={isRemove} setIsRemove={setIsRemove}
+            isEnhance={isEnhance} setIsEnhance={setIsEnhance}
+            isUpscaler={isUpscaler} setIsUpscaler={setIsUpscaler}
+          />
           <View style={
             {
               paddingTop: insets.top,

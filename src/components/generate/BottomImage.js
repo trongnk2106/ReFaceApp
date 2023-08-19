@@ -13,6 +13,7 @@ import { AppImages } from '../../assets';
 
 export default function BottomImage(
     {
+        imageResultGenerate
     }
 ) {
     const navigation = useNavigation();
@@ -26,7 +27,8 @@ export default function BottomImage(
                 alignSelf: 'center', height: window.width / 2,
                 marginTop: insert.top
             }}
-            source={AppImages.webInterFace}
+            source={imageResultGenerate ? { uri: imageResultGenerate } : AppImages.webInterFace}
+            resizeMode={imageResultGenerate ? "contain" : "cover"}
         >
         </Image>
     </>

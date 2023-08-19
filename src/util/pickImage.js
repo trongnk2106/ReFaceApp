@@ -5,9 +5,11 @@ export default async function pickImage() {
         const res = await pick({
             type: [types.images]
         })
+
         return {
             name: res[0].name,
-            uri: res[0].uri
+            uri: res[0].uri,
+            type: res[0].type
         }
     } catch (err) {
         if (isCancel(err)) {

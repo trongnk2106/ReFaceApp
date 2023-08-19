@@ -33,7 +33,7 @@ const Top = ({
     </View>
     <Image
       style={{ flex: 1, paddingLeft: insert.left, width: width ? width : '90%', alignSelf: 'center', height: height ? height : window.width / 2 }}
-      source={srcImage ? { uri: srcImage } : AppImages.webInterFace}
+      source={srcImage ? { uri: srcImage.uri } : AppImages.webInterFace}
       resizeMode={srcImage ? "contain":"cover"}
     >
     </Image>
