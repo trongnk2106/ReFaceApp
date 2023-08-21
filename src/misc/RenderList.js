@@ -28,7 +28,10 @@ export default function RenderList({
                         setSelectedCategory(item)
                         if (item === 'Face Swap') navigation.navigate('FaceSwap')
                         else if (item === 'Face Generator') navigation.navigate('Generate')
-                        else navigation.navigate('FaceEnhance')
+                        else if (item === 'Face Enhance') navigation.navigate('FaceEnhance')
+                        else if (item === 'Ai Profile') navigation.navigate('AiProfile')
+                        else if (item === 'Anti DreamBooth') navigation.navigate('AntiDreamBooth')
+                        else if (item === 'DeepFake Detect') navigation.navigate('DeepFake')
 
                     }}
                 />

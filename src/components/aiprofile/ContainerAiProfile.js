@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   StyleSheet,
   View,
@@ -9,10 +9,8 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import RenderList from '../../misc/RenderList';
 import Top from "../Top";
-// import Bottom from './Bottom';
+import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
-// import BottomPrompt from './BottomPrompt';
-import BottomCheckbox from './BottomCheckbox';
 import { useData } from '../../context/useData';
 import pickImage from '../../util/pickImage';
 import axios from 'axios';
@@ -20,46 +18,38 @@ import axios from 'axios';
 
 const infoHeight = 364.0;
 
-const ContainerEnhance = () => {
+const ContainerAiProfile = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
   const { CATEGORIES_PERSONALIZE,
     selectedCategoryPerson,
     setSelectedCategoryPerson,
-    imageEnhance,
-    setImageEnhance,
-    isRemove, setIsRemove,
-    isEnhance, setIsEnhance,
-    isUpscaler, setIsUpscaler,
-    imageResultEnhance,
-    setImageResultEnhance } = useData()
+    imageAiProfile,
+    setImageAiProfile,
+    selectSex,
+    setSelectSex,
+    resultAiProfile,
+    setResultAiProfile } = useData()
 
   const uploadImage = async () => {
 
     const formData = new FormData();
 
-    if (imageEnhance) {
+    if (imageAiProfile && selectSex) {
 
-      const options = {
-        rm_background: isRemove,
-        enhance_faces: isEnhance,
-        upscaler: isUpscaler,
-      }
-      console.log(options)
-
-      formData.append('source_image', imageEnhance)
-      formData.append('remove_bg', isRemove)
-      formData.append('enhance', isEnhance)
-      formData.append('upscale', isUpscaler)
-
+      formData.append('source_image', imageAiProfile)
+      formData.append('sex', selectSex)
       try {
-        const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/enhance', formData, {
+        const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/aiprofile', formData, {
           headers: {
+            'Accept': 'application/json',
             'Content-Type': 'multipart/form-data',
           },
         })
 
-        setImageResultEnhance(`data:image/png;base64,${response.data.output_image}`)
+        // setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
+        // console.log(response.data.output_images)
+        setResultAiProfile(response.data.output_images)
       } catch (error) {
         console.error('Error uploading image: ', error);
       }
@@ -68,16 +58,19 @@ const ContainerEnhance = () => {
 
   const handleTryNow = async () => {
     await uploadImage()
-    navigation.navigate('FaceEnhanced')
+    navigation.navigate('AiProfiled')
   }
 
-  const handlePress = async () => {
+  const handleSources = async () => {
     const { type, name, uri } = await pickImage()
-    setImageEnhance({
+    setImageAiProfile({
       type: type,
       name: name,
       uri: uri,
     })
+  }
+  const handleSex = (text) => {
+    setSelectSex(text)
   }
 
   return (
@@ -96,11 +89,8 @@ const ContainerEnhance = () => {
           <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
             selectedCategory={selectedCategoryPerson}
             setSelectedCategory={setSelectedCategoryPerson}></RenderList>
-          <Top title="Source Image" srcImage={imageEnhance} onPress={handlePress} />
-          <BottomCheckbox isRemove={isRemove} setIsRemove={setIsRemove}
-            isEnhance={isEnhance} setIsEnhance={setIsEnhance}
-            isUpscaler={isUpscaler} setIsUpscaler={setIsUpscaler}
-          />
+          <Top title="Source Image" onPress={handleSources} srcImage={imageAiProfile} />
+          <Bottom title="Sex" onPress={handleSex} selected={selectSex} />
           <View style={
             {
               paddingTop: insets.top,
@@ -108,7 +98,6 @@ const ContainerEnhance = () => {
             }}>
             <ImageButton text="Try Now" onPress={handleTryNow} />
           </View>
-
         </ScrollView>
       </View>
     </View>
@@ -248,4 +237,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ContainerEnhance;
+export default ContainerAiProfile;

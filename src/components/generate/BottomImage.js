@@ -27,10 +27,11 @@ export default function BottomImage(
                 alignSelf: 'center', height: window.width / 2,
                 marginTop: insert.top
             }}
-            source={imageResultGenerate ? { uri: imageResultGenerate } : AppImages.webInterFace}
+            source={imageResultGenerate ? { uri: `data:image/png;base64,${imageResultGenerate[1]}` } : AppImages.webInterFace}
             resizeMode={imageResultGenerate ? "contain" : "cover"}
         >
         </Image>
+        
     </>
     )
 }

@@ -37,11 +37,11 @@ const ContainerDeep = () => {
     
     if (imageSrcDeepFake && imageRealFaceDeepFake) {
 
-      formData.append('source', imageSrcDeepFake)
-      formData.append('real', imageRealFaceDeepFake)
+      formData.append('source_image', imageSrcDeepFake)
+      formData.append('face_image', imageRealFaceDeepFake)
 
       try {
-        const response = await axios.post('http://192.168.1.103:8000/deepfake', formData, {
+        const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/fakeface', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

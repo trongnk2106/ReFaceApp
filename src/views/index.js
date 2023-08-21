@@ -8,6 +8,8 @@ import AntiDreamBooth from "./AntiDreambooth";
 import AntiDreamBoothed from "./AntiDreamboothed";
 import DeepFake from "./DeepFake";
 import DeepFaked from "./DeepFaked";
+import AiProfile from "./AiProfile";
+import AiProfiled from "./AiProfiled";
 
 
 export {
@@ -20,5 +22,7 @@ export {
     AntiDreamBooth,
     AntiDreamBoothed,
     DeepFake,
-    DeepFaked
+    DeepFaked,
+    AiProfile,
+    AiProfiled
 }

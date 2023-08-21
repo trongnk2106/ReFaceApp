@@ -37,11 +37,11 @@ const ContainerAnti = () => {
     
     if (imageSrcDreambooth && imageRealFace) {
 
-      formData.append('source', imageSrcDreambooth)
-      formData.append('real', imageRealFace)
+      formData.append('source_image', imageSrcDreambooth)
+      formData.append('face_image', imageRealFace)
 
       try {
-        const response = await axios.post('http://192.168.1.103:8000/antidream', formData, {
+        const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/anti_drb', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

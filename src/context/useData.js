@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react'
 export const DataContext = React.createContext({});
 
 export const DataProvider = ({ children }) => {
-  const CATEGORIES_PERSONALIZE = ['Face Swap', 'Face Generator', 'Face Enhance'];
+  const CATEGORIES_PERSONALIZE = ['Face Swap', 'Face Generator', 'Face Enhance', 'Ai Profile'];
   const CATEGORIES_PROTECT = ['Anti DreamBooth', 'DeepFake Detect'];
   const [selectedCategoryPerson, setSelectedCategoryPerson] = useState('Ui/Ux');
   const [selectedCategoryProtect, setSelectedCategoryProtect] = useState('Ui/Ux');
@@ -26,6 +26,10 @@ export const DataProvider = ({ children }) => {
   const [imageResultEnhance, setImageResultEnhance] = useState();
   const [resAnti, setResAnti] = useState();
   const [resDeep, setResDeep] = useState();
+
+  const [imageAiProfile, setImageAiProfile] = useState();
+  const [selectSex, setSelectSex] = useState();
+  const [resultAiProfile, setResultAiProfile] = useState();
 
   const contextValue = {
     CATEGORIES_PERSONALIZE,
@@ -57,14 +61,20 @@ export const DataProvider = ({ children }) => {
     setImageSrcDreambooth,
     imageRealFace,
     setImageRealFace,
-    imageSrcDeepFake, 
+    imageSrcDeepFake,
     setImageSrcDeepFake,
     imageRealFaceDeepFake,
     setImageRealFaceDeepFake,
     resAnti,
     setResAnti,
     resDeep,
-    setResDeep
+    setResDeep,
+    imageAiProfile,
+    setImageAiProfile,
+    selectSex,
+    setSelectSex,
+    resultAiProfile,
+    setResultAiProfile
   };
 
   return (

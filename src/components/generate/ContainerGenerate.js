@@ -39,18 +39,18 @@ const ContainerGenerate = () => {
 
     if (imageGenerate && prompt) {
 
-      formData.append('source', imageGenerate)
+      formData.append('source_image', imageGenerate)
       formData.append('prompt', prompt)
       // formData.append('prompt', prompt)
 
       try {
-        const response = await axios.post('http://192.168.108.126:8000/generate', formData, {
+        const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/facegen', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         })
 
-        setImageResultGenerate(`data:image/png;base64,${response.data.image_data}`)
+        setImageResultGenerate(response.data.output_images)
       } catch (error) {
         console.error('Error uploading image: ', error);
       }

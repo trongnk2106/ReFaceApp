@@ -49,7 +49,7 @@ const ContainerGenerate = () => {
           <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
             selectedCategory={selectedCategoryPerson}
             setSelectedCategory={setSelectedCategoryPerson}></RenderList>
-          <Top title="Your result" srcImage={imageGenerate} />
+          <Top title="Your result" srcImage={imageResultGenerate?{uri:`data:image/png;base64,${imageResultGenerate[0]}`}:false} />
           <BottomImage imageResultGenerate={imageResultGenerate} />
           <View style={
             {

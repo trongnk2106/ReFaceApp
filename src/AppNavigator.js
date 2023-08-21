@@ -12,7 +12,9 @@ import {
   AntiDreamBooth,
   AntiDreamBoothed,
   DeepFake,
-  DeepFaked
+  DeepFaked,
+  AiProfile,
+  AiProfiled
 } from './views';
 
 
@@ -41,7 +43,8 @@ export default () => {
         <Stack.Screen name="AntiDreamBoothed" component={AntiDreamBoothed} />
         <Stack.Screen name="DeepFake" component={DeepFake}/>
         <Stack.Screen name="DeepFaked" component={DeepFaked}/>
-
+        <Stack.Screen name="AiProfile" component={AiProfile}/>
+        <Stack.Screen name="AiProfiled" component={AiProfiled}/>
         {/* <Stack.Screen name="CourseInfo" component={CourseInfoScreen} /> */}
 
       </Stack.Navigator>

@@ -37,17 +37,17 @@ const Container = () => {
     
     if (imageSourceSwap && imageTargetSwap) {
 
-      formData.append('source', imageSourceSwap)
-      formData.append('target', imageTargetSwap)
+      formData.append('source_image', imageSourceSwap)
+      formData.append('target_image', imageTargetSwap)
 
       try {
-        const response = await axios.post('http://192.168.108.126:8000/swapface', formData, {
+        const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/faceswap', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
         })
 
-        setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
+        setImageResultSwap(`data:image/png;base64,${response.data.output_image}`)
       } catch (error) {
         console.error('Error uploading image: ', error);
       }

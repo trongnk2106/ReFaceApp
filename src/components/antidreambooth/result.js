@@ -34,14 +34,14 @@ export default function ResAnti(
             <ImageButton text={title} onPress={onPress} />
         </View>
         <View
-            style={{ flex: 1, paddingLeft: insert.left, width: '90%', alignSelf: 'center', height: window.width / 2 , paddingTop : 40}}
-            // source={srcImage ? { uri: srcImage.uri } : AppImages.webInterFace}
-            // resizeMode={srcImage ? "contain" : "cover"}
-            
+            style={{ flex: 1, paddingLeft: insert.left, width: '90%', alignSelf: 'center', height: window.width / 2, paddingTop: 40 }}
+        // source={srcImage ? { uri: srcImage.uri } : AppImages.webInterFace}
+        // resizeMode={srcImage ? "contain" : "cover"}
+
         >
-            <Text style = {styles.categoryBtnText}> Predicted : {Result.res[0]}</Text>
-            <Text style = {styles.categoryBtnText}> Confidence : {Result.res[1]}</Text>
-            <Text style = {styles.categoryBtnText}> Face similarity : {Result.res[2]}</Text>
+            <Text style={styles.categoryBtnText}> Predicted : {Result.predicted ? "True" : "False"}</Text>
+            <Text style={styles.categoryBtnText}> Confidence : {Math.round(Result.conf_score * 10000) / 10000}</Text>
+            <Text style={styles.categoryBtnText}> Face similarity : {Math.round(Result.similar_score * 10000) / 10000}</Text>
         </View>
     </>
     )
@@ -58,6 +58,6 @@ const styles = StyleSheet.create({
         fontFamily: 'WorkSans-SemiBold',
         letterSpacing: 0.27,
         alignSelf: 'center',
-        color:'rgb(0, 182, 240)',
+        color: 'rgb(0, 182, 240)',
     },
 });

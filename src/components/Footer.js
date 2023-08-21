@@ -7,7 +7,7 @@ import { useData } from '../context/useData';
 
 export default function Footer({
 }) {
-  const { setSelectedCategoryPerson } = useData()
+  const { setSelectedCategoryPerson, setSelectedCategoryProtect } = useData()
   const navigation = useNavigation();
   return (
     <View style={styles.footer}>
@@ -15,6 +15,7 @@ export default function Footer({
         {/* <Text style={styles.headerTextBold}> {title}</Text> */}
         <Button title='Home' onClick={() => {
           setSelectedCategoryPerson("None")
+          setSelectedCategoryProtect("None")
           navigation.navigate('Home')
         }}></Button>
         <Button title='Feature'></Button>
