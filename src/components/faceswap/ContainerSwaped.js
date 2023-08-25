@@ -13,6 +13,7 @@ import Top from "../Top";
 import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
+import saveImage from '../../util/saveImage';
 
 const infoHeight = 364.0;
 
@@ -65,6 +66,7 @@ const Container = () => {
                             paddingTop: insets.top,
                             paddingBottom: insets.bottom,
                         }}>
+                        <ImageButton text="Save" onPress={() => saveImage(imageResultSwap,"tring")} />
                         <ImageButton text="Try Again" onPress={handleTryAgain} />
                     </View>
                 </ScrollView>
