@@ -1,4 +1,6 @@
 import { pick, types, isCancel } from 'react-native-document-picker'
+import { AppImages } from '../assets'
+import { Alert } from 'react-native'
 
 export default async function pickImage() {
     try {
@@ -6,10 +8,16 @@ export default async function pickImage() {
             type: [types.images]
         })
 
-        return {
-            name: res[0].name,
-            uri: res[0].uri,
-            type: res[0].type
+        if (res[0].size < 1024 * 1024) {
+            return {
+                name: res[0].name,
+                uri: res[0].uri,
+                type: res[0].type
+            }
+
+        }
+        else {
+            Alert.alert("Warring", "image size too big(image size < 2MB)",)
         }
     } catch (err) {
         if (isCancel(err)) {
@@ -19,5 +27,5 @@ export default async function pickImage() {
             console.log(err)
         }
     }
-    console.log("button pressed");
+
 }

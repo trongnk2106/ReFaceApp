@@ -34,7 +34,7 @@ const Container = () => {
   const uploadImage = async () => {
 
     const formData = new FormData();
-    
+
     if (imageSourceSwap && imageTargetSwap) {
 
       formData.append('source_image', imageSourceSwap)
@@ -60,21 +60,23 @@ const Container = () => {
   }
 
   const handleSources = async () => {
-    const { type, name, uri } = await pickImage()
-    setImageSourceSwap({
-      type: type,
-      name: name,
-      uri: uri,
-    })
+    const result = await pickImage()
+    if (result)
+      setImageSourceSwap({
+        type: result.type,
+        name: result.name,
+        uri: result.uri,
+      })
   }
 
   const handleTarget = async () => {
-    const { type, name, uri } = await pickImage()
-    setImageTargetSwap({
-      type: type,
-      name: name,
-      uri: uri,
-    })
+    const result = await pickImage()
+    if (result)
+      setImageTargetSwap({
+        type: result.type,
+        name: result.name,
+        uri: result.uri,
+      })
   }
 
   return (
