@@ -19,7 +19,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "react_native_ui_templates";
+    return "Base Solver";
   }
 
   /**
