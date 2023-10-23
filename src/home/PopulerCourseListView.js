@@ -48,13 +48,14 @@ const PopulerCourseListView = ({ data, onScreenClicked }) => {
         <View style={styles.bgColorView} />
         <View style={{ ...StyleSheet.absoluteFillObject }}>
           <View style={{ padding: 16 }}>
-            <Text style={styles.title}>{item.title}</Text>
+            {/* <Text style={styles.title}>{item.title}</Text> */}
             <View style={styles.lessionCountRatingContainer}>
               <Text style={[styles.textStyle, { flex: 1, fontSize: 12 }]}>
-                {item.lessonCount} lesson
+                
               </Text>
               <Text style={styles.textStyle}>{item.rating}</Text>
-              <Icon name="star" size={20} color="rgb(0, 182, 240)" />
+              {/* <Icon name="thumb-up" size={20} color="rgb(0, 182, 240)" /> */}
+              <Icon name="favorite" size={20} color="rgb(255, 55, 55)" />
             </View>
           </View>
           <View style={{ flex: 1, alignItems: 'center' }}>
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     paddingTop: 8,
   },
   textStyle: {
-    fontSize: 18,
+    fontSize: 16,
     fontFamily: 'WorkSans-Regular',
     letterSpacing: 0.27,
     color: 'rgb(58, 81, 96)',

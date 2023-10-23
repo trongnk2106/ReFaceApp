@@ -39,6 +39,8 @@ const ContainerAiProfile = () => {
 
       formData.append('source_image', imageAiProfile)
       formData.append('sex', selectSex)
+
+      console.log(formData)
       try {
         const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/aiprofile', formData, {
           headers: {
@@ -62,12 +64,14 @@ const ContainerAiProfile = () => {
   }
 
   const handleSources = async () => {
-    const { type, name, uri } = await pickImage()
-    setImageAiProfile({
-      type: type,
-      name: name,
-      uri: uri,
-    })
+    const result = await pickImage()
+    if (result) {
+      setImageAiProfile({
+        type: result.type,
+        name: result.name,
+        uri: result.uri,
+      })
+    }
   }
   const handleSex = (text) => {
     setSelectSex(text)

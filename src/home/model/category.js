@@ -43,7 +43,7 @@ export const POPULAR_COURSE_LIST = [
     title: 'App Design Course',
     lessonCount: 12,
     money: 25,
-    rating: 4.8,
+    rating: 1213,
   },
   {
     id: 1,
@@ -51,7 +51,7 @@ export const POPULAR_COURSE_LIST = [
     title: 'Web Design Course',
     lessonCount: 28,
     money: 208,
-    rating: 4.9,
+    rating: 1443,
   },
   {
     id: 2,
@@ -59,7 +59,7 @@ export const POPULAR_COURSE_LIST = [
     title: 'App Design Course',
     lessonCount: 12,
     money: 25,
-    rating: 4.8,
+    rating: 2543,
   },
   {
     id: 3,
@@ -67,6 +67,6 @@ export const POPULAR_COURSE_LIST = [
     title: 'Web Design Course',
     lessonCount: 28,
     money: 208,
-    rating: 4.9,
+    rating: 1435,
   },
 ];

@@ -64,12 +64,14 @@ const ContainerGenerate = () => {
   }
 
   const handlePress = async () => {
-    const { type, name, uri } = await pickImage()
-    setImageGenerate({
-      type: type,
-      name: name,
-      uri: uri,
-    })
+    const result = await pickImage()
+    if (result) {
+      setImageGenerate({
+        type: result.type,
+        name: result.name,
+        uri: result.uri,
+      })
+    }
   }
 
   return (

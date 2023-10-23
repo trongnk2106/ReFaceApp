@@ -43,9 +43,9 @@ export default function Bottom(
                 marginRight: insert.right + 20,
             }}>
                 <View style={{ margin: 7 }}>
-                    <View style={styleCatrgory(selected === 'Male').categoryBtnContainer}>
-                        <MyPressable touchOpacity={0.6} onPress={() => onPress("Male")}>
-                            <Text style={styleCatrgory(selected === 'Male').categoryBtnText}>
+                    <View style={styleCatrgory(selected === 'male').categoryBtnContainer}>
+                        <MyPressable touchOpacity={0.6} onPress={() => onPress("male")}>
+                            <Text style={styleCatrgory(selected === 'male').categoryBtnText}>
                                 Male
                             </Text>
                         </MyPressable>
@@ -56,9 +56,9 @@ export default function Bottom(
                 marginLeft: 20 + insert.left,
             }}>
                 <View style={{ margin: 7 }}>
-                    <View style={styleCatrgory(selected === 'Female').categoryBtnContainer}>
-                        <MyPressable touchOpacity={0.6} onPress={() => onPress("Female")}>
-                            <Text style={styleCatrgory(selected === 'Female').categoryBtnText}>
+                    <View style={styleCatrgory(selected === 'female').categoryBtnContainer}>
+                        <MyPressable touchOpacity={0.6} onPress={() => onPress("female")}>
+                            <Text style={styleCatrgory(selected === 'female').categoryBtnText}>
                                 Female
                             </Text>
                         </MyPressable>

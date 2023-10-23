@@ -72,12 +72,14 @@ const ContainerEnhance = () => {
   }
 
   const handlePress = async () => {
-    const { type, name, uri } = await pickImage()
-    setImageEnhance({
-      type: type,
-      name: name,
-      uri: uri,
-    })
+    const result = await pickImage()
+    if (result) {
+      setImageEnhance({
+        type: result.type,
+        name: result.name,
+        uri: result.uri,
+      })
+    }
   }
 
   return (
