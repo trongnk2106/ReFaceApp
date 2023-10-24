@@ -45,11 +45,14 @@ const AppImages = {
 const colors = 
 {
   backround: '#47447D',
+  boder: '#5AA8F8'
 }
 
 const icons = {
   setup: require('./icons/setup.png'),
   home: require('./icons/home.png'),
+  upload: require('./icons/FAB.png'),
+  snow: require('./icons/snow.png'),
 }
 
 export { AppImages, colors, icons };

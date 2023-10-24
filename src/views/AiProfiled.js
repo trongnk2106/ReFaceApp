@@ -11,6 +11,8 @@ import Config from '../Config';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ContainerAiProfiled from '../components/aiprofile/ContainerAiProfiled';
+import { colors } from '../assets';
+import HeaderResult from '../components/HeaderResult';
 
 const AiProfiled = () => {
   const { width } = useWindowDimensions();
@@ -23,11 +25,11 @@ const AiProfiled = () => {
 
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white', paddingTop }}>
-      <StatusBar backgroundColor="white" barStyle="dark-content" />
-      <Header title='AI Profile' />
-        <ContainerAiProfiled/>
-      <Footer />
+    <View style={{ flex: 1, backgroundColor: colors.backround, paddingTop }}>
+      {/* <StatusBar backgroundColor="white" barStyle="dark-content" /> */}
+      <HeaderResult title='AI Profile' />
+      <ContainerAiProfiled />
+      {/* <Footer /> */}
     </View>
   );
 };

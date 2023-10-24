@@ -9,7 +9,8 @@ import {
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import ImageButton from '../misc/ImageButton';
-import { AppImages } from '../assets';
+import { AppImages, icons, colors } from '../assets';
+import MyPressable from './MyPressable';
 
 
 const Top = ({
@@ -24,19 +25,18 @@ const Top = ({
   const window = useWindowDimensions();
 
   return (<>
-    <View style={[styles.container,
-    {
-      paddingTop: insert.top,
-      paddingBottom: insert.bottom,
-    }]}>
-      <ImageButton text={title} onPress={onPress} />
-    </View>
-    <Image
-      style={{ flex: 1, paddingLeft: insert.left, width: width ? width : '90%', alignSelf: 'center', height: height ? height : window.width / 2 }}
-      source={srcImage ? { uri: srcImage.uri } : AppImages.webInterFace}
-      resizeMode={srcImage ? "contain":"cover"}
-    >
-    </Image>
+    <MyPressable onPress={onPress} style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingLeft: insert.left, width: width ? width : '80%', alignSelf: 'center', height: height ? height : window.width / 2 }}>
+      <Image
+        style={srcImage ? {
+          height: '100%', width: '100%', aspectRatio: 0.7,
+          borderRadius: 20, borderWidth: 4,
+          borderColor: colors.boder
+        } : { height: 100, width: 100 }}
+        source={srcImage ? { uri: srcImage.uri } : icons.upload}
+      // resizeMode={ "contain"}
+      >
+      </Image>
+    </MyPressable>
   </>
   );
 };

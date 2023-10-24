@@ -25,24 +25,26 @@ const BottomListImage = ({
     const window = useWindowDimensions();
 
     return (<>
-        <View style={[styles.container,
+        {/* <View style={[styles.container,
         {
             paddingTop: insert.top,
             paddingBottom: insert.bottom,
         }]}>
             <ImageButton text={title} onPress={onPress} />
-        </View>
+        </View> */}
         <View style={{
 
             flexDirection: 'column', paddingTop: insert.top,
             paddingBottom: insert.bottom,
+            flexGrow: 1,
+            paddingLeft:5,
+            paddingRight:5,
+            justifyContent: 'center'
         }}>
             <RowImage srcImage1={ListImage ? ListImage[0] : ListImage}
                 srcImage2={ListImage ? ListImage[1] : ListImage} />
             <RowImage srcImage1={ListImage ? ListImage[2] : ListImage}
                 srcImage2={ListImage ? ListImage[3] : ListImage} />
-            <RowImage srcImage1={ListImage ? ListImage[4] : ListImage}
-                srcImage2={ListImage ? ListImage[5] : ListImage} />
 
         </View>
     </>
@@ -52,6 +54,7 @@ const BottomListImage = ({
 const styles = StyleSheet.create({
     container: {
         width: '50%',
+        flexGrow: 1
     }
 });
 

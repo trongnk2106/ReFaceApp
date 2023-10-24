@@ -44,6 +44,7 @@ export const POPULAR_COURSE_LIST = [
     lessonCount: 12,
     money: 25,
     rating: 1213,
+    navigate: 'AiProfile'
   },
   {
     id: 1,

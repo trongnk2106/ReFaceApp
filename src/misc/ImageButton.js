@@ -1,22 +1,28 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import MyPressable from '../components/MyPressable';
+import { icons } from '../assets';
 
 
-
-export default function ImageButton({ 
-    text,onPress,
+export default function ImageButton({
+  text, onPress,
+  isIcon = true,
 }) {
   return (
-  <View style={{ margin: 7 }}>
-    <View style={styleCatrgory(true).categoryBtnContainer}>
-      <MyPressable touchOpacity={0.6} onPress={onPress}>
-        <Text style={styleCatrgory(true).categoryBtnText}>
-          {text}
-        </Text>
-      </MyPressable>
+    <View style={{ margin: 7 }}>
+      <View style={styleCatrgory(true).categoryBtnContainer}>
+        <MyPressable touchOpacity={0.6} onPress={onPress} style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center'
+        }}>
+          <Text style={styleCatrgory(true).categoryBtnText}>
+            {text}
+          </Text>
+          {isIcon && <Image source={icons.snow} style={{ marginTop: 10 }}></Image>}
+        </MyPressable>
+      </View>
     </View>
-  </View>
   )
 }
 
@@ -25,18 +31,18 @@ const styleCatrgory = (selected) =>
     categoryBtnContainer: {
       flex: 1,
       overflow: 'hidden',
-      borderRadius: 7,
-      borderColor: 'rgb(0, 182, 240)',
-      borderWidth: 1,
-      backgroundColor:  'transparent',
+      borderRadius: 20,
+      backgroundColor: '#1076D5',
+      marginBottom: 10
     },
     categoryBtnText: {
-      padding: 18,
+      padding: 25,
       paddingVertical: 12,
-      fontSize: 12,
+      fontSize: 16,
       fontFamily: 'WorkSans-SemiBold',
       letterSpacing: 0.27,
       alignSelf: 'center',
-      color:'rgb(0, 182, 240)',
+      color: 'white',
+      paddingRight: 0,
     },
   });

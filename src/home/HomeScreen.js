@@ -141,7 +141,7 @@ const HomeScreen = () => {
         renderItem={data => (
           <PopulerCourseListView
             {...{ data }}
-            onScreenClicked={() => navigation.navigate('CourseInfo')}
+            onScreenClicked={(des) => navigation.navigate(des)}
           />
         )}
         keyExtractor={item => item.id.toString()

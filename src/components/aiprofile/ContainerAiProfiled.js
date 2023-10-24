@@ -13,6 +13,7 @@ import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
 import pickImage from '../../util/pickImage';
 import axios from 'axios';
+import { colors } from '../../assets';
 
 
 const infoHeight = 364.0;
@@ -50,18 +51,20 @@ const ContainerAiProfiled = () => {
                         minHeight: infoHeight,
                     }}
                 >
-                    <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
+                    {/* <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
                         selectedCategory={selectedCategoryPerson}
-                        setSelectedCategory={setSelectedCategoryPerson}></RenderList>
-                    <BottomListImage title="Your result" ListImage={resultAiProfile}/>
+                        setSelectedCategory={setSelectedCategoryPerson}></RenderList> */}
+                    <BottomListImage title="Your result" ListImage={resultAiProfile} />
                     <View style={
                         {
                             paddingTop: insets.top,
                             paddingBottom: insets.bottom,
                         }}>
-                        <ImageButton text="Try Again" onPress={handleTryAgain} />
+                        <ImageButton text="High Quality (4K)" onPress={handleTryAgain} />
+                        <ImageButton text="Download" onPress={handleTryAgain} isIcon={false} />
                     </View>
                 </ScrollView>
+
             </View>
         </View>
     );
@@ -70,7 +73,7 @@ const ContainerAiProfiled = () => {
 const styles = StyleSheet.create({
     contentContainer: {
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: colors.backround,
         // borderTopLeftRadius: 32,
         // borderTopRightRadius: 32,
         shadowColor: 'grey',

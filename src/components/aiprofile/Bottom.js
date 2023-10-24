@@ -26,13 +26,13 @@ export default function Bottom(
 
 
     return (<>
-        <View style={[styles.container,
+        {/* <View style={[styles.container,
         {
             paddingTop: insert.top,
             paddingBottom: insert.bottom,
         }]}>
             <ImageButton text={title} />
-        </View>
+        </View> */}
         <View style={{
             paddingTop: insert.top,
             paddingBottom: insert.bottom,
@@ -41,6 +41,7 @@ export default function Bottom(
         }}>
             <View style={{
                 marginRight: insert.right + 20,
+                width:'40%'
             }}>
                 <View style={{ margin: 7 }}>
                     <View style={styleCatrgory(selected === 'male').categoryBtnContainer}>
@@ -54,6 +55,7 @@ export default function Bottom(
             </View>
             <View style={{
                 marginLeft: 20 + insert.left,
+                width:'40%'
             }}>
                 <View style={{ margin: 7 }}>
                     <View style={styleCatrgory(selected === 'female').categoryBtnContainer}>
@@ -84,7 +86,8 @@ const styles = StyleSheet.create({
         marginVertical: 8,
         borderRadius: 13,
         paddingHorizontal: 16,
-        flexGrow: 1
+        flexGrow: 1,
+        width:'40%'
     },
 });
 
@@ -94,17 +97,17 @@ const styleCatrgory = (selected) =>
             flex: 1,
             overflow: 'hidden',
             borderRadius: 12,
-            borderColor: 'rgb(0, 182, 240)',
-            borderWidth: 1,
-            backgroundColor: selected ? 'rgb(0, 182, 240)' : 'transparent',
+            borderColor:selected ?'rgb(0, 182, 240)': '#55535E',
+            borderWidth: 2,
+            backgroundColor: selected ? '#0A4882' : 'transparent',
         },
         categoryBtnText: {
-            padding: 18,
+            padding: 25,
             paddingVertical: 12,
-            fontSize: 12,
+            fontSize: 13,
             fontFamily: 'WorkSans-SemiBold',
             letterSpacing: 0.27,
             alignSelf: 'center',
-            color: selected ? 'white' : 'rgb(0, 182, 240)',
+            color: '#FAF4F1',
         },
     });

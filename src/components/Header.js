@@ -2,11 +2,14 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import { icons } from '../assets';
 import MyPressable from './MyPressable';
+import { useNavigation } from '@react-navigation/native';
 
 const Header = ({
   title = "Revolutionize Your Portraits: Your AI Hubs Awaits"
 }
 ) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.header}>
       <View style={{ flex: 1, justifyContent: 'center' }}>
@@ -25,6 +28,7 @@ const Header = ({
           width: 45, height: 45,
         }}
         touchOpacity={0.6}
+        onPress={() => navigation.navigate('Home')}
       >
         <Image
           style={{ width: '100%', height: 45 }}

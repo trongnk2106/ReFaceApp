@@ -11,6 +11,7 @@ import Config from '../Config';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ContainerAiProfile from '../components/aiprofile/ContainerAiProfile';
+import { colors } from '../assets';
 
 const AiProfile = () => {
   const { width } = useWindowDimensions();
@@ -23,11 +24,11 @@ const AiProfile = () => {
 
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white', paddingTop }}>
-      <StatusBar backgroundColor="white" barStyle="dark-content" />
+    <View style={{ flex: 1, backgroundColor: colors.backround, paddingTop }}>
+      {/* <StatusBar backgroundColor="white" barStyle="dark-content" /> */}
       <Header title='AI Profile' />
-        <ContainerAiProfile/>
-      <Footer />
+      <ContainerAiProfile />
+      {/* <Footer /> */}
     </View>
   );
 };

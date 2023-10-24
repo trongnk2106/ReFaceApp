@@ -42,7 +42,7 @@ const PopulerCourseListView = ({ data, onScreenClicked }) => {
           flex: 1, aspectRatio: 0.8,
         }}
         touchOpacity={0.6}
-        onPress={onScreenClicked}
+        onPress={() => onScreenClicked(item.navigate)}
       >
         <View style={{ ...StyleSheet.absoluteFillObject }}>
           <View style={{ flex: 1, alignItems: 'center', }}>

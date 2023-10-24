@@ -4,6 +4,8 @@ import {
   View,
   ScrollView,
   Platform,
+  Modal,
+  Text
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -14,7 +16,10 @@ import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
 import pickImage from '../../util/pickImage';
 import axios from 'axios';
-
+import { colors } from '../../assets';
+import MyText from '../../misc/MyText';
+import Popup from '../../misc/Popup';
+import { isCancel } from 'react-native-document-picker';
 
 const infoHeight = 364.0;
 
@@ -31,6 +36,9 @@ const ContainerAiProfile = () => {
     resultAiProfile,
     setResultAiProfile } = useData()
 
+  const [isVisible, setIsVisible] = useState(false)
+  const [isCancel, setIsCancel] = useState(false)
+  
   const uploadImage = async () => {
 
     const formData = new FormData();
@@ -48,7 +56,6 @@ const ContainerAiProfile = () => {
             'Content-Type': 'multipart/form-data',
           },
         })
-
         // setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
         // console.log(response.data.output_images)
         setResultAiProfile(response.data.output_images)
@@ -59,8 +66,18 @@ const ContainerAiProfile = () => {
   }
 
   const handleTryNow = async () => {
+    setIsCancel(false)
+    setIsVisible(true)
     await uploadImage()
-    navigation.navigate('AiProfiled')
+    setIsVisible(false)
+    if (!isCancel) {
+      navigation.navigate('AiProfiled')
+    }
+  }
+
+  const handleCancel = () => {
+    setIsCancel(true)
+    setIsVisible(false)
   }
 
   const handleSources = async () => {
@@ -90,20 +107,23 @@ const ContainerAiProfile = () => {
             minHeight: infoHeight,
           }}
         >
-          <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
+          {/* <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
             selectedCategory={selectedCategoryPerson}
-            setSelectedCategory={setSelectedCategoryPerson}></RenderList>
+            setSelectedCategory={setSelectedCategoryPerson}></RenderList> */}
+          <MyText title='User photo' />
           <Top title="Source Image" onPress={handleSources} srcImage={imageAiProfile} />
+          <MyText title='Choose gender' style={{ marginTop: 20 }} />
           <Bottom title="Sex" onPress={handleSex} selected={selectSex} />
           <View style={
             {
               paddingTop: insets.top,
               paddingBottom: insets.bottom,
             }}>
-            <ImageButton text="Try Now" onPress={handleTryNow} />
+            <ImageButton text="Generate" onPress={handleTryNow} />
           </View>
         </ScrollView>
       </View>
+      {isVisible && <Popup isVisible={isVisible} onPress={handleCancel} />}
     </View>
   );
 };
@@ -111,7 +131,7 @@ const ContainerAiProfile = () => {
 const styles = StyleSheet.create({
   contentContainer: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.backround,
     // borderTopLeftRadius: 32,
     // borderTopRightRadius: 32,
     shadowColor: 'grey',
