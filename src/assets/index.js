@@ -49,6 +49,7 @@ const colors =
 
 const icons = {
   setup: require('./icons/setup.png'),
+  home: require('./icons/home.png'),
 }
 
 export { AppImages, colors, icons };

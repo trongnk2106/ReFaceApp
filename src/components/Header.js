@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import { icons } from '../assets';
+import MyPressable from './MyPressable';
 
 const Header = ({
   title = "Revolutionize Your Portraits: Your AI Hubs Awaits"
@@ -18,10 +19,19 @@ const Header = ({
           : <Text style={styles.headerTextBold}> {title}</Text>
         }
       </View>
-      <Image
-        style={{ width: 45, height: 45 }}
-        source={icons.setup}
-      />
+      <MyPressable
+        style={{
+          aspectRatio: 0.8,
+          width: 45, height: 45,
+        }}
+        touchOpacity={0.6}
+      >
+        <Image
+          style={{ width: '100%', height: 45 }}
+          source={icons.home}
+        />
+
+      </MyPressable>
     </View>
   )
 }
