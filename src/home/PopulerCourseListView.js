@@ -4,12 +4,9 @@ import {
   View,
   Text,
   Animated,
-  ListRenderItemInfo,
-  Image,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import MyPressable from '../components/MyPressable';
-import { CategoryType } from './model/category';
+import MyImage from '../misc/MyImage';
 
 
 const PopulerCourseListView = ({ data, onScreenClicked }) => {
@@ -41,31 +38,23 @@ const PopulerCourseListView = ({ data, onScreenClicked }) => {
       renderToHardwareTextureAndroid // just to avoid UI glitch when animating view with elevation
     >
       <MyPressable
-        style={{ flex: 1, aspectRatio: 0.8 }}
+        style={{
+          flex: 1, aspectRatio: 0.8,
+        }}
         touchOpacity={0.6}
         onPress={onScreenClicked}
       >
-        <View style={styles.bgColorView} />
         <View style={{ ...StyleSheet.absoluteFillObject }}>
-          <View style={{ padding: 16 }}>
-            {/* <Text style={styles.title}>{item.title}</Text> */}
-            <View style={styles.lessionCountRatingContainer}>
-              <Text style={[styles.textStyle, { flex: 1, fontSize: 12 }]}>
-                
-              </Text>
-              <Text style={styles.textStyle}>{item.rating}</Text>
-              {/* <Icon name="thumb-up" size={20} color="rgb(0, 182, 240)" /> */}
-              <Icon name="favorite" size={20} color="rgb(255, 55, 55)" />
-            </View>
-          </View>
-          <View style={{ flex: 1, alignItems: 'center' }}>
-            <Animated.View style={[styles.imageContainer /*, { opacity }, */]}>
-              <Image
-                style={{ height: '100%', borderRadius: 16, aspectRatio: 1.28 }}
+          <View style={{ flex: 1, alignItems: 'center', }}>
+            <Animated.View style={[styles.imageContainer /*, { opacity }, */, { display: 'flex', alignItems: 'center' }]}>
+              {/* <Image
+                style={{ height: '100%', borderColor: '#5AA8F8', aspectRatio: 0.9, borderWidth: 4, borderRadius: 20, borderColor: '#5AA8F8', }}
                 source={item.imagePath}
-              />
+              /> */}
+              <MyImage imagePath={item.imagePath}/>
             </Animated.View>
           </View>
+          <Text style={styles.title}>{item.title}</Text>
         </View>
       </MyPressable>
     </Animated.View>
@@ -74,44 +63,24 @@ const PopulerCourseListView = ({ data, onScreenClicked }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     borderRadius: 16,
     overflow: 'hidden',
     marginHorizontal: 16,
-  },
-  bgColorView: {
-    flex: 1,
-    marginBottom: 48,
-    borderRadius: 16,
-    backgroundColor: '#F8FAFB',
+    flexBasis: '40%',
+    padding:5
+
   },
   title: {
     fontSize: 16,
-    fontFamily: 'WorkSans-SemiBold',
+    fontFamily:'Abel',
     letterSpacing: 0.27,
-    color: 'rgb(23, 38, 42)',
-  },
-  lessionCountRatingContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingTop: 8,
-  },
-  textStyle: {
-    fontSize: 16,
-    fontFamily: 'WorkSans-Regular',
-    letterSpacing: 0.27,
-    color: 'rgb(58, 81, 96)',
+    color: 'rgb(255, 255, 255)',
+    textAlign: 'center',
   },
   imageContainer: {
     borderRadius: 16,
     marginHorizontal: 16,
     marginBottom: 4,
-    backgroundColor: 'white',
-    elevation: 2,
-    shadowColor: 'grey',
-    shadowOffset: { width: 0, height: 0 },
-    shadowOpacity: 0.22,
-    shadowRadius: 6.0,
   },
 });
 

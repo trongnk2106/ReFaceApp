@@ -1,30 +1,37 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
-import { AppImages } from '../assets';
+import { icons } from '../assets';
 
 const Header = ({
-  title = "Home"
+  title = "Revolutionize Your Portraits: Your AI Hubs Awaits"
 }
-  ) => {
+) => {
   return (
     <View style={styles.header}>
-        <View style={{ flex: 1, justifyContent: 'center' }}>
-          <Text style={styles.headerTextBold}> {title}</Text>
-        </View>
-        <Image
-        style={{ width: 60, height: 60 }}
-        source={AppImages.design_header_image}
-        />
+      <View style={{ flex: 1, justifyContent: 'center' }}>
+        {/* <Text style={styles.headerTextBold}> {title}</Text> */}
+        {title === "Revolutionize Your Portraits: Your AI Hubs Awaits" ?
+          <>
+            <Text style={styles.headerTextBold}> Revolutionize Your Portraits:</Text>
+            <Text style={styles.headerTextBold}> Your AI Hubs Awaits</Text>
+          </>
+          : <Text style={styles.headerTextBold}> {title}</Text>
+        }
+      </View>
+      <Image
+        style={{ width: 45, height: 45 }}
+        source={icons.setup}
+      />
     </View>
   )
 }
 
 export default Header
 
-const styles = StyleSheet.create({  
-    header: {
+const styles = StyleSheet.create({
+  header: {
     flexDirection: 'row',
-    paddingTop: 8,
+    paddingTop: 20,
     paddingHorizontal: 18,
   },
   headerTextNormal: {
@@ -33,8 +40,10 @@ const styles = StyleSheet.create({
     letterSpacing: 0.2,
   },
   headerTextBold: {
-    color: 'black',
+    color: '#EB6C6C',
     fontSize: 22,
-    fontFamily: 'WorkSans-Bold',
-    letterSpacing: 0.2,
-  },})
+    fontFamily: 'WorkSans',
+    marginLeft: 0,
+    letterSpacing: 0.4,
+  },
+})

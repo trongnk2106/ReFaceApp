@@ -16,7 +16,7 @@ import CategoryListView from './CategoryListView';
 import PopulerCourseListView from './PopulerCourseListView';
 import MyPressable from '../components/MyPressable';
 import { CATEGORY_LIST, POPULAR_COURSE_LIST } from './model/category';
-import { AppImages } from '../assets';
+import { colors } from '../assets';
 import Config from '../Config';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -52,14 +52,14 @@ const HomeScreen = () => {
     : StatusBar.currentHeight;
 
   const renderScrollableHeaderTop = ({
-    title = "Personalize Face",
-    data = CATEGORIES_PERSONALIZE
+    title = "Experience with yourself",
+
   }) => {
     return (<>
 
-      <Text style={styles.sectionHeaderText}>{title}</Text>
+      {/* <Text style={styles.sectionHeaderText}>{title}</Text> */}
 
-      <FlatList
+      {/* <FlatList
         contentContainerStyle={{ paddingLeft: 16, paddingTop: 6 }}
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -80,8 +80,8 @@ const HomeScreen = () => {
             }}
           />
         )}
-        keyExtractor={(item, index) => index.toString()}
-      />
+        keyExtractor={(item, index) => index.toString()} */}
+      {/* /> */}
     </>)
   }
   const renderScrollableHeaderBottom = ({
@@ -91,7 +91,7 @@ const HomeScreen = () => {
     return (<>
 
       <Text style={styles.sectionHeaderText}>{title}</Text>
-
+      <Text style={styles.sectionHeaderText}>{title}</Text>
       <FlatList
         contentContainerStyle={{ paddingLeft: 16, paddingTop: 6 }}
         horizontal
@@ -115,20 +115,28 @@ const HomeScreen = () => {
 
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'white', paddingTop }}>
+    <View style={{ flex: 1, backgroundColor: colors.backround, paddingTop }}>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       <Header />
-
+      <Text style={styles.sectionHeaderText}>Experience with yourself</Text>
       <FlatList
         contentContainerStyle={{
           flexGrow: 1,
           paddingBottom: 16 + insets.bottom,
+          alignItems: "center",
+          borderColor: '#F2BCEA',
+          borderWidth: 1,
+          paddingTop: 16,
+          marginLeft: 32,
+          marginRight: 32,
+          borderRadius: 30,
+          marginBottom: 32,
         }}
         columnWrapperStyle={{ paddingHorizontal: 8 }}
         showsVerticalScrollIndicator={false}
         numColumns={2}
         data={POPULAR_COURSE_LIST}
-        ListHeaderComponent={renderScrollableHeaderTop}
+        // ListHeaderComponent={renderScrollableHeaderTop}
         ItemSeparatorComponent={() => <View style={{ height: 32 }} />}
         renderItem={data => (
           <PopulerCourseListView
@@ -140,7 +148,7 @@ const HomeScreen = () => {
         }
       />
 
-      <FlatList
+      {/* <FlatList
         contentContainerStyle={{
           flexGrow: 1,
           paddingBottom: 16 + insets.bottom,
@@ -158,8 +166,8 @@ const HomeScreen = () => {
           />
         )}
         keyExtractor={item => item.id.toString()}
-      />
-      <Footer />
+      /> */}
+      {/* <Footer /> */}
     </View>
   );
 };
@@ -185,14 +193,16 @@ const styles = StyleSheet.create({
     color: 'dodgerblue',
   },
   sectionHeaderText: {
-    color: 'black',
-    fontSize: 22,
+    color: '#F2BCEA',
+    fontSize: 24,
     fontFamily: 'WorkSans-SemiBold',
     letterSpacing: 0.27,
     paddingTop: 8,
     paddingLeft: 18,
     paddingRight: 16,
-    marginBottom: 16,
+    marginBottom: 32,
+    marginTop: 16,
+    textAlign: 'center'
   },
   categoryRowContainer: {
     flexDirection: 'row',

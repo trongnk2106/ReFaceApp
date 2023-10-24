@@ -32,6 +32,23 @@ const AppImages = {
   care_image: require('./introduction_animation/care_image.png'),
   mood_dairy_image: require('./introduction_animation/mood_dairy_image.png'),
   welcome: require('./introduction_animation/welcome.png'),
+
+  // App main
+  ai_avatar: require('./images/ai_avatar.png'),
+  ai_lovelens: require('./images/ai_lovelens.png'),
+  ai_profile: require('./images/ai_profile.jpg'),
+  ai_reface: require('./images/ai_reface.png'),
+  ai_trustface: require('./images/ai_trustface.jpg'),
+
 };
 
-export { AppImages };
+const colors = 
+{
+  backround: '#47447D',
+}
+
+const icons = {
+  setup: require('./icons/setup.png'),
+}
+
+export { AppImages, colors, icons };

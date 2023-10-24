@@ -4,7 +4,7 @@ import { AppImages } from '../../assets';
 export const CATEGORY_LIST = [
   {
     id: 0,
-    imagePath: AppImages.interFace1,
+    imagePath: AppImages.ai_profile,
     title: 'User interface Design',
     lessonCount: 24,
     money: 25,
@@ -12,7 +12,7 @@ export const CATEGORY_LIST = [
   },
   {
     id: 1,
-    imagePath: AppImages.interFace2,
+    imagePath: AppImages.ai_avatar,
     title: 'User interface Design',
     lessonCount: 22,
     money: 18,
@@ -20,7 +20,7 @@ export const CATEGORY_LIST = [
   },
   {
     id: 2,
-    imagePath: AppImages.interFace1,
+    imagePath: AppImages.ai_reface,
     title: 'User interface Design',
     lessonCount: 24,
     money: 25,
@@ -39,34 +39,43 @@ export const CATEGORY_LIST = [
 export const POPULAR_COURSE_LIST = [
   {
     id: 0,
-    imagePath: AppImages.interFace3,
-    title: 'App Design Course',
+    imagePath: AppImages.ai_profile,
+    title: 'AI Profile',
     lessonCount: 12,
     money: 25,
     rating: 1213,
   },
   {
     id: 1,
-    imagePath: AppImages.interFace4,
-    title: 'Web Design Course',
+    imagePath: AppImages.ai_avatar,
+    title: 'AI Avatar',
     lessonCount: 28,
     money: 208,
     rating: 1443,
   },
   {
     id: 2,
-    imagePath: AppImages.interFace3,
-    title: 'App Design Course',
+    imagePath: AppImages.ai_reface,
+    title: 'AI Reface',
     lessonCount: 12,
     money: 25,
     rating: 2543,
   },
   {
-    id: 3,
-    imagePath: AppImages.interFace4,
-    title: 'Web Design Course',
-    lessonCount: 28,
-    money: 208,
-    rating: 1435,
+    id: 2,
+    imagePath: AppImages.ai_lovelens,
+    title: 'AI LoveLens',
+    lessonCount: 12,
+    money: 25,
+    rating: 2543,
   },
+  {
+    id: 2,
+    imagePath: AppImages.ai_trustface,
+    title: 'AI Trust Face',
+    lessonCount: 12,
+    money: 25,
+    rating: 2543,
+  },
+
 ];
