@@ -53,6 +53,7 @@ const icons = {
   home: require('./icons/home.png'),
   upload: require('./icons/FAB.png'),
   snow: require('./icons/snow.png'),
+  back: require('./icons/back.png'),
 }
 
 export { AppImages, colors, icons };

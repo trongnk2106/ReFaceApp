@@ -5,35 +5,45 @@ import MyPressable from './MyPressable';
 import { useNavigation } from '@react-navigation/native';
 
 const HeaderResult = ({
-    title = "Revolutionize Your Portraits: Your AI Hubs Awaits"
 }
 ) => {
     const navigation = useNavigation();
 
     return (
         <View style={styles.header}>
+            <MyPressable
+                style={{
+                    aspectRatio: 0.8,
+                    width: 30, height: 20,
+                }}
+                touchOpacity={0.6}
+                onPress={() => navigation.goBack()}
+            >
+                <Image
+                    style={{ width: '100%', height: '100%', }}
+                    source={icons.back}
+                />
+
+            </MyPressable>
             <View style={{ flex: 1, justifyContent: 'center' }}>
-                {/* <Text style={styles.headerTextBold}> {title}</Text> */}
-                {title === "Revolutionize Your Portraits: Your AI Hubs Awaits" ?
+                <Text style={styles.headerTextBold}> Result</Text>
+                {/* {title === "Revolutionize Your Portraits: Your AI Hubs Awaits" ?
                     <>
                         <Text style={styles.headerTextBold}> Revolutionize Your Portraits:</Text>
                         <Text style={styles.headerTextBold}> Your AI Hubs Awaits</Text>
                     </>
                     : <Text style={styles.headerTextBold}> {title}</Text>
-                }
+                } */}
             </View>
             <MyPressable
                 style={{
                     aspectRatio: 0.8,
-                    width: 45, height: 45,
+                     justifyContent: 'center'
                 }}
                 touchOpacity={0.6}
-                onPress={() => navigation.navigate('Home')}
+                onPress={() => navigation.navigate('AiProfile')}
             >
-                <Image
-                    style={{ width: '100%', height: 45 }}
-                    source={icons.home}
-                />
+                <Text style={[styles.headerTextBold, {color: '#74B0E7'}]}> Done</Text>
 
             </MyPressable>
         </View>
@@ -47,6 +57,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         paddingTop: 20,
         paddingHorizontal: 18,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     headerTextNormal: {
         color: 'grey',
@@ -54,10 +66,11 @@ const styles = StyleSheet.create({
         letterSpacing: 0.2,
     },
     headerTextBold: {
-        color: '#EB6C6C',
+        color: '#fff',
         fontSize: 22,
         fontFamily: 'WorkSans',
         marginLeft: 0,
         letterSpacing: 0.4,
+        textAlign: 'center',
     },
 })
