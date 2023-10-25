@@ -4,8 +4,7 @@ import {
   View,
   ScrollView,
   Platform,
-  Modal,
-  Text
+  ToastAndroid
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -15,63 +14,31 @@ import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
 import pickImage from '../../util/pickImage';
-import axios from 'axios';
 import { colors } from '../../assets';
 import MyText from '../../misc/MyText';
 import Popup from '../../misc/Popup';
-import { isCancel } from 'react-native-document-picker';
+
 
 const infoHeight = 364.0;
 
-const ContainerAiProfile = () => {
+const ContainerAiAvatar = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
-  const { CATEGORIES_PERSONALIZE,
-    selectedCategoryPerson,
-    setSelectedCategoryPerson,
-    imageAiProfile,
-    setImageAiProfile,
-    selectSex,
-    setSelectSex,
-    resultAiProfile,
-    setResultAiProfile } = useData()
+  const {
+    imageAiAvatar, setImageAiAvatar,
+    selectSexAiAvatar, setSelectSexAiAvatar, } = useData()
 
   const [isVisible, setIsVisible] = useState(false)
   const [isCancel, setIsCancel] = useState(false)
-  
-  const uploadImage = async () => {
 
-    const formData = new FormData();
-
-    if (imageAiProfile && selectSex) {
-
-      formData.append('source_image', imageAiProfile)
-      formData.append('gender', selectSex)
-
-      console.log(formData)
-      try {
-        const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/aiprofile', formData, {
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'multipart/form-data',
-          },
-        })
-        // setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
-        // console.log(response.data.output_images)
-        setResultAiProfile(response.data.base64_images)
-      } catch (error) {
-        console.error('Error uploading image: ', error);
-      }
-    }
-  }
 
   const handleTryNow = async () => {
-    setIsCancel(false)
-    setIsVisible(true)
-    await uploadImage()
-    setIsVisible(false)
-    if (!isCancel) {
-      navigation.navigate('AiProfiled')
+
+    if (imageAiAvatar && selectSexAiAvatar) {
+      navigation.navigate('AiAvatarNext')
+    }
+    else {
+      ToastAndroid.show("You have not selected a photo or gender", ToastAndroid.SHORT)
     }
   }
 
@@ -83,7 +50,7 @@ const ContainerAiProfile = () => {
   const handleSources = async () => {
     const result = await pickImage()
     if (result) {
-      setImageAiProfile({
+      setImageAiAvatar({
         type: result.type,
         name: result.name,
         uri: result.uri,
@@ -91,7 +58,7 @@ const ContainerAiProfile = () => {
     }
   }
   const handleSex = (text) => {
-    setSelectSex(text)
+    setSelectSexAiAvatar(text)
   }
 
   return (
@@ -107,19 +74,16 @@ const ContainerAiProfile = () => {
             minHeight: infoHeight,
           }}
         >
-          {/* <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
-            selectedCategory={selectedCategoryPerson}
-            setSelectedCategory={setSelectedCategoryPerson}></RenderList> */}
           <MyText title='User photo' />
-          <Top title="Source Image" onPress={handleSources} srcImage={imageAiProfile} />
+          <Top title="Source Image" onPress={handleSources} srcImage={imageAiAvatar} />
           <MyText title='Choose gender' style={{ marginTop: 20 }} />
-          <Bottom title="Sex" onPress={handleSex} selected={selectSex} />
+          <Bottom title="Sex" onPress={handleSex} selected={selectSexAiAvatar} />
           <View style={
             {
               paddingTop: insets.top,
               paddingBottom: insets.bottom,
             }}>
-            <ImageButton text="Generate" onPress={handleTryNow} />
+            <ImageButton text="Continue" onPress={handleTryNow} />
           </View>
         </ScrollView>
       </View>
@@ -261,4 +225,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ContainerAiProfile;
+export default ContainerAiAvatar;

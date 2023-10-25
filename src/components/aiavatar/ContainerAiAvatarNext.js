@@ -4,35 +4,95 @@ import {
     View,
     ScrollView,
     Platform,
+    Modal,
+    Text,
+    FlatList
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import RenderList from '../../misc/RenderList';
-import BottomListImage from './BottomListImage';
+import Top from "../Top";
+import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
 import pickImage from '../../util/pickImage';
 import axios from 'axios';
 import { colors } from '../../assets';
-
+import MyText from '../../misc/MyText';
+import Popup from '../../misc/Popup';
+import { isCancel } from 'react-native-document-picker';
+import BottomListImage from './BottomListImage';
+import ViewImage from '../../misc/ViewImage';
 
 const infoHeight = 364.0;
 
-const ContainerAiProfiled = () => {
+const ContainerAiAvatarNext = () => {
     const navigation = useNavigation();
     const insets = useSafeAreaInsets();
-    const { CATEGORIES_PERSONALIZE,
-        selectedCategoryPerson,
-        setSelectedCategoryPerson,
-        selectSex,
-        setSelectSex,
-        resultAiProfile,
-        setResultAiProfile,
-        setImageRegenAiProfile } = useData()
+    const {
+        CATEGORIES_TEMPLATE,
+        imageAiAvatar, setImageAiAvatar,
+        selectSexAiAvatar, setSelectSexAiAvatar,
+        promptAiAvatar, setPromptAiAvatar,
+        tempAiAvatar, setTempAiAvatar,
+        setResultAiAvatar } = useData()
 
+    const [isVisible, setIsVisible] = useState(false)
+    const [isCancel, setIsCancel] = useState(false)
 
-    const handleTryAgain = async () => {
-        navigation.navigate('AiProfileReGen')
+    const uploadImage = async () => {
+
+        const formData = new FormData();
+
+        if (imageAiAvatar && selectSexAiAvatar) {
+
+            formData.append('source_image', imageAiAvatar)
+            formData.append('gender', selectSexAiAvatar)
+
+            console.log(formData)
+            try {
+                const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/aiprofile', formData, {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'multipart/form-data',
+                    },
+                })
+                // setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
+                // console.log(response.data.output_images)
+                setResultAiAvatar(response.data.base64_images)
+            } catch (error) {
+                console.error('Error uploading image: ', error);
+            }
+        }
+    }
+
+    const handleTryNow = async () => {
+        setIsCancel(false)
+        setIsVisible(true)
+        await uploadImage()
+        setIsVisible(false)
+        if (!isCancel) {
+            navigation.navigate('AiProfiled')
+        }
+    }
+
+    const handleCancel = () => {
+        setIsCancel(true)
+        setIsVisible(false)
+    }
+
+    const handleSources = async () => {
+        const result = await pickImage()
+        if (result) {
+            setImageAiAvatar({
+                type: result.type,
+                name: result.name,
+                uri: result.uri,
+            })
+        }
+    }
+    const handleSex = (text) => {
+        setSelectSexAiAvatar(text)
     }
 
     return (
@@ -48,21 +108,45 @@ const ContainerAiProfiled = () => {
                         minHeight: infoHeight,
                     }}
                 >
-                {/* <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
-                        selectedCategory={selectedCategoryPerson}
-                        setSelectedCategory={setSelectedCategoryPerson}></RenderList> */}
-                <BottomListImage title="Your result" ListImage={resultAiProfile} />
-                <View style={
-                    {
-                        paddingTop: insets.top,
-                        paddingBottom: insets.bottom,
+                    <MyText title='Choose template' />
+                    <MyText title='Custom Prompt' style={{ marginTop: 20 }} />
+                    <FlatList
+                        contentContainerStyle={{
+                            flexGrow: 1,
+                            paddingBottom: 16 + insets.bottom,
+                            alignItems: "center",
+                            paddingTop: 16,
+                            marginBottom: 32,
+                            justifyContent: 'center',
+                        }}
 
-                    }}>
-                    <ImageButton text="Regenerate" onPress={handleTryAgain} />
-                </View>
+                        columnWrapperStyle={{ paddingHorizontal: 8 }}
+                        // showsVerticalScrollIndicator={false}
+                        numColumns={3}
+                        scrollEnabled={false}
+                        data={CATEGORIES_TEMPLATE}
+                        ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+                        renderItem={data => (
+                            <ViewImage
+                                data={data}
+                                isNull={true}
+                                onScreenClicked={() => setImageRegenAiProfile(data.item)}
+                                height='27%'
+                            />
+                        )}
+                    // keyExtractor={item => item.id.toString()
+                    // }
+                    />
+                    <View style={
+                        {
+                            paddingTop: insets.top,
+                            paddingBottom: insets.bottom,
+                        }}>
+                        <ImageButton text="Generate" onPress={handleTryNow} />
+                    </View>
                 </ScrollView>
-
             </View>
+            {isVisible && <Popup isVisible={isVisible} onPress={handleCancel} />}
         </View>
     );
 };
@@ -200,4 +284,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ContainerAiProfiled;
+export default ContainerAiAvatarNext;

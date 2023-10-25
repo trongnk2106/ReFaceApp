@@ -23,95 +23,14 @@ import Footer from '../components/Footer';
 import { useData } from '../context/useData';
 
 
-const CategoryButton = ({ text, selectedCat, onPress }) => (
-  <View style={{ margin: 7 }}>
-    <View style={styleCatrgory(selectedCat === text).categoryBtnContainer}>
-      <MyPressable touchOpacity={0.6} onPress={onPress}>
-        <Text style={styleCatrgory(selectedCat === text).categoryBtnText}>
-          {text}
-        </Text>
-      </MyPressable>
-    </View>
-  </View>
-);
-
 const HomeScreen = () => {
   const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
 
-  const { CATEGORIES_PERSONALIZE,
-    CATEGORIES_PROTECT,
-    selectedCategoryPerson,
-    setSelectedCategoryPerson,
-    selectedCategoryProtect,
-    setSelectedCategoryProtect } = useData()
-
   const paddingTop = Config.isIos
     ? Math.max(insets.top, 20)
     : StatusBar.currentHeight;
-
-  const renderScrollableHeaderTop = ({
-    title = "Experience with yourself",
-
-  }) => {
-    return (<>
-
-      {/* <Text style={styles.sectionHeaderText}>{title}</Text> */}
-
-      {/* <FlatList
-        contentContainerStyle={{ paddingLeft: 16, paddingTop: 6 }}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={data}
-        renderItem={({ item }) => (
-          <CategoryButton
-            text={item}
-            selectedCat={selectedCategoryPerson}
-            onPress={() => {
-              setSelectedCategoryPerson(item)
-              if (item === 'Face Swap') navigation.navigate('FaceSwap')
-              else if (item === 'Face Generator') navigation.navigate('Generate')
-              else if (item === 'Face Enhance') navigation.navigate('FaceEnhance')
-              else if (item === 'Ai Profile') navigation.navigate('AiProfile')
-              else if (item === 'Anti DreamBooth') navigation.navigate('AntiDreamBooth')
-              else if (item === 'DeepFake Detect') navigation.navigate('DeepFake')
-
-            }}
-          />
-        )}
-        keyExtractor={(item, index) => index.toString()} */}
-      {/* /> */}
-    </>)
-  }
-  const renderScrollableHeaderBottom = ({
-    title = "Protected Face",
-    data = CATEGORIES_PROTECT
-  }) => {
-    return (<>
-
-      <Text style={styles.sectionHeaderText}>{title}</Text>
-      <Text style={styles.sectionHeaderText}>{title}</Text>
-      <FlatList
-        contentContainerStyle={{ paddingLeft: 16, paddingTop: 6 }}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={data}
-        renderItem={({ item }) => (
-          <CategoryButton
-            text={item}
-            selectedCat={selectedCategoryProtect}
-            onPress={() => {
-              setSelectedCategoryProtect(item)
-              if (item === 'Anti DreamBooth') navigation.navigate('AntiDreamBooth')
-              else if (item === 'DeepFake Detect') navigation.navigate('DeepFake')
-            }}
-          />
-        )}
-        keyExtractor={(item, index) => index.toString()}
-      />
-    </>)
-  }
 
 
   return (
@@ -147,27 +66,6 @@ const HomeScreen = () => {
         keyExtractor={item => item.id.toString()
         }
       />
-
-      {/* <FlatList
-        contentContainerStyle={{
-          flexGrow: 1,
-          paddingBottom: 16 + insets.bottom,
-        }}
-        columnWrapperStyle={{ paddingHorizontal: 8 }}
-        showsVerticalScrollIndicator={false}
-        numColumns={2}
-        data={POPULAR_COURSE_LIST}
-        ListHeaderComponent={renderScrollableHeaderBottom}
-        ItemSeparatorComponent={() => <View style={{ height: 32 }} />}
-        renderItem={data => (
-          <PopulerCourseListView
-            {...{ data }}
-            onScreenClicked={() => navigation.navigate('CourseInfo')}
-          />
-        )}
-        keyExtractor={item => item.id.toString()}
-      /> */}
-      {/* <Footer /> */}
     </View>
   );
 };

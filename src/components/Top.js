@@ -30,10 +30,11 @@ const Top = ({
         style={srcImage ? {
           height: '100%', width: '100%', aspectRatio: 0.7,
           borderRadius: 20, borderWidth: 4,
-          borderColor: colors.boder
+          borderColor: colors.boder,
+    
         } : { height: 100, width: 100 }}
         source={srcImage ? { uri: srcImage.uri } : icons.upload}
-      // resizeMode={ "contain"}
+      resizeMode={ "contain"}
       >
       </Image>
     </MyPressable>

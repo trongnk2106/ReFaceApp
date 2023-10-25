@@ -53,6 +53,7 @@ export const POPULAR_COURSE_LIST = [
     lessonCount: 28,
     money: 208,
     rating: 1443,
+    navigate: 'AiAvatar'
   },
   {
     id: 2,

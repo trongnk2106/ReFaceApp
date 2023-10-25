@@ -10,6 +10,13 @@ import DeepFake from "./DeepFake";
 import DeepFaked from "./DeepFaked";
 import AiProfile from "./AiProfile";
 import AiProfiled from "./AiProfiled";
+import AiProfiledReGen from "./AiProfileReGen";
+import AiProfileReGened from "./AiProfileReGened";
+import AiAvatar from "./AiAvatar";
+import AiAvatarReGen from "./AiAvatarReGen";
+import AiAvatarReGened from "./AiAvatarReGened"
+import AiAvatared from "./AiAvatared";
+import AiAvatarNext from "./AiAvatarNext";
 
 
 export {
@@ -24,5 +31,12 @@ export {
     DeepFake,
     DeepFaked,
     AiProfile,
-    AiProfiled
+    AiProfiled,
+    AiProfiledReGen,
+    AiProfileReGened,
+    AiAvatar,
+    AiAvatared,
+    AiAvatarReGen,
+    AiAvatarReGened,
+    AiAvatarNext
 }

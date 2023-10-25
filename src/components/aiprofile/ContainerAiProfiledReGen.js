@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import RenderList from '../../misc/RenderList';
 import Top from "../Top";
 import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
@@ -19,48 +18,51 @@ import axios from 'axios';
 import { colors } from '../../assets';
 import MyText from '../../misc/MyText';
 import Popup from '../../misc/Popup';
-import { isCancel } from 'react-native-document-picker';
+import base64ToImage from '../../util/base64ToImage';
 
 const infoHeight = 364.0;
 
-const ContainerAiProfile = () => {
+const ContainerAiProfiledReGen = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
-  const { CATEGORIES_PERSONALIZE,
-    selectedCategoryPerson,
-    setSelectedCategoryPerson,
+  const {
     imageAiProfile,
     setImageAiProfile,
     selectSex,
     setSelectSex,
-    resultAiProfile,
-    setResultAiProfile } = useData()
+    setResultAiProfile,
+    imageRegenAiProfile, setImageRegenAiProfile,
+    resultRegenAiProfile, setResultRegenAiProfile } = useData()
 
   const [isVisible, setIsVisible] = useState(false)
   const [isCancel, setIsCancel] = useState(false)
-  
+
   const uploadImage = async () => {
 
     const formData = new FormData();
 
-    if (imageAiProfile && selectSex) {
+    const fileImage = await base64ToImage(imageRegenAiProfile)
 
-      formData.append('source_image', imageAiProfile)
-      formData.append('gender', selectSex)
+    if (imageAiProfile) {
+      formData.append('source_image', {
+        type: fileImage.type,
+        name: fileImage.name,
+        uri: `data:image/png;base64,${imageRegenAiProfile}`,
+      })
 
       console.log(formData)
       try {
-        const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/aiprofile', formData, {
+        const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/aiupscaler', formData, {
           headers: {
             'Accept': 'application/json',
             'Content-Type': 'multipart/form-data',
           },
         })
         // setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
-        // console.log(response.data.output_images)
-        setResultAiProfile(response.data.base64_images)
+        // console.log(response.data.base64_images)
+        setResultRegenAiProfile(response.data.base64_images)
       } catch (error) {
-        console.error('Error uploading image: ', error);
+        console.log('Error uploading image: ', error);
       }
     }
   }
@@ -71,7 +73,7 @@ const ContainerAiProfile = () => {
     await uploadImage()
     setIsVisible(false)
     if (!isCancel) {
-      navigation.navigate('AiProfiled')
+      navigation.navigate('AiProfileReGened')
     }
   }
 
@@ -79,6 +81,7 @@ const ContainerAiProfile = () => {
     setIsCancel(true)
     setIsVisible(false)
   }
+  // console.log(imageRegenAiProfile)
 
   const handleSources = async () => {
     const result = await pickImage()
@@ -90,10 +93,6 @@ const ContainerAiProfile = () => {
       })
     }
   }
-  const handleSex = (text) => {
-    setSelectSex(text)
-  }
-
   return (
     <View style={{ flex: 1 }}>
       <View
@@ -111,15 +110,14 @@ const ContainerAiProfile = () => {
             selectedCategory={selectedCategoryPerson}
             setSelectedCategory={setSelectedCategoryPerson}></RenderList> */}
           <MyText title='User photo' />
-          <Top title="Source Image" onPress={handleSources} srcImage={imageAiProfile} />
-          <MyText title='Choose gender' style={{ marginTop: 20 }} />
-          <Bottom title="Sex" onPress={handleSex} selected={selectSex} />
+          <Top title="Source Image" srcImage={{ uri: `data:image/png;base64,${imageRegenAiProfile}` }} />
           <View style={
             {
               paddingTop: insets.top,
               paddingBottom: insets.bottom,
             }}>
-            <ImageButton text="Generate" onPress={handleTryNow} />
+            <ImageButton text="High Quality (4K)" onPress={handleTryNow} />
+            <ImageButton text="Download" isIcon={false} />
           </View>
         </ScrollView>
       </View>
@@ -261,4 +259,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ContainerAiProfile;
+export default ContainerAiProfiledReGen;

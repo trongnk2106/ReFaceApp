@@ -39,6 +39,12 @@ const AppImages = {
   ai_profile: require('./images/ai_profile.jpg'),
   ai_reface: require('./images/ai_reface.png'),
   ai_trustface: require('./images/ai_trustface.jpg'),
+  temp_1: require('./images/temp_1.jpg'),
+  temp_2: require('./images/temp_2.png'),
+  temp_3: require('./images/temp_3.png'),
+  temp_4: require('./images/temp_4.png'),
+  temp_5: require('./images/temp_5.jpg'),
+  temp_6: require('./images/temp_6.jpg'),
 
 };
 

@@ -11,7 +11,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import ImageButton from '../../misc/ImageButton';
 import { AppImages, colors } from '../../assets';
-import RowImage from './RowImage';
 import ViewImage from '../../misc/ViewImage';
 import { useData } from '../../context/useData';
 

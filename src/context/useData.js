@@ -1,9 +1,10 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
+import { AppImages } from '../assets';
 
 export const DataContext = React.createContext({});
 
 export const DataProvider = ({ children }) => {
-  const CATEGORIES_PERSONALIZE = ['Face Swap', 'Face Generator', 'Face Enhance', 'Ai Profile'];
+  const CATEGORIES_TEMPLATE = [AppImages.temp_1, AppImages.temp_2, AppImages.temp_3, AppImages.temp_4, AppImages.temp_5, AppImages.temp_6];
   const CATEGORIES_PROTECT = ['Anti DreamBooth', 'DeepFake Detect'];
   const [selectedCategoryPerson, setSelectedCategoryPerson] = useState('Ui/Ux');
   const [selectedCategoryProtect, setSelectedCategoryProtect] = useState('Ui/Ux');
@@ -30,9 +31,20 @@ export const DataProvider = ({ children }) => {
   const [imageAiProfile, setImageAiProfile] = useState();
   const [selectSex, setSelectSex] = useState();
   const [resultAiProfile, setResultAiProfile] = useState();
+  const [imageRegenAiProfile, setImageRegenAiProfile] = useState();
+  const [resultRegenAiProfile, setResultRegenAiProfile] = useState();
+
+  const [imageAiAvatar, setImageAiAvatar] = useState();
+  const [selectSexAiAvatar, setSelectSexAiAvatar] = useState();
+  const [resultAiAvatar, setResultAiAvatar] = useState();
+  const [promptAiAvatar, setPromptAiAvatar] = useState();
+  const [tempAiAvatar, setTempAiAvatar] = useState();
+  const [imageRegenAiAvatar, setImageRegenAiAvatar] = useState();
+  const [resultRegenAiAvatar, setResultRegenAiAvatar] = useState();
+
 
   const contextValue = {
-    CATEGORIES_PERSONALIZE,
+    CATEGORIES_TEMPLATE,
     CATEGORIES_PROTECT,
     selectedCategoryPerson,
     setSelectedCategoryPerson,
@@ -74,7 +86,17 @@ export const DataProvider = ({ children }) => {
     selectSex,
     setSelectSex,
     resultAiProfile,
-    setResultAiProfile
+    setResultAiProfile,
+    imageRegenAiProfile, setImageRegenAiProfile,
+    resultRegenAiProfile, setResultRegenAiProfile,
+    imageAiAvatar, setImageAiAvatar,
+    selectSexAiAvatar, setSelectSexAiAvatar,
+    resultAiAvatar, setResultAiAvatar,
+    imageRegenAiAvatar, setImageRegenAiAvatar,
+    resultRegenAiAvatar, setResultRegenAiAvatar,
+    promptAiAvatar, setPromptAiAvatar,
+    tempAiAvatar, setTempAiAvatar
+
   };
 
   return (

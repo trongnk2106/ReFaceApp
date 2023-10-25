@@ -18,7 +18,7 @@ import { colors } from '../../assets';
 
 const infoHeight = 364.0;
 
-const ContainerAiProfiled = () => {
+const ContainerAiAvatared = () => {
     const navigation = useNavigation();
     const insets = useSafeAreaInsets();
     const { CATEGORIES_PERSONALIZE,
@@ -200,4 +200,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ContainerAiProfiled;
+export default ContainerAiAvatared;

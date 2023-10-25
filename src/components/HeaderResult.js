@@ -5,6 +5,7 @@ import MyPressable from './MyPressable';
 import { useNavigation } from '@react-navigation/native';
 
 const HeaderResult = ({
+    goto = 'AiProfile'
 }
 ) => {
     const navigation = useNavigation();
@@ -41,7 +42,7 @@ const HeaderResult = ({
                      justifyContent: 'center'
                 }}
                 touchOpacity={0.6}
-                onPress={() => navigation.navigate('AiProfile')}
+                onPress={() => navigation.navigate(goto)}
             >
                 <Text style={[styles.headerTextBold, {color: '#74B0E7'}]}> Done</Text>
 
