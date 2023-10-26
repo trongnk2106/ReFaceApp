@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -8,7 +8,6 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import RenderList from '../../misc/RenderList';
 import Top from "../Top";
 import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
@@ -16,7 +15,6 @@ import { useData } from '../../context/useData';
 import pickImage from '../../util/pickImage';
 import { colors } from '../../assets';
 import MyText from '../../misc/MyText';
-import Popup from '../../misc/Popup';
 
 
 const infoHeight = 364.0;
@@ -28,10 +26,6 @@ const ContainerAiAvatar = () => {
     imageAiAvatar, setImageAiAvatar,
     selectSexAiAvatar, setSelectSexAiAvatar, } = useData()
 
-  const [isVisible, setIsVisible] = useState(false)
-  const [isCancel, setIsCancel] = useState(false)
-
-
   const handleTryNow = async () => {
 
     if (imageAiAvatar && selectSexAiAvatar) {
@@ -40,11 +34,6 @@ const ContainerAiAvatar = () => {
     else {
       ToastAndroid.show("You have not selected a photo or gender", ToastAndroid.SHORT)
     }
-  }
-
-  const handleCancel = () => {
-    setIsCancel(true)
-    setIsVisible(false)
   }
 
   const handleSources = async () => {
@@ -87,7 +76,6 @@ const ContainerAiAvatar = () => {
           </View>
         </ScrollView>
       </View>
-      {isVisible && <Popup isVisible={isVisible} onPress={handleCancel} />}
     </View>
   );
 };

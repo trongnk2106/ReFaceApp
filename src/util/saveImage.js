@@ -2,6 +2,13 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import RNFS from 'react-native-fs';
 
+/**
+ * Saves an image to the device's downloads directory.
+ *
+ * @param {string} dataImage - The base64 encoded image data.
+ * @param {string} filename - The name of the file to save the image as.
+ * @return {Promise<void>} A promise that resolves when the image is saved successfully.
+ */
 export default async function saveImage(dataImage, filename) {
     const downloadsPath = `${RNFS.ExternalDirectoryPath}/Download`;
     const isDownloadsDirExists = await RNFS.exists(downloadsPath);

@@ -42,51 +42,37 @@ export const DataProvider = ({ children }) => {
   const [imageRegenAiAvatar, setImageRegenAiAvatar] = useState();
   const [resultRegenAiAvatar, setResultRegenAiAvatar] = useState();
 
+  const [imageAiReface, setImageAiReface] = useState();
+  const [resultAiReface, setResultAiReface] = useState();
+  const [promptAiReface, setPromptAiReface] = useState();
+
+  const [resultAiUpScaler, setResultAiUpScaler] = useState();
 
   const contextValue = {
     CATEGORIES_TEMPLATE,
     CATEGORIES_PROTECT,
-    selectedCategoryPerson,
-    setSelectedCategoryPerson,
-    selectedCategoryProtect,
-    setSelectedCategoryProtect,
-    imageEnhance,
-    setImageEnhance,
-    imageGenerate,
-    setImageGenerate,
-    imageSourceSwap,
-    setImageSourceSwap,
-    imageTargetSwap,
-    setImageTargetSwap,
-    imageResultSwap,
-    setImageResultSwap,
-    prompt,
-    setPrompt,
-    imageResultGenerate,
-    setImageResultGenerate,
+    selectedCategoryPerson, setSelectedCategoryPerson,
+    selectedCategoryProtect, setSelectedCategoryProtect,
+    imageEnhance, setImageEnhance,
+    imageGenerate, setImageGenerate,
+    imageSourceSwap, setImageSourceSwap,
+    imageTargetSwap, setImageTargetSwap,
+    imageResultSwap, setImageResultSwap,
+    prompt, setPrompt,
+    imageResultGenerate, setImageResultGenerate,
     isRemove, setIsRemove,
     isEnhance, setIsEnhance,
     isUpscaler, setIsUpscaler,
-    imageResultEnhance,
-    setImageResultEnhance,
-    imageSrcDreambooth,
-    setImageSrcDreambooth,
-    imageRealFace,
-    setImageRealFace,
-    imageSrcDeepFake,
-    setImageSrcDeepFake,
-    imageRealFaceDeepFake,
-    setImageRealFaceDeepFake,
-    resAnti,
-    setResAnti,
-    resDeep,
-    setResDeep,
-    imageAiProfile,
-    setImageAiProfile,
-    selectSex,
-    setSelectSex,
-    resultAiProfile,
-    setResultAiProfile,
+    imageResultEnhance, setImageResultEnhance,
+    imageSrcDreambooth, setImageSrcDreambooth,
+    imageRealFace, setImageRealFace,
+    imageSrcDeepFake, setImageSrcDeepFake,
+    imageRealFaceDeepFake, setImageRealFaceDeepFake,
+    resAnti, setResAnti,
+    resDeep, setResDeep,
+    imageAiProfile, setImageAiProfile,
+    selectSex, setSelectSex,
+    resultAiProfile, setResultAiProfile,
     imageRegenAiProfile, setImageRegenAiProfile,
     resultRegenAiProfile, setResultRegenAiProfile,
     imageAiAvatar, setImageAiAvatar,
@@ -95,8 +81,11 @@ export const DataProvider = ({ children }) => {
     imageRegenAiAvatar, setImageRegenAiAvatar,
     resultRegenAiAvatar, setResultRegenAiAvatar,
     promptAiAvatar, setPromptAiAvatar,
-    tempAiAvatar, setTempAiAvatar
-
+    tempAiAvatar, setTempAiAvatar,
+    imageAiReface, setImageAiReface,
+    resultAiReface, setResultAiReface,
+    promptAiReface, setPromptAiReface,
+    resultAiUpScaler, setResultAiUpScaler
   };
 
   return (

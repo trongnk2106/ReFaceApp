@@ -6,6 +6,11 @@ import Toast from './components/Toast';
 import { toastRef } from './util/action';
 import { DataProvider } from './context/useData';
 
+/**
+ * Renders the main component of the application.
+ *
+ * @return {JSX.Element} The rendered main component.
+ */
 const AppControlFlow = () => {
   return (
     <SafeAreaProvider>

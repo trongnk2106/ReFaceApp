@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import {
     StyleSheet,
     View,
@@ -6,34 +6,17 @@ import {
     Platform,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useNavigation } from '@react-navigation/native';
-import RenderList from '../../misc/RenderList';
-import BottomListImage from './BottomListImage';
+import Top from "../Top";
 import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
-import pickImage from '../../util/pickImage';
-import axios from 'axios';
-import Top from '../Top';
 import { colors } from '../../assets';
-
+import MyText from '../../misc/MyText';
 
 const infoHeight = 364.0;
 
-const ContainerAiAvatared = () => {
-    const navigation = useNavigation();
+const ContainerAiUpScalered = () => {
     const insets = useSafeAreaInsets();
-    const { CATEGORIES_PERSONALIZE,
-        selectedCategoryPerson,
-        setSelectedCategoryPerson,
-        selectSex,
-        setSelectSex,
-        resultAiAvatar,
-        setResultAiProfile,
-        setImageRegenAiProfile } = useData()
-
-    const handleTryAgain = async () => {
-        navigation.navigate('AiProfileReGen')
-    }
+    const { resultAiUpScaler } = useData()
 
     return (
         <View style={{ flex: 1 }}>
@@ -48,21 +31,18 @@ const ContainerAiAvatared = () => {
                         minHeight: infoHeight,
                     }}
                 >
+                    <MyText title='User photo' />
                     <View style={{ flexGrow: 1, padding: 20 }}>
-                        <Top srcImage={{ uri: `data:image/png;base64,${resultAiAvatar}` }}></Top>
+                        <Top title="Source Image" srcImage={{ uri: `data:image/png;base64,${resultAiUpScaler}` }} />
                     </View>
-
                     <View style={
                         {
                             paddingTop: insets.top,
                             paddingBottom: insets.bottom,
-
                         }}>
-                        <ImageButton text="High Quality (4K)" onPress={handleTryAgain} />
                         <ImageButton text="Download" isIcon={false} />
                     </View>
                 </ScrollView>
-
             </View>
         </View>
     );
@@ -201,4 +181,5 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ContainerAiAvatared;
+export default ContainerAiUpScalered
+    ;

@@ -26,14 +26,11 @@ const infoHeight = 364.0;
 const ContainerAiProfile = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
-  const { CATEGORIES_PERSONALIZE,
-    selectedCategoryPerson,
-    setSelectedCategoryPerson,
+  const { 
     imageAiProfile,
     setImageAiProfile,
     selectSex,
     setSelectSex,
-    resultAiProfile,
     setResultAiProfile } = useData()
 
   const [isVisible, setIsVisible] = useState(false)
@@ -56,8 +53,7 @@ const ContainerAiProfile = () => {
             'Content-Type': 'multipart/form-data',
           },
         })
-        // setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
-        // console.log(response.data.output_images)
+
         setResultAiProfile(response.data.base64_images)
       } catch (error) {
         console.error('Error uploading image: ', error);
@@ -107,9 +103,6 @@ const ContainerAiProfile = () => {
             minHeight: infoHeight,
           }}
         >
-          {/* <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
-            selectedCategory={selectedCategoryPerson}
-            setSelectedCategory={setSelectedCategoryPerson}></RenderList> */}
           <MyText title='User photo' />
           <Top title="Source Image" onPress={handleSources} srcImage={imageAiProfile} />
           <MyText title='Choose gender' style={{ marginTop: 20 }} />

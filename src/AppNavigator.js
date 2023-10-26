@@ -15,13 +15,13 @@ import {
   DeepFaked,
   AiProfile,
   AiProfiled,
-  AiProfiledReGen,
-  AiProfileReGened,
   AiAvatar,
   AiAvatared,
-  AiAvatarReGen,
-  AiAvatarReGened,
-  AiAvatarNext
+  AiAvatarNext,
+  AiReface,
+  AiRefaced,
+  AiUpScaler,
+  AiUpScalered,
 } from './views';
 
 
@@ -53,14 +53,16 @@ export default () => {
 
         <Stack.Screen name="AiProfile" component={AiProfile}/>
         <Stack.Screen name="AiProfiled" component={AiProfiled}/>
-        <Stack.Screen name="AiProfileReGen" component={AiProfiledReGen}/>
-        <Stack.Screen name="AiProfileReGened" component={AiProfileReGened}/>
 
         <Stack.Screen name="AiAvatar" component={AiAvatar}/>
         <Stack.Screen name="AiAvatarNext" component={AiAvatarNext}/>
         <Stack.Screen name="AiAvatared" component={AiAvatared}/>
-        <Stack.Screen name="AiAvatarReGen" component={AiAvatarReGen}/>
-        <Stack.Screen name="AiAvatarReGened" component={AiAvatarReGened}/>
+
+        <Stack.Screen name="AiReface" component={AiReface}/>
+        <Stack.Screen name="AiRefaced" component={AiRefaced}/>
+        
+        <Stack.Screen name="AiUpScaler" component={AiUpScaler}/>
+        <Stack.Screen name="AiUpScalered" component={AiUpScalered}/>
         {/* <Stack.Screen name="CourseInfo" component={CourseInfoScreen} /> */}
 
       </Stack.Navigator>

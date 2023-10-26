@@ -1,28 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import {
     StyleSheet,
     View,
     ScrollView,
-    Platform,
-    Modal,
-    Text,
     FlatList
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import RenderList from '../../misc/RenderList';
-import Top from "../Top";
-import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
-import pickImage from '../../util/pickImage';
 import axios from 'axios';
 import { colors } from '../../assets';
 import MyText from '../../misc/MyText';
 import Popup from '../../misc/Popup';
-import { isCancel } from 'react-native-document-picker';
-import BottomListImage from './BottomListImage';
 import ViewImage from '../../misc/ViewImage';
+import BottomPrompt from '../generate/BottomPrompt';
 
 const infoHeight = 364.0;
 
@@ -31,8 +23,8 @@ const ContainerAiAvatarNext = () => {
     const insets = useSafeAreaInsets();
     const {
         CATEGORIES_TEMPLATE,
-        imageAiAvatar, setImageAiAvatar,
-        selectSexAiAvatar, setSelectSexAiAvatar,
+        imageAiAvatar,
+        selectSexAiAvatar,
         promptAiAvatar, setPromptAiAvatar,
         tempAiAvatar, setTempAiAvatar,
         setResultAiAvatar } = useData()
@@ -48,18 +40,18 @@ const ContainerAiAvatarNext = () => {
 
             formData.append('source_image', imageAiAvatar)
             formData.append('gender', selectSexAiAvatar)
+            formData.append('style', tempAiAvatar)
+            formData.append('prompt', promptAiAvatar)
 
             console.log(formData)
             try {
-                const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/aiprofile', formData, {
+                const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/aiavatar', formData, {
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'multipart/form-data',
                     },
                 })
-                // setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
-                // console.log(response.data.output_images)
-                setResultAiAvatar(response.data.base64_images)
+                setResultAiAvatar(response.data.base64_image)
             } catch (error) {
                 console.error('Error uploading image: ', error);
             }
@@ -72,27 +64,13 @@ const ContainerAiAvatarNext = () => {
         await uploadImage()
         setIsVisible(false)
         if (!isCancel) {
-            navigation.navigate('AiProfiled')
+            navigation.navigate('AiUpScaler', { done: 'AiAvatar' })
         }
     }
 
     const handleCancel = () => {
         setIsCancel(true)
         setIsVisible(false)
-    }
-
-    const handleSources = async () => {
-        const result = await pickImage()
-        if (result) {
-            setImageAiAvatar({
-                type: result.type,
-                name: result.name,
-                uri: result.uri,
-            })
-        }
-    }
-    const handleSex = (text) => {
-        setSelectSexAiAvatar(text)
     }
 
     return (
@@ -109,7 +87,6 @@ const ContainerAiAvatarNext = () => {
                     }}
                 >
                     <MyText title='Choose template' />
-                    <MyText title='Custom Prompt' style={{ marginTop: 20 }} />
                     <FlatList
                         contentContainerStyle={{
                             flexGrow: 1,
@@ -121,7 +98,6 @@ const ContainerAiAvatarNext = () => {
                         }}
 
                         columnWrapperStyle={{ paddingHorizontal: 8 }}
-                        // showsVerticalScrollIndicator={false}
                         numColumns={3}
                         scrollEnabled={false}
                         data={CATEGORIES_TEMPLATE}
@@ -130,13 +106,13 @@ const ContainerAiAvatarNext = () => {
                             <ViewImage
                                 data={data}
                                 isNull={true}
-                                onScreenClicked={() => setImageRegenAiProfile(data.item)}
+                                onScreenClicked={() => setTempAiAvatar(data.item)}
                                 height='27%'
                             />
                         )}
-                    // keyExtractor={item => item.id.toString()
-                    // }
                     />
+                    <MyText title='Custom Prompt' style={{ marginTop: 20 }} />
+                    <BottomPrompt prompt={promptAiAvatar} setprompt={setPromptAiAvatar} />
                     <View style={
                         {
                             paddingTop: insets.top,
@@ -155,132 +131,13 @@ const styles = StyleSheet.create({
     contentContainer: {
         flex: 1,
         backgroundColor: colors.backround,
-        // borderTopLeftRadius: 32,
-        // borderTopRightRadius: 32,
         shadowColor: 'grey',
         shadowOffset: { width: 1.1, height: 1.1 },
-        // shadowOpacity: 0.2,
-        // shadowRadius: 10.0,
-        // elevation: 16,
     },
     scrollContainer: {
         borderTopLeftRadius: 32,
         borderTopRightRadius: 32,
         paddingHorizontal: 8,
-    },
-    courseTitle: {
-        color: 'black',
-        fontSize: 22,
-        fontFamily: 'WorkSans-SemiBold',
-        letterSpacing: 0.27,
-        paddingTop: 32,
-        paddingLeft: 18,
-        paddingRight: 16,
-    },
-    priceRatingContainer: {
-        flexDirection: 'row',
-        paddingHorizontal: 16,
-        paddingTop: 12,
-        paddingBottom: 8,
-        alignItems: 'center',
-    },
-    price: {
-        flex: 1,
-        color: 'rgb(0, 182, 240)',
-    },
-    textStyle: {
-        fontSize: 22,
-        fontFamily: 'WorkSans-Regular',
-        color: 'darkslategrey',
-        letterSpacing: 0.27,
-    },
-    timeBoxContainer: {
-        backgroundColor: 'white',
-        borderRadius: 16,
-        alignItems: 'center',
-        margin: 8,
-        paddingHorizontal: 18,
-        paddingVertical: 12,
-        elevation: 2,
-        shadowColor: 'grey',
-        shadowOffset: { width: 1.1, height: 1.1 },
-        shadowOpacity: 0.22,
-        shadowRadius: 8.0,
-    },
-    timeBoxTitle: {
-        fontSize: 14,
-        fontFamily: 'WorkSans-SemiBold',
-        color: 'rgb(0, 182, 240)',
-    },
-    boxesContainer: {
-        flexDirection: 'row',
-        padding: 8,
-    },
-    courseDescription: {
-        flex: 1,
-        fontSize: 14,
-        fontFamily: 'WorkSans-Regular',
-        textAlign: 'justify',
-        color: 'darkslategrey',
-        letterSpacing: 0.27,
-        paddingHorizontal: 16,
-        paddingVertical: 8,
-    },
-    footerContainer: {
-        flexDirection: 'row',
-        paddingHorizontal: 24,
-        // paddingBottom: 16,
-    },
-    addView: {
-        width: 48,
-        height: 48,
-        borderColor: 'lightgrey',
-        borderWidth: 1,
-        borderRadius: 16,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    joinCourse: {
-        flex: 1,
-        borderRadius: 16,
-        backgroundColor: 'rgb(0, 182, 240)',
-        elevation: 4,
-        shadowColor: 'rgb(0, 182, 240)',
-        shadowOffset: { width: 1.1, height: 1.1 },
-        shadowOpacity: 0.5,
-        shadowRadius: 10.0,
-        ...Platform.select({ android: { overflow: 'hidden' } }),
-    },
-    joinCourseText: {
-        padding: 18,
-        paddingVertical: 12,
-        fontSize: 18,
-        fontFamily: 'WorkSans-SemiBold',
-        alignSelf: 'center',
-        color: 'white',
-    },
-    favoriteIcon: {
-        position: 'absolute',
-        right: 35,
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        backgroundColor: 'rgb(0, 182, 240)',
-        justifyContent: 'center',
-        alignItems: 'center',
-        elevation: 18,
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 5 },
-        shadowOpacity: 0.34,
-        shadowRadius: 6.27,
-    },
-    backBtn: {
-        position: 'absolute',
-        width: 56,
-        height: 56,
-        borderRadius: 30,
-        justifyContent: 'center',
-        alignItems: 'center',
     },
 });
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -6,19 +6,22 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import BottomListImage from './BottomListImage';
 import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
+import axios from 'axios';
+import Top from '../Top';
 import { colors } from '../../assets';
+
 
 const infoHeight = 364.0;
 
-const ContainerAiProfiled = () => {
+const ContainerAiRefaced = () => {
     const navigation = useNavigation();
     const insets = useSafeAreaInsets();
-    const { resultAiProfile } = useData()
-    const handleRegenerate = async () => {
-        navigation.navigate('AiUpScaler', { done: 'AiProfile' })
+    const { resultAiReface,} = useData()
+
+    const handleHightquality = async () => {
+        navigation.navigate('AiProfileReGen')
     }
 
     return (
@@ -34,16 +37,21 @@ const ContainerAiProfiled = () => {
                         minHeight: infoHeight,
                     }}
                 >
-                    <BottomListImage title="Your result" ListImage={resultAiProfile} />
+                    <View style={{ flexGrow: 1, padding: 20 }}>
+                        <Top srcImage={{ uri: `data:image/png;base64,${resultAiReface}` }}></Top>
+                    </View>
+
                     <View style={
                         {
                             paddingTop: insets.top,
                             paddingBottom: insets.bottom,
 
                         }}>
-                        <ImageButton text="Regenerate" onPress={handleRegenerate} />
+                        <ImageButton text="High Quality (4K)" onPress={handleHightquality} />
+                        <ImageButton text="Download" isIcon={false} />
                     </View>
                 </ScrollView>
+
             </View>
         </View>
     );
@@ -63,4 +71,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default ContainerAiProfiled;
+export default ContainerAiRefaced;

@@ -34,6 +34,9 @@ export default function BottomPrompt(
                         {
                             height: window.width / 2
                         }
+                        ,{
+                           flexBasis:'100%'
+                        }
                     ]}
                     value={prompt}
                     onChangeText={text => setprompt(text)}
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     },
     searchInputContainer: {
         flexDirection: 'row',
-        backgroundColor: '#F8FAFB',
+        backgroundColor: '#1C1927',
         marginVertical: 8,
         borderRadius: 13,
         paddingHorizontal: 16,
@@ -68,6 +71,6 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 16,
         fontFamily: 'WorkSans-SemiBold',
-        color: 'dodgerblue',
+        color: 'white',
     },
 });

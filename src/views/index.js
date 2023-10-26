@@ -10,14 +10,16 @@ import DeepFake from "./DeepFake";
 import DeepFaked from "./DeepFaked";
 import AiProfile from "./AiProfile";
 import AiProfiled from "./AiProfiled";
-import AiProfiledReGen from "./AiProfileReGen";
-import AiProfileReGened from "./AiProfileReGened";
 import AiAvatar from "./AiAvatar";
-import AiAvatarReGen from "./AiAvatarReGen";
-import AiAvatarReGened from "./AiAvatarReGened"
 import AiAvatared from "./AiAvatared";
 import AiAvatarNext from "./AiAvatarNext";
+import AiReface from "./AiReface";
+import AiRefaced from "./AiRefaced";
+import AiUpScaler from "./AiUpScaler";
+import AiUpScalered from "./AiUpScalered";
 
+
+// This code is exporting several components from different files. Each component is being imported and then exported with a specific name. These components can be used in other parts of the application.
 
 export {
     FaceSwap,
@@ -32,11 +34,11 @@ export {
     DeepFaked,
     AiProfile,
     AiProfiled,
-    AiProfiledReGen,
-    AiProfileReGened,
     AiAvatar,
     AiAvatared,
-    AiAvatarReGen,
-    AiAvatarReGened,
-    AiAvatarNext
+    AiAvatarNext,
+    AiReface,
+    AiRefaced,
+    AiUpScaler,
+    AiUpScalered,
 }
