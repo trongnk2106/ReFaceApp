@@ -16,15 +16,9 @@ import { useData } from '../../context/useData';
 
 
 const BottomListImage = ({
-    title,
-    width,
-    height,
-    onPress,
     ListImage
 }) => {
-    const navigation = useNavigation();
     const insert = useSafeAreaInsets()
-    const window = useWindowDimensions();
     const [isNull, setisNull] = useState(false)
     const [listImages, setlistImages] = useState(ListImage)
     const {setImageRegenAiProfile} = useData()
@@ -48,7 +42,6 @@ const BottomListImage = ({
             }}
 
             columnWrapperStyle={{ paddingHorizontal: 8 }}
-            // showsVerticalScrollIndicator={false}
             numColumns={2}
             scrollEnabled={false}
             data={listImages}
@@ -60,19 +53,11 @@ const BottomListImage = ({
                     onScreenClicked={() => setImageRegenAiProfile(data.item)}
                 />
             )}
-        // keyExtractor={item => item.id.toString()
-        // }
         />
 
     </>
     );
 };
 
-const styles = StyleSheet.create({
-    container: {
-        width: '50%',
-        flexGrow: 1
-    }
-});
 
 export default BottomListImage;

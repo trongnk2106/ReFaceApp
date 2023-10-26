@@ -7,10 +7,9 @@ import {
   Image
 } from 'react-native';
 import MyPressable from '../components/MyPressable';
-import MyImage from '../misc/MyImage';
 
 
-const ViewImage = ({ data, isNull, onScreenClicked, height = '45%' }) => {
+const ViewImage = ({ data, isNull, onScreenClicked, height = '45%', isSelected = false }) => {
   const { index, item } = data;
   const translateY = useRef(new Animated.Value(50)).current;
   const opacity = useRef(new Animated.Value(0)).current;
@@ -52,7 +51,7 @@ const ViewImage = ({ data, isNull, onScreenClicked, height = '45%' }) => {
                 source={item.imagePath}
               /> */}
               <Image source={isNull ? item : { uri: `data:image/png;base64,${item}` }}
-                style={{ height: '100%', borderColor: '#5AA8F8', aspectRatio: 0.85, borderWidth: 4, borderRadius: 20, borderColor: '#5AA8F8', }} />
+                style={{ height: '100%', borderColor: isSelected ? '#F2BCEA' : '#5AA8F8', aspectRatio: 0.85, borderWidth: 4, borderRadius: 20, }} />
             </Animated.View>
           </View>
         </View>

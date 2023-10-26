@@ -28,13 +28,6 @@ const HeaderResult = ({
             </MyPressable>
             <View style={{ flex: 1, justifyContent: 'center' }}>
                 <Text style={styles.headerTextBold}> Result</Text>
-                {/* {title === "Revolutionize Your Portraits: Your AI Hubs Awaits" ?
-                    <>
-                        <Text style={styles.headerTextBold}> Revolutionize Your Portraits:</Text>
-                        <Text style={styles.headerTextBold}> Your AI Hubs Awaits</Text>
-                    </>
-                    : <Text style={styles.headerTextBold}> {title}</Text>
-                } */}
             </View>
             <MyPressable
                 style={{

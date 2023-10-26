@@ -16,8 +16,6 @@ export default function RowImage(
         height,
     }
 ) {
-
-    const navigation = useNavigation();
     const insert = useSafeAreaInsets()
     const window = useWindowDimensions();
 
@@ -51,5 +49,3 @@ export default function RowImage(
         </View>
     )
 }
-
-const styles = StyleSheet.create({})

@@ -8,7 +8,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
-import axios from 'axios';
 import Top from '../Top';
 import { colors } from '../../assets';
 

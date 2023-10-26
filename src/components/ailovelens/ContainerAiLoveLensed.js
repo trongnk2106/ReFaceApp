@@ -15,6 +15,7 @@ import pickImage from '../../util/pickImage';
 import axios from 'axios';
 import { colors } from '../../assets';
 import { AppImages } from '../../assets';
+import Top from '../Top';
 
 const infoHeight = 364.0;
 

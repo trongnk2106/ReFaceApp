@@ -44,7 +44,7 @@ const CategoryButton = ({ text, selectedCat, onPress }) => (
     </View>
   </View>
 );
-
+const infoHeight = 364.0;
 
 
 const ContainerTemplateLove = () => {
@@ -59,11 +59,11 @@ const ContainerTemplateLove = () => {
     setSelectedCategoryPerson,
     selectedCategoryProtect,
     setSelectedCategoryProtect,
-    LOVELENS_TEMPLATE ,
+    LOVELENS_TEMPLATE,
     lovelenstemplate, setLoveLenstemplate,
     imageLoveLensWoman, setImageLoveLensWoman,
     imageLoveLensMan, setImageLoveLensMan,
-    ismale, setIsmale    ,
+    ismale, setIsmale,
     resultLoveLens, setResultLoveLens
   } = useData()
 
@@ -72,33 +72,35 @@ const ContainerTemplateLove = () => {
     : StatusBar.currentHeight;
 
 
-    const handleTryNow = async () => {
-      setIsCancel(false)
-      setIsVisible(true)
-      await uploadImage()
-      setIsVisible(false)
-      if (!isCancel) {
-          navigation.navigate('AiLoveLensed')
-      }
-      
+  // const [chooseTemplate, setChooseTemplate] = useState()
+
+  const handleTryNow = async () => {
+    setIsCancel(false)
+    setIsVisible(true)
+    await uploadImage()
+    setIsVisible(false)
+    if (!isCancel) {
+      navigation.navigate('AiLoveLensed')
+    }
+
   }
 
   const handleCancel = () => {
     setIsCancel(true)
     setIsVisible(false)
-}
-// console.log(ismale)
-const uploadImage = async () => {
+  }
+  // console.log(ismale)
+  const uploadImage = async () => {
 
-  const formData = new FormData();
+    const formData = new FormData();
 
-  if (imageLoveLensWoman) {
+    if (imageLoveLensWoman) {
 
-      if (ismale === 'male'){
+      if (ismale === 'male') {
         formData.append('file_male', imageLoveLensWoman)
         formData.append('theme', lovelenstemplate)
       }
-      else if (ismale === 'female'){
+      else if (ismale === 'female') {
         formData.append('file_female', imageLoveLensWoman)
         formData.append('theme', lovelenstemplate)
       }
@@ -108,67 +110,77 @@ const uploadImage = async () => {
         formData.append('theme', lovelenstemplate)
       }
 
-     
+
       // console.log(formData)
       try {
-          const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/ailovelens', formData, {
-              headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'multipart/form-data',
-              },
-          })
-          // setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
-          // console.log(response.data.output_images)
-          setResultLoveLens(response.data.base64_images)
+        const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/ailovelens', formData, {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+        // setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
+        // console.log(response.data.output_images)
+        setResultLoveLens(response.data.base64_image)
       } catch (error) {
-          console.error('Error uploading image: ', error);
+        console.error('Error uploading image: ', error);
       }
+    }
   }
-}
 
 
 
   return (
-    <View style={{ flex: 1, backgroundColor: colors.backround, paddingTop }}>
-      <StatusBar backgroundColor="white" barStyle="dark-content" />
-      <MyText title="Choose template" />
-        <ScrollView>
-        <FlatList
-              contentContainerStyle={{
-                  flexGrow: 1,
-                  paddingBottom: 16 + insets.bottom,
-                  alignItems: "center",
-                  paddingTop: 16,
-                  marginBottom: 32,
-                  justifyContent: 'center',
-              }}
+    <View style={{ flex: 1 }}>
+      <View style={{
+        flex: 1,
+        backgroundColor: colors.backround,
+        shadowColor: 'grey',
+        shadowOffset: { width: 1.1, height: 1.1 },
+      }}>
+        <ScrollView contentContainerStyle={{
+          flexGrow: 1,
+          minHeight: infoHeight,
+        }}>
+          <MyText title="Choose template" />
+          <FlatList
+            contentContainerStyle={{
+              flexGrow: 1,
+              paddingBottom: 16 + insets.bottom,
+              alignItems: "center",
+              paddingTop: 16,
+              marginBottom: 32,
+              justifyContent: 'center',
+            }}
+            columnWrapperStyle={{ paddingHorizontal: 8 }}
+            numColumns={3}
+            scrollEnabled={false}
+            data={LOVELENS_TEMPLATE}
+            ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
 
-              columnWrapperStyle={{ paddingHorizontal: 8 }}
-              numColumns={3}
-              scrollEnabled={false}
-              data={LOVELENS_TEMPLATE}
-              ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
-              renderItem={data => (
-                  <ViewImage
-                      data={data}
-                      isNull={true}
-                      onScreenClicked={() => {
-                        // console.log((data.index))
-                        setLoveLenstemplate(data.item)}}
-                      height='27%'
-                  />
-              )}
-          
+            renderItem={data => (
+              <ViewImage
+                data={data}
+                isNull={true}
+                onScreenClicked={() => {
+                  // console.log((data.index))
+                  setLoveLenstemplate(data.item)
+                }}
+                height='27%'
+                isSelected={lovelenstemplate === data.item}
+              />
+            )}
           />
-       <View style={
+          <View style={
             {
-                paddingTop: insets.top,
-                paddingBottom: insets.bottom,
+              paddingTop: insets.top,
+              paddingBottom: insets.bottom,
             }}>
             <ImageButton text="Generate" onPress={handleTryNow} />
-        </View>
+          </View>
         </ScrollView>
-        {isVisible && <Popup isVisible={isVisible} onPress={handleCancel} />}
+      </View>
+      {isVisible && <Popup isVisible={isVisible} onPress={handleCancel} />}
     </View>
   );
 };

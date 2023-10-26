@@ -16,7 +16,6 @@ import {
   AiProfile,
   AiProfiled,
   AiAvatar,
-  AiAvatared,
   AiAvatarNext,
   AiReface,
   AiRefaced,
@@ -55,12 +54,8 @@ export default () => {
         <Stack.Screen name="AntiDreamBooth" component={AntiDreamBooth} />
         <Stack.Screen name="AntiDreamBoothed" component={AntiDreamBoothed} />
 
-        {/* <Stack.Screen name="AiProfile" component={AiProfile}/>
-        <Stack.Screen name="AiProfiled" component={AiProfiled}/> */}
-
         <Stack.Screen name="AiAvatar" component={AiAvatar}/>
         <Stack.Screen name="AiAvatarNext" component={AiAvatarNext}/>
-        <Stack.Screen name="AiAvatared" component={AiAvatared}/>
 
         <Stack.Screen name="AiReface" component={AiReface}/>
         <Stack.Screen name="AiRefaced" component={AiRefaced}/>
@@ -78,7 +73,6 @@ export default () => {
         <Stack.Screen name="TemplateAiLoveLens" component={TemplateAiLoveLens} />
         <Stack.Screen name="AiTrustFace" component={AiTrustFace} />
         <Stack.Screen name="AiTrustFaced" component={AiTrustFaced} />
-        {/* <Stack.Screen name="CourseInfo" component={CourseInfoScreen} /> */}
 
       </Stack.Navigator>
     </>

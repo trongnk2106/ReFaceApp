@@ -1,15 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
   ScrollView,
   Platform,
-  Modal,
-  Text
+  ToastAndroid
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import RenderList from '../../misc/RenderList';
 import Top from "../Top";
 import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
@@ -19,14 +17,13 @@ import axios from 'axios';
 import { colors } from '../../assets';
 import MyText from '../../misc/MyText';
 import Popup from '../../misc/Popup';
-import { isCancel } from 'react-native-document-picker';
 
 const infoHeight = 364.0;
 
 const ContainerAiProfile = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
-  const { 
+  const {
     imageAiProfile,
     setImageAiProfile,
     selectSex,
@@ -35,7 +32,7 @@ const ContainerAiProfile = () => {
 
   const [isVisible, setIsVisible] = useState(false)
   const [isCancel, setIsCancel] = useState(false)
-  
+
   const uploadImage = async () => {
 
     const formData = new FormData();
@@ -55,18 +52,24 @@ const ContainerAiProfile = () => {
         })
 
         setResultAiProfile(response.data.base64_images)
+        return true
       } catch (error) {
         console.error('Error uploading image: ', error);
+        return false
       }
+    }
+    else {
+      ToastAndroid.show("Please select gender and image", ToastAndroid.SHORT)
+      return false
     }
   }
 
   const handleTryNow = async () => {
     setIsCancel(false)
     setIsVisible(true)
-    await uploadImage()
+    const isCan = await uploadImage()
     setIsVisible(false)
-    if (!isCancel) {
+    if (!isCancel && isCan) {
       navigation.navigate('AiProfiled')
     }
   }
@@ -110,7 +113,7 @@ const ContainerAiProfile = () => {
           <View style={
             {
               paddingTop: insets.top,
-              paddingBottom: insets.bottom,
+              paddingBottom: insets.bottom ,
             }}>
             <ImageButton text="Generate" onPress={handleTryNow} />
           </View>

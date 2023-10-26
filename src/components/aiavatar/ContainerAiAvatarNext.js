@@ -108,6 +108,7 @@ const ContainerAiAvatarNext = () => {
                                 isNull={true}
                                 onScreenClicked={() => setTempAiAvatar(data.item)}
                                 height='27%'
+                                isSelected={data.item === tempAiAvatar}
                             />
                         )}
                     />

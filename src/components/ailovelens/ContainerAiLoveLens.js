@@ -5,7 +5,8 @@ import {
   ScrollView,
   Platform,
   Modal,
-  Text
+  Text,
+  FlatList
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -23,6 +24,7 @@ import Popup from '../../misc/Popup';
 import MyImage from '../../misc/MyImage';
 import { isCancel } from 'react-native-document-picker';
 import { AppImages } from '../../assets';
+import ViewImage from '../../misc/ViewImage';
 
 const infoHeight = 364.0;
 
@@ -41,24 +43,24 @@ const ContainerAiLoveLens = () => {
     imageLoveLensWoman, setImageLoveLensWoman,
     imageLoveLensMan, setImageLoveLensMan,
     ismale, setIsmale
-  
+
   } = useData()
 
   const [isVisible, setIsVisible] = useState(false)
   const [isCancel, setIsCancel] = useState(false)
 
   const [chooseType, setChooseType] = useState('')
-  
+  const images = [AppImages.ai_bride, AppImages.ai_groom, AppImages.ai_couple]
 
 
-const handleChoose = (navi) => {
-  if (navi) {
-    
-    navigation.navigate(chooseType)
+
+  const handleChoose = () => {
+
+    navigation.navigate('LoveLensupload')
+
   }
-}
 
-// console.log(chooseType)
+  // console.log(chooseType)
 
   return (
     <View style={{ flex: 1 }}>
@@ -75,18 +77,55 @@ const handleChoose = (navi) => {
         >
           <MyText title='Choose type' />
 
-            <View style = {{flexDirection : 'row', justifyContent : 'center', flexGrow: 1}}>
-                <View style = {{flex : 1, marginRight : 10, marginTop : 40, marginLeft : 10}}>
-                    <TopImage title="Image Bride" srcImage={AppImages.ai_bride} onPress={() => {setChooseType('LoveLensupload'), setIsmale('female')}}/>
-                </View>
-                <View style = {{flex : 1, marginLeft : 10, marginTop : 40}}>
-                    <TopImage title="Image Groom" srcImage={AppImages.ai_groom} onPress={() => {setChooseType('LoveLensupload'), setIsmale('male')}}/>
-                </View>
-                
+          {/* <View style={{ flexDirection: 'row', justifyContent: 'center', flexGrow: 1 }}>
+            <View style={{ flex: 1, marginRight: 10, marginTop: 40, marginLeft: 10 }}>
+              <TopImage title="Image Bride" srcImage={AppImages.ai_bride} onPress={() => { setChooseType('LoveLensupload'), setIsmale('female') }} />
             </View>
-            <View style = {{marginLeft : 100, paddingBottom : 20}}>
-                <TopImage title="Image Couple" srcImage={AppImages.ai_couple} onPress={() => {setChooseType('LoveLensupload'), setIsmale('couple')}}/>
+            <View style={{ flex: 1, marginLeft: 10, marginTop: 40 }}>
+              <TopImage title="Image Groom" srcImage={AppImages.ai_groom} onPress={() => { setChooseType('LoveLensupload'), setIsmale('male') }} />
             </View>
+
+          </View>
+          <View style={{ marginLeft: 100, paddingBottom: 20 }}>
+            <TopImage title="Image Couple" srcImage={AppImages.ai_couple} onPress={() => { setChooseType('LoveLensupload'), setIsmale('couple') }} />
+          </View> */}
+          <FlatList
+            contentContainerStyle={{
+              flexGrow: 1,
+              paddingBottom: 16 + insets.bottom,
+              alignItems: "center",
+              paddingTop: 16,
+              marginBottom: 32,
+              justifyContent: 'center',
+            }}
+
+            columnWrapperStyle={{ paddingHorizontal: 8 }}
+            numColumns={2}
+            scrollEnabled={false}
+            data={images}
+            ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+            renderItem={data => (
+              <ViewImage
+                data={data}
+                isNull={true}
+                onScreenClicked={() => {
+                  setChooseType(data.index)
+                  if (data.index == 0) {
+                    setIsmale('female')
+                  }
+                  else if (data.index === 1) {
+                    setIsmale('male')
+                  }
+                  else if (data.index === 2) {
+                    setIsmale('couple')
+                  }
+
+                }}
+
+              isSelected={data.index === chooseType}
+              />
+            )}
+          />
           <View style={
             {
               paddingTop: insets.top,

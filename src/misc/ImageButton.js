@@ -5,7 +5,8 @@ import { icons } from '../assets';
 
 
 export default function ImageButton({
-  text, onPress,
+  text, 
+  onPress,
   isIcon = true,
 }) {
   return (

@@ -103,19 +103,23 @@ const ContainerUploadLove = () => {
           {ismale === 'female' || ismale === 'male' ?
             <>
               <MyText title='User photo' />
-              <Top title="Source Image" onPress={handleSources} srcImage={imageLoveLensWoman} />
+              <View style={{ flexGrow: 1, padding: 30 }}>
+                <Top title="Source Image" onPress={handleSources} srcImage={imageLoveLensWoman} />
+              </View>
+
             </> :
             <>
-              
-                <MyText title='Male' />
-                <Top title="Male Image" onPress={ handleSourcesCouple} srcImage={imageLoveLensMan} />
-              
-              
-                <MyText title='Female' />
-                <Top title="Female Image" onPress={() => {
-                  setChooseType('female')
-                  handleSources()}} srcImage={imageLoveLensWoman} />
-              
+
+              <MyText title='Male' />
+              <Top title="Male Image" onPress={handleSourcesCouple} srcImage={imageLoveLensMan} />
+
+
+              <MyText title='Female' />
+              <Top title="Female Image" onPress={() => {
+                setChooseType('female')
+                handleSources()
+              }} srcImage={imageLoveLensWoman} />
+
             </>
           }
 

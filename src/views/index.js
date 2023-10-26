@@ -11,7 +11,6 @@ import DeepFaked from "./DeepFaked";
 import AiProfile from "./AiProfile";
 import AiProfiled from "./AiProfiled";
 import AiAvatar from "./AiAvatar";
-import AiAvatared from "./AiAvatared";
 import AiAvatarNext from "./AiAvatarNext";
 import AiReface from "./AiReface";
 import AiRefaced from "./AiRefaced";
@@ -41,7 +40,6 @@ export {
     AiProfile,
     AiProfiled,
     AiAvatar,
-    AiAvatared,
     AiAvatarNext,
     AiReface,
     AiRefaced,
