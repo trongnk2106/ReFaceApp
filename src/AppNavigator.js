@@ -18,7 +18,9 @@ import {
   AiLoveLens,
   LoveLensupload,
   TemplateAiLoveLens,
-  AiLoveLensed
+  AiLoveLensed,
+  AiTrustFace,
+  AiTrustFaced
 } from './views';
 
 
@@ -54,6 +56,8 @@ export default () => {
         <Stack.Screen name="AiLoveLensed" component={AiLoveLensed} />
         <Stack.Screen name="LoveLensupload" component={LoveLensupload} />
         <Stack.Screen name="TemplateAiLoveLens" component={TemplateAiLoveLens} />
+        <Stack.Screen name="AiTrustFace" component={AiTrustFace} />
+        <Stack.Screen name="AiTrustFaced" component={AiTrustFaced} />
         {/* <Stack.Screen name="CourseInfo" component={CourseInfoScreen} /> */}
 
       </Stack.Navigator>

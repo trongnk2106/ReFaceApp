@@ -14,7 +14,8 @@ import AiLoveLens from "./AiLoveLens";
 import LoveLensupload from "./LoveLensupload";
 import TemplateAiLoveLens from "./TemplateAiLoveLens";
 import AiLoveLensed from "./AiLoveLensed";
-
+import AiTrustFaced from "./AiTrustFaced";
+import AiTrustFace from "./AiTrustFace";
 
 export {
     FaceSwap,
@@ -33,5 +34,7 @@ export {
     LoveLensupload,
     TemplateAiLoveLens,
     AiLoveLensed,
+    AiTrustFaced,
+    AiTrustFace,
 
 }

@@ -41,6 +41,8 @@ export const DataProvider = ({ children }) => {
   const [lovelenstemplate, setLoveLenstemplate] = useState();
   const [ismale, setIsmale] = useState('')
   const [resultLoveLens, setResultLoveLens] = useState()
+  const [imagetrustface, setImagetrustface] = useState()
+  const [resImagetrustface, setResImagetrustface] = useState()
 
   const contextValue = {
     CATEGORIES_PERSONALIZE,
@@ -91,7 +93,9 @@ export const DataProvider = ({ children }) => {
     LOVELENS_TEMPLATE,
     lovelenstemplate, setLoveLenstemplate,
     ismale, setIsmale,
-    resultLoveLens, setResultLoveLens
+    resultLoveLens, setResultLoveLens,
+    imagetrustface, setImagetrustface,
+    resImagetrustface, setResImagetrustface
   };
 
   return (
