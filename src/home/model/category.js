@@ -69,6 +69,7 @@ export const POPULAR_COURSE_LIST = [
     lessonCount: 12,
     money: 25,
     rating: 2543,
+    navigate: 'AiLoveLens'
   },
   {
     id: 2,
@@ -80,3 +81,34 @@ export const POPULAR_COURSE_LIST = [
   },
 
 ];
+
+export const AILOVELENS = [
+  {
+    id: 0,
+    imagePath: AppImages.ai_bride,
+    title: 'AI LoveLens Bride',
+    lessonCount: 12,
+    money: 25,
+    rating: 2543,
+    navigate: 'Bride'
+  },
+
+  {
+    id: 1,
+    imagePath: AppImages.ai_groom,
+    title: 'AI LoveLens Groom',
+    lessonCount: 12,
+    money: 25,
+    rating: 2543,
+    navigate: 'Groom'
+  },
+  {
+    id: 2,
+    imagePath: AppImages.ai_couple,
+    title: 'AI LoveLens Couple',
+    lessonCount: 12,
+    money: 25,
+    rating: 2543,
+    navigate: 'Couple'
+  },
+]

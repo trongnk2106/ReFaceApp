@@ -39,6 +39,13 @@ const AppImages = {
   ai_profile: require('./images/ai_profile.jpg'),
   ai_reface: require('./images/ai_reface.png'),
   ai_trustface: require('./images/ai_trustface.jpg'),
+  ai_bride : require('./images/Bride.jpg'),
+  ai_groom : require('./images/Groom.jpg'),
+  ai_couple : require('./images/Couple.jpg'),
+
+
+  // template AI love lens
+  love1 : require('./images/lovetemplate.png'),
 
 };
 

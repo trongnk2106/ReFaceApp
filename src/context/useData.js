@@ -1,10 +1,16 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react'
+import { AppImages } from '../assets';
+import App from '../../App';
 
 export const DataContext = React.createContext({});
 
 export const DataProvider = ({ children }) => {
   const CATEGORIES_PERSONALIZE = ['Face Swap', 'Face Generator', 'Face Enhance', 'Ai Profile'];
   const CATEGORIES_PROTECT = ['Anti DreamBooth', 'DeepFake Detect'];
+  const LOVELENS_TEMPLATE = [AppImages.ai_avatar , AppImages.ai_bride, AppImages.ai_groom, AppImages.ai_lovelens, AppImages.ai_reface, AppImages.ai_trustface,
+                              AppImages.love1, AppImages.ai_couple, AppImages.ai_profile]
+
+
   const [selectedCategoryPerson, setSelectedCategoryPerson] = useState('Ui/Ux');
   const [selectedCategoryProtect, setSelectedCategoryProtect] = useState('Ui/Ux');
   const [imageEnhance, setImageEnhance] = useState();
@@ -30,6 +36,11 @@ export const DataProvider = ({ children }) => {
   const [imageAiProfile, setImageAiProfile] = useState();
   const [selectSex, setSelectSex] = useState();
   const [resultAiProfile, setResultAiProfile] = useState();
+  const [imageLoveLensWoman, setImageLoveLensWoman] = useState();
+  const [imageLoveLensMan, setImageLoveLensMan] = useState();
+  const [lovelenstemplate, setLoveLenstemplate] = useState();
+  const [ismale, setIsmale] = useState('')
+  const [resultLoveLens, setResultLoveLens] = useState()
 
   const contextValue = {
     CATEGORIES_PERSONALIZE,
@@ -74,7 +85,13 @@ export const DataProvider = ({ children }) => {
     selectSex,
     setSelectSex,
     resultAiProfile,
-    setResultAiProfile
+    setResultAiProfile,
+    imageLoveLensWoman, setImageLoveLensWoman,
+    imageLoveLensMan, setImageLoveLensMan,
+    LOVELENS_TEMPLATE,
+    lovelenstemplate, setLoveLenstemplate,
+    ismale, setIsmale,
+    resultLoveLens, setResultLoveLens
   };
 
   return (

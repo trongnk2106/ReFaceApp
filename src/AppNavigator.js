@@ -14,7 +14,11 @@ import {
   DeepFake,
   DeepFaked,
   AiProfile,
-  AiProfiled
+  AiProfiled,
+  AiLoveLens,
+  LoveLensupload,
+  TemplateAiLoveLens,
+  AiLoveLensed
 } from './views';
 
 
@@ -41,10 +45,15 @@ export default () => {
         <Stack.Screen name="DesignCourse" component={HomeScreen} />
         <Stack.Screen name="AntiDreamBooth" component={AntiDreamBooth} />
         <Stack.Screen name="AntiDreamBoothed" component={AntiDreamBoothed} />
-        <Stack.Screen name="DeepFake" component={DeepFake}/>
-        <Stack.Screen name="DeepFaked" component={DeepFaked}/>
-        <Stack.Screen name="AiProfile" component={AiProfile}/>
-        <Stack.Screen name="AiProfiled" component={AiProfiled}/>
+        <Stack.Screen name="DeepFake" component={DeepFake} />
+        <Stack.Screen name="DeepFaked" component={DeepFaked} />
+        <Stack.Screen name="AiProfile" component={AiProfile} />
+        <Stack.Screen name="AiProfiled" component={AiProfiled} />
+        <Stack.Screen name="AiLoveLens" component={AiLoveLens} />
+
+        <Stack.Screen name="AiLoveLensed" component={AiLoveLensed} />
+        <Stack.Screen name="LoveLensupload" component={LoveLensupload} />
+        <Stack.Screen name="TemplateAiLoveLens" component={TemplateAiLoveLens} />
         {/* <Stack.Screen name="CourseInfo" component={CourseInfoScreen} /> */}
 
       </Stack.Navigator>
