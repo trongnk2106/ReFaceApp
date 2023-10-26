@@ -6,6 +6,10 @@ export const DataContext = React.createContext({});
 export const DataProvider = ({ children }) => {
   const CATEGORIES_TEMPLATE = [AppImages.temp_1, AppImages.temp_2, AppImages.temp_3, AppImages.temp_4, AppImages.temp_5, AppImages.temp_6];
   const CATEGORIES_PROTECT = ['Anti DreamBooth', 'DeepFake Detect'];
+  const LOVELENS_TEMPLATE = [AppImages.ai_avatar , AppImages.ai_bride, AppImages.ai_groom, AppImages.ai_lovelens, AppImages.ai_reface, AppImages.ai_trustface,
+                              AppImages.love1, AppImages.ai_couple, AppImages.ai_profile]
+
+
   const [selectedCategoryPerson, setSelectedCategoryPerson] = useState('Ui/Ux');
   const [selectedCategoryProtect, setSelectedCategoryProtect] = useState('Ui/Ux');
   const [imageEnhance, setImageEnhance] = useState();
@@ -47,6 +51,15 @@ export const DataProvider = ({ children }) => {
   const [promptAiReface, setPromptAiReface] = useState();
 
   const [resultAiUpScaler, setResultAiUpScaler] = useState();
+  const [imageLoveLensWoman, setImageLoveLensWoman] = useState();
+  const [imageLoveLensMan, setImageLoveLensMan] = useState();
+  const [lovelenstemplate, setLoveLenstemplate] = useState();
+  const [ismale, setIsmale] = useState('')
+  const [resultLoveLens, setResultLoveLens] = useState()
+  const [imagetrustface, setImagetrustface] = useState()
+  const [resImagetrustface, setResImagetrustface] = useState()
+  const [label, setLabel] = useState()
+  const [score, setScore] = useState()
 
   const contextValue = {
     CATEGORIES_TEMPLATE,
@@ -85,7 +98,18 @@ export const DataProvider = ({ children }) => {
     imageAiReface, setImageAiReface,
     resultAiReface, setResultAiReface,
     promptAiReface, setPromptAiReface,
-    resultAiUpScaler, setResultAiUpScaler
+    resultAiUpScaler, setResultAiUpScaler,
+
+    imageLoveLensWoman, setImageLoveLensWoman,
+    imageLoveLensMan, setImageLoveLensMan,
+    LOVELENS_TEMPLATE,
+    lovelenstemplate, setLoveLenstemplate,
+    ismale, setIsmale,
+    resultLoveLens, setResultLoveLens,
+    imagetrustface, setImagetrustface,
+    resImagetrustface, setResImagetrustface,
+    label, setLabel,
+    score, setScore,
   };
 
   return (

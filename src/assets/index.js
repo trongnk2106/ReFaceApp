@@ -45,6 +45,13 @@ const AppImages = {
   temp_4: require('./images/temp_4.png'),
   temp_5: require('./images/temp_5.jpg'),
   temp_6: require('./images/temp_6.jpg'),
+  ai_bride : require('./images/Bride.jpg'),
+  ai_groom : require('./images/Groom.jpg'),
+  ai_couple : require('./images/Couple.jpg'),
+
+
+  // template AI love lens
+  love1 : require('./images/lovetemplate.png'),
 
 };
 
