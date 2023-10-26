@@ -28,7 +28,7 @@ const AiTrustFaced = () => {
   return (
     <View style={{ flex: 1, backgroundColor: colors.backround, paddingTop }}>
       {/* <StatusBar backgroundColor="white" barStyle="dark-content" /> */}
-      <HeaderResult title='AI Trust Face' />
+      <HeaderResult title='AI Trust Face' route='Home' />
       <ContainerAiTrustFaced />
       {/* <Footer /> */}
     </View>

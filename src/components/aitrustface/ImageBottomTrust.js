@@ -6,6 +6,7 @@ import MyPressable from '../MyPressable';
 export default function ImageButtonTrust({
   text, onPress,
   isIcon = true,
+  label 
 }) {
   return (
     <View style={{ margin: 7 }}>
@@ -16,7 +17,7 @@ export default function ImageButtonTrust({
           justifyContent: 'center'
         }}>
           <Text style={styleCatrgory(true).categoryBtnText}>
-            {text}
+            {text} {label}
           </Text>
           {isIcon && <Image source={icons.snow} style={{ marginTop: 10 }}></Image>}
         </MyPressable>

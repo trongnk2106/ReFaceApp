@@ -29,7 +29,9 @@ const ContainerAiTrustFaced = () => {
         resultAiProfile,
         setResultAiProfile ,
         imagetrustface, setImagetrustface,
-        resImagetrustface, setResImagetrustface} = useData()
+        resImagetrustface, setResImagetrustface,
+        label, setLabel,
+        score, setScore,} = useData()
 
 
     const handleTryAgain = async () => {
@@ -62,8 +64,8 @@ const ContainerAiTrustFaced = () => {
                             paddingTop: insets.top,
                             paddingBottom: insets.bottom,
                         }}>
-                        <ImageButtonTrust text="Your Photo Is"/>
-                        <ImageButtonTrust text = "Confidence Score" />
+                        <ImageButtonTrust text="Your Photo Is " label = {label}/>
+                        <ImageButtonTrust text = "Confidence Score" label = {score.toFixed(2) * 100 + '%'} />
                     </View>
                 </ScrollView>
 

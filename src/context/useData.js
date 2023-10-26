@@ -43,6 +43,8 @@ export const DataProvider = ({ children }) => {
   const [resultLoveLens, setResultLoveLens] = useState()
   const [imagetrustface, setImagetrustface] = useState()
   const [resImagetrustface, setResImagetrustface] = useState()
+  const [label, setLabel] = useState()
+  const [score, setScore] = useState()
 
   const contextValue = {
     CATEGORIES_PERSONALIZE,
@@ -95,7 +97,9 @@ export const DataProvider = ({ children }) => {
     ismale, setIsmale,
     resultLoveLens, setResultLoveLens,
     imagetrustface, setImagetrustface,
-    resImagetrustface, setResImagetrustface
+    resImagetrustface, setResImagetrustface,
+    label, setLabel,
+    score, setScore,
   };
 
   return (

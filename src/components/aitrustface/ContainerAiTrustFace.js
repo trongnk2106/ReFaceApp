@@ -36,7 +36,9 @@ const ContainerAiTrustFace = () => {
     resultAiProfile,
     setResultAiProfile,
     imagetrustface, setImagetrustface,
-    resImagetrustface, setResImagetrustface } = useData()
+    resImagetrustface, setResImagetrustface,
+    label, setLabel,
+    score, setScore, } = useData()
 
   const [isVisible, setIsVisible] = useState(false)
   const [isCancel, setIsCancel] = useState(false)
@@ -60,7 +62,11 @@ const ContainerAiTrustFace = () => {
         })
         // setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
         // console.log(response.data.output_images)
-        setResImagetrustface(response.data.output_images)
+        console.log(response.data.label, response.data.score)
+        setLabel(response.data.label)
+        setScore(response.data.score)
+        setResImagetrustface(response.data.base64_images)
+
       } catch (error) {
         console.error('Error uploading image: ', error);
       }
