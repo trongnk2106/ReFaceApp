@@ -27,7 +27,8 @@ const ContainerAiLoveLensed = () => {
         selectSex,
         setSelectSex,
         resultAiProfile,
-        setResultAiProfile } = useData()
+        setResultAiProfile,
+        resultLoveLens, setResultLoveLens, } = useData()
 
 
     const handleTryAgain = async () => {
@@ -54,7 +55,9 @@ const ContainerAiLoveLensed = () => {
                     {/* <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
                         selectedCategory={selectedCategoryPerson}
                         setSelectedCategory={setSelectedCategoryPerson}></RenderList> */}
-                    <BottomListImage title="Your result" ListImage={resultAiProfile} />
+                       <View style={{ flexGrow: 1, padding: 20 }}>
+                        <Top srcImage={{ uri: `data:image/png;base64,${resultLoveLens}` }}></Top>
+                        </View>
                     <View style={
                         {
                             paddingTop: insets.top,

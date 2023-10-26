@@ -4,7 +4,7 @@ import { icons } from '../assets';
 import MyPressable from './MyPressable';
 import { useNavigation } from '@react-navigation/native';
 
-const HeaderResult = ({ route
+const HeaderResult = ({ goto 
 }
 ) => {
     const navigation = useNavigation();

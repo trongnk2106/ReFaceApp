@@ -27,7 +27,7 @@ const AiLoveLensed = () => {
   return (
     <View style={{ flex: 1, backgroundColor: colors.backround, paddingTop }}>
       {/* <StatusBar backgroundColor="white" barStyle="dark-content" /> */}
-      <HeaderResult title='AI Love Lens' />
+      <HeaderResult title='AI Love Lens' goto = 'Home'/>
       <ContainerAiLoveLensed />
       {/* <Footer /> */}
     </View>

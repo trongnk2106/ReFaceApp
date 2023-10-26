@@ -17,7 +17,7 @@ import { colors } from '../../assets';
 import BottomListImage from '../aiprofile/BottomListImage';
 import ImageButtonTrust from './ImageBottomTrust';
 const infoHeight = 364.0;
-
+import Top from '../Top';
 const ContainerAiTrustFaced = () => {
     const navigation = useNavigation();
     const insets = useSafeAreaInsets();
@@ -58,7 +58,9 @@ const ContainerAiTrustFaced = () => {
                     {/* <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
                         selectedCategory={selectedCategoryPerson}
                         setSelectedCategory={setSelectedCategoryPerson}></RenderList> */}
-                    <BottomListImage title="Your result" ListImage={resImagetrustface} />
+                     <View style={{ flexGrow: 1, padding: 20 }}>
+                        <Top srcImage={{ uri: `data:image/png;base64,${resImagetrustface}` }}></Top>
+                    </View>
                     <View style={
                         {
                             paddingTop: insets.top,

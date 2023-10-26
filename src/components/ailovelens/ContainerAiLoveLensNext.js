@@ -30,6 +30,7 @@ import ViewImage from '../../misc/ViewImage';
 import { LibraryDirectoryPath } from 'react-native-fs';
 import axios from 'axios';
 import Popup from '../../misc/Popup';
+import Top from '../Top';
 
 
 const CategoryButton = ({ text, selectedCat, onPress }) => (
@@ -79,6 +80,7 @@ const ContainerTemplateLove = () => {
       if (!isCancel) {
           navigation.navigate('AiLoveLensed')
       }
+      
   }
 
   const handleCancel = () => {
