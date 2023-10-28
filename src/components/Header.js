@@ -16,8 +16,8 @@ const Header = ({
         {/* <Text style={styles.headerTextBold}> {title}</Text> */}
         {title === "Revolutionize Your Portraits: Your AI Hubs Awaits" ?
           <>
-            <Text style={styles.headerTextBold}> Revolutionize Your Portraits:</Text>
-            <Text style={styles.headerTextBold}> Your AI Hubs Awaits</Text>
+            <Text style={styles.headerTextBold}> Revolutionize Your Portraits</Text>
+            {/* <Text style={styles.headerTextBold}> Your AI Hubs Awaits</Text> */}
           </>
           : <Text style={styles.headerTextBold}> {title}</Text>
         }
@@ -25,13 +25,13 @@ const Header = ({
       <MyPressable
         style={{
           aspectRatio: 0.8,
-          width: 45, height: 45,
+          width: 40, height: 40,
         }}
         touchOpacity={0.6}
         onPress={() => navigation.navigate('Home')}
       >
         <Image
-          style={{ width: '100%', height: 45 }}
+          style={{ width: '100%', height: 40 }}
           source={icons.home}
         />
 
@@ -58,6 +58,6 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontFamily: 'WorkSans',
     marginLeft: 0,
-    letterSpacing: 0.4,
+    letterSpacing: 1,
   },
 })

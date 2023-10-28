@@ -29,7 +29,7 @@ const ContainerUploadLove = () => {
   const { 
     imageLoveLensWoman, setImageLoveLensWoman,
     imageLoveLensMan, setImageLoveLensMan,
-    ismale, 
+    ismale, LOVELENS_MALE, LOVELENS_FEMALE, LOVELENS_COUPLE,
 
   } = useData()
 
@@ -72,7 +72,18 @@ const ContainerUploadLove = () => {
 
 
   const handleContinue = () => {
-    navigation.navigate('TemplateAiLoveLens')
+    if (ismale === 'male') {
+      navigation.navigate('TemplateAiLoveLens', {list: LOVELENS_MALE})
+    }
+    else if (ismale === 'female') {
+      navigation.navigate('TemplateAiLoveLens', {list: LOVELENS_FEMALE})
+    }
+  
+    else {
+      navigation.navigate('TemplateAiLoveLens', {list: LOVELENS_COUPLE})
+    }
+  
+  
   }
 
   return (

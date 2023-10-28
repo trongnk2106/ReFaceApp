@@ -18,7 +18,7 @@ import BottomPrompt from '../generate/BottomPrompt';
 
 const infoHeight = 364.0;
 
-const ContainerAiAvatarNext = () => {
+const ContainerAiAvatarNext = ({list}) => {
     const navigation = useNavigation();
     const insets = useSafeAreaInsets();
     const {
@@ -100,15 +100,15 @@ const ContainerAiAvatarNext = () => {
                         columnWrapperStyle={{ paddingHorizontal: 8 }}
                         numColumns={3}
                         scrollEnabled={false}
-                        data={CATEGORIES_TEMPLATE}
+                        data={list}
                         ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
                         renderItem={data => (
                             <ViewImage
                                 data={data}
                                 isNull={true}
-                                onScreenClicked={() => setTempAiAvatar(data.item)}
+                                onScreenClicked={() => setTempAiAvatar(data.index)}
                                 height='27%'
-                                isSelected={data.item === tempAiAvatar}
+                                isSelected={data.index === tempAiAvatar}
                             />
                         )}
                     />

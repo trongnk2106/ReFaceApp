@@ -24,12 +24,20 @@ const ContainerAiAvatar = () => {
   const insets = useSafeAreaInsets();
   const {
     imageAiAvatar, setImageAiAvatar,
-    selectSexAiAvatar, setSelectSexAiAvatar, } = useData()
+    selectSexAiAvatar, setSelectSexAiAvatar,
+    AIAVATAR_MALE, AIAVATAR_FEMALE } = useData()
 
   const handleTryNow = async () => {
 
     if (imageAiAvatar && selectSexAiAvatar) {
-      navigation.navigate('AiAvatarNext')
+      if (selectSexAiAvatar === 'male'){
+      
+        navigation.navigate('AiAvatarNext', {list : AIAVATAR_MALE})
+      }
+      else(
+        navigation.navigate('AiAvatarNext', {list : AIAVATAR_FEMALE})
+      )
+      
     }
     else {
       ToastAndroid.show("You have not selected a photo or gender", ToastAndroid.SHORT)

@@ -32,6 +32,11 @@ const HomeScreen = () => {
     ? Math.max(insets.top, 20)
     : StatusBar.currentHeight;
 
+  const handleChat = () => {
+    // console.log('handle chat')
+    navigation.navigate('Chatbox')
+  }
+
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.backround, paddingTop }}>
@@ -47,7 +52,7 @@ const HomeScreen = () => {
             backgroundColor: '#1076D5', borderRadius: 20, display: 'flex',
             justifyContent: 'center', marginTop: 10,
             height: 25
-          }}>
+          }} onPress = {handleChat}>
             <Text style={{
               color: 'white',
               paddingLeft: 40,

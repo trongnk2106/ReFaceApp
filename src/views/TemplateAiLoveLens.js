@@ -39,7 +39,7 @@ const CategoryButton = ({ text, selectedCat, onPress }) => (
   </View>
 );
 
-const TemplateAiLoveLens = () => {
+const TemplateAiLoveLens = ({route}) => {
   const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
@@ -55,13 +55,14 @@ const TemplateAiLoveLens = () => {
     ? Math.max(insets.top, 20)
     : StatusBar.currentHeight;
 
-
+  const {list} = route.params
+  // console.log(list)
   return (
   
     <View style={{ flex: 1, backgroundColor: colors.backround, paddingTop }}>
     {/* <StatusBar backgroundColor="white" barStyle="dark-content" /> */}
     <Header title='AI Love Lens' />
-    <ContainerTemplateLove />
+    <ContainerTemplateLove list={list}/>
     {/* <Footer /> */}
   </View>
   );

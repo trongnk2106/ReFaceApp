@@ -31,7 +31,7 @@ import Popup from '../../misc/Popup';
 const infoHeight = 364.0;
 
 
-const ContainerTemplateLove = () => {
+const ContainerTemplateLove = ({list}) => {
   const { width } = useWindowDimensions();
   const insets = useSafeAreaInsets();
   const navigation = useNavigation();
@@ -42,9 +42,10 @@ const ContainerTemplateLove = () => {
     lovelenstemplate, setLoveLenstemplate,
     imageLoveLensWoman, 
     ismale,
-   setResultLoveLens
+   setResultLoveLens,LOVELENS_MALE, LOVELENS_FEMALE, LOVELENS_COUPLE,
   } = useData()
-
+  // const {choosetype} = route.params
+  // console.log(list)
   const paddingTop = Config.isIos
     ? Math.max(insets.top, 20)
     : StatusBar.currentHeight;
@@ -128,7 +129,7 @@ const ContainerTemplateLove = () => {
             columnWrapperStyle={{ paddingHorizontal: 8 }}
             numColumns={3}
             scrollEnabled={false}
-            data={LOVELENS_TEMPLATE}
+            data={list}
             ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
 
             renderItem={data => (
@@ -137,10 +138,10 @@ const ContainerTemplateLove = () => {
                 isNull={true}
                 onScreenClicked={() => {
                   // console.log((data.index))
-                  setLoveLenstemplate(data.item)
+                  setLoveLenstemplate(data.index)
                 }}
                 height='27%'
-                isSelected={lovelenstemplate === data.item}
+                isSelected={lovelenstemplate === data.index}
               />
             )}
           />

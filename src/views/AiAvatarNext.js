@@ -10,9 +10,9 @@ import ContainerAiAvatarNext from '../components/aiavatar/ContainerAiAvatarNext'
 import { colors } from '../assets';
 import Header from '../components/Header';
 
-const AiAvatarNext = () => {
+const AiAvatarNext = ({route}) => {
   const insets = useSafeAreaInsets();
-
+  const {list} = route.params
   const paddingTop = Config.isIos
     ? Math.max(insets.top, 20)
     : StatusBar.currentHeight;
@@ -20,7 +20,7 @@ const AiAvatarNext = () => {
   return (
     <View style={{ flex: 1, backgroundColor: colors.backround, paddingTop }}>
       <Header title='AI Avatar'  />
-      <ContainerAiAvatarNext />
+      <ContainerAiAvatarNext list={list}/>
     </View>
   );
 };

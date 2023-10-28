@@ -22,14 +22,10 @@ const infoHeight = 364.0;
 const ContainerAiLoveLensed = () => {
     const navigation = useNavigation();
     const insets = useSafeAreaInsets();
-    const { CATEGORIES_PERSONALIZE,
-        selectedCategoryPerson,
-        setSelectedCategoryPerson,
-        selectSex,
+    const { 
         setSelectSex,
-        resultAiProfile,
-        setResultAiProfile,
-        resultLoveLens, setResultLoveLens, } = useData()
+       
+        resultLoveLens, } = useData()
 
 
     const handleTryAgain = async () => {

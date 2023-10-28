@@ -8,6 +8,18 @@ export const DataProvider = ({ children }) => {
   const CATEGORIES_PROTECT = ['Anti DreamBooth', 'DeepFake Detect'];
   const LOVELENS_TEMPLATE = [AppImages.ai_avatar , AppImages.ai_bride, AppImages.ai_groom, AppImages.ai_lovelens, AppImages.ai_reface, AppImages.ai_trustface,
                               AppImages.love1, AppImages.ai_couple, AppImages.ai_profile]
+  
+  const LOVELENS_MALE = [AppImages.male0, AppImages.male1, AppImages.male2, AppImages.male3, AppImages.male4,
+    AppImages.male5, AppImages.male6, AppImages.male7, AppImages.male8]
+
+  const LOVELENS_FEMALE = [AppImages.female0, AppImages.female1, AppImages.female2, AppImages.female3, AppImages.female4,
+    AppImages.female5, AppImages.female6, AppImages.female7, AppImages.female8]
+
+  const LOVELENS_COUPLE = [AppImages.couple0, AppImages.couple1, AppImages.couple2, AppImages.couple3, AppImages.couple4,
+    AppImages.couple5, AppImages.couple6, AppImages.couple7, AppImages.couple8]
+
+  const AIAVATAR_MALE = [AppImages.avatar_male1, AppImages.avatar_male2, AppImages.avatar_male3, AppImages.avatar_male4, AppImages.avatar_male5, AppImages.avater_null]
+  const AIAVATAR_FEMALE = [AppImages.avatar_female1, AppImages.avatar_female2, AppImages.avatar_female3, AppImages.avatar_female4, AppImages.avatar_female5, AppImages.avater_null]
 
 
   const [selectedCategoryPerson, setSelectedCategoryPerson] = useState('Ui/Ux');
@@ -61,6 +73,18 @@ export const DataProvider = ({ children }) => {
   const [label, setLabel] = useState()
   const [score, setScore] = useState()
 
+  const [responseChat, setResponseChat] = useState([])
+  const [messages, setMessages] = useState([
+		{
+			user: 1,
+			// time: "12:05",
+			content: "Can I help you?",
+      img : ''
+		},
+		
+	]);
+
+
   const contextValue = {
     CATEGORIES_TEMPLATE,
     CATEGORIES_PROTECT,
@@ -110,6 +134,10 @@ export const DataProvider = ({ children }) => {
     resImagetrustface, setResImagetrustface,
     label, setLabel,
     score, setScore,
+    LOVELENS_MALE, LOVELENS_FEMALE, LOVELENS_COUPLE,
+    AIAVATAR_MALE, AIAVATAR_FEMALE,
+    responseChat, setResponseChat,
+    // messages, setMessages
   };
 
   return (

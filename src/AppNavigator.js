@@ -28,7 +28,8 @@ import {
   AiTrustFace,
   AiTrustFaced,
   WellCome,
-  SwiperComponent
+  SwiperComponent,
+  Chatbox,
 } from './views';
 
 
@@ -77,6 +78,7 @@ export default () => {
         <Stack.Screen name="TemplateAiLoveLens" component={TemplateAiLoveLens} />
         <Stack.Screen name="AiTrustFace" component={AiTrustFace} />
         <Stack.Screen name="AiTrustFaced" component={AiTrustFaced} />
+        <Stack.Screen name="Chatbox" component={Chatbox} />
 
       </Stack.Navigator>
     </>

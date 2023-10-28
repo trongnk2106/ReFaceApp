@@ -26,6 +26,7 @@ import AiTrustFace from "./AiTrustFace";
 // import WellCome from "./Wellcome";
 import WellCome  from "./Wellcome";
 import SwiperComponent from "./NewWellCome";
+import Chatbox from "./Chatbox";
 
 // This code is exporting several components from different files. Each component is being imported and then exported with a specific name. These components can be used in other parts of the application.
 
@@ -55,5 +56,6 @@ export {
     AiTrustFaced,
     AiTrustFace,
     WellCome,
-    SwiperComponent
+    SwiperComponent,
+    Chatbox,
 }

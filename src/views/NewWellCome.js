@@ -18,7 +18,7 @@ const SwiperComponent = () => {
 
             <Swiper style={styles.wrapper} showsButtons={true} onIndexChanged={(index) => {
                 
-                if (index === 3) {
+                if (index === 1) {
                     setTimeout(handleClick,
                         100
                     )
@@ -33,14 +33,8 @@ const SwiperComponent = () => {
                     <Image source={AppImages.one} />
                     <Text style = {{textAlign: 'center', color: 'white', fontSize: 20, paddingTop : 30 }} > Professional artistic pictures</Text>
                 </View>
-                <View style={styles.slide3}>
-                    <Image source={AppImages.one} />
-                    <Text style = {{textAlign: 'center', color: 'white', fontSize: 20, paddingTop : 30 }}> AI Love Lens</Text>
-                </View>
-                <View style={styles.slide3}>
-                    <Image source={AppImages.one} />
-                    <Text style = {{textAlign: 'center', color: 'white', fontSize: 20, paddingTop : 30 }}> AI ReFace</Text>
-                </View>
+             
+          
             </Swiper>
             <View style={{ backgroundColor: colors.backround }}>
                 <TouchableOpacity onPress={handleClick} activeOpacity={1} touchSoundDisabled={true}
