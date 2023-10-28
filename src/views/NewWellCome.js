@@ -17,8 +17,11 @@ const SwiperComponent = () => {
         <>
 
             <Swiper style={styles.wrapper} showsButtons={true} onIndexChanged={(index) => {
+                
                 if (index === 3) {
-                    handleClick()
+                    setTimeout(handleClick,
+                        100
+                    )
                 }
             }}>
 
