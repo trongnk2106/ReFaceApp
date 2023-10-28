@@ -12,7 +12,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import RenderList from '../../misc/RenderList';
 // import Top from "../Top";
-import TopImage from './TopImage';
+
 import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
@@ -31,23 +31,9 @@ const infoHeight = 364.0;
 const ContainerAiLoveLens = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
-  const { CATEGORIES_PERSONALIZE,
-    selectedCategoryPerson,
-    setSelectedCategoryPerson,
-    imageAiProfile,
-    setImageAiProfile,
-    selectSex,
-    setSelectSex,
-    resultAiProfile,
-    setResultAiProfile,
-    imageLoveLensWoman, setImageLoveLensWoman,
-    imageLoveLensMan, setImageLoveLensMan,
-    ismale, setIsmale
+  const { setIsmale
 
   } = useData()
-
-  const [isVisible, setIsVisible] = useState(false)
-  const [isCancel, setIsCancel] = useState(false)
 
   const [chooseType, setChooseType] = useState('')
   const images = [AppImages.ai_bride, AppImages.ai_groom, AppImages.ai_couple]
@@ -59,8 +45,6 @@ const ContainerAiLoveLens = () => {
     navigation.navigate('LoveLensupload')
 
   }
-
-  // console.log(chooseType)
 
   return (
     <View style={{ flex: 1 }}>
@@ -77,18 +61,6 @@ const ContainerAiLoveLens = () => {
         >
           <MyText title='Choose type' />
 
-          {/* <View style={{ flexDirection: 'row', justifyContent: 'center', flexGrow: 1 }}>
-            <View style={{ flex: 1, marginRight: 10, marginTop: 40, marginLeft: 10 }}>
-              <TopImage title="Image Bride" srcImage={AppImages.ai_bride} onPress={() => { setChooseType('LoveLensupload'), setIsmale('female') }} />
-            </View>
-            <View style={{ flex: 1, marginLeft: 10, marginTop: 40 }}>
-              <TopImage title="Image Groom" srcImage={AppImages.ai_groom} onPress={() => { setChooseType('LoveLensupload'), setIsmale('male') }} />
-            </View>
-
-          </View>
-          <View style={{ marginLeft: 100, paddingBottom: 20 }}>
-            <TopImage title="Image Couple" srcImage={AppImages.ai_couple} onPress={() => { setChooseType('LoveLensupload'), setIsmale('couple') }} />
-          </View> */}
           <FlatList
             contentContainerStyle={{
               flexGrow: 1,
@@ -135,7 +107,6 @@ const ContainerAiLoveLens = () => {
           </View>
         </ScrollView>
       </View>
-      {/* {isVisible && <Popup isVisible={isVisible} onPress={handleChoose} />} */}
     </View>
   );
 };

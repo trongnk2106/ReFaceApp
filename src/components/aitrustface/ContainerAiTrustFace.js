@@ -9,9 +9,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import RenderList from '../../misc/RenderList';
 import Top from "../Top";
-import Bottom from './Bottom';
 import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
 import pickImage from '../../util/pickImage';
@@ -19,26 +17,19 @@ import axios from 'axios';
 import { colors } from '../../assets';
 import MyText from '../../misc/MyText';
 import Popup from '../../misc/Popup';
-import { isCancel } from 'react-native-document-picker';
 
 const infoHeight = 364.0;
 
 const ContainerAiTrustFace = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
-  const { CATEGORIES_PERSONALIZE,
-    selectedCategoryPerson,
-    setSelectedCategoryPerson,
-    imageAiProfile,
-    setImageAiProfile,
-    selectSex,
+  const { 
     setSelectSex,
-    resultAiProfile,
-    setResultAiProfile,
+   
     imagetrustface, setImagetrustface,
-    resImagetrustface, setResImagetrustface,
-    label, setLabel,
-    score, setScore, } = useData()
+   setResImagetrustface,
+     setLabel,
+    setScore, } = useData()
 
   const [isVisible, setIsVisible] = useState(false)
   const [isCancel, setIsCancel] = useState(false)
@@ -60,12 +51,11 @@ const ContainerAiTrustFace = () => {
             'Content-Type': 'multipart/form-data',
           },
         })
-        // setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
-        // console.log(response.data.output_images)
+     
         console.log(response.data.label, response.data.score)
         setLabel(response.data.label)
         setScore(response.data.score)
-        setResImagetrustface(response.data.base64_images)
+        setResImagetrustface(response.data.base64_image)
 
       } catch (error) {
         console.error('Error uploading image: ', error);

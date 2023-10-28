@@ -26,23 +26,14 @@ const infoHeight = 364.0;
 const ContainerUploadLove = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
-  const { CATEGORIES_PERSONALIZE,
-    selectedCategoryPerson,
-    setSelectedCategoryPerson,
-    imageAiProfile,
-    setImageAiProfile,
-    selectSex,
-    setSelectSex,
-    resultAiProfile,
-    setResultAiProfile,
+  const { 
     imageLoveLensWoman, setImageLoveLensWoman,
     imageLoveLensMan, setImageLoveLensMan,
-    ismale, setIsmale
+    ismale, 
 
   } = useData()
 
-  const [isVisible, setIsVisible] = useState(false)
-  const [isCancel, setIsCancel] = useState(false)
+
   const [chooseType, setChooseType] = useState('male')
 
   const handleSources = async () => {
@@ -97,9 +88,7 @@ const ContainerUploadLove = () => {
             minHeight: infoHeight,
           }}
         >
-          {/* <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
-            selectedCategory={selectedCategoryPerson}
-            setSelectedCategory={setSelectedCategoryPerson}></RenderList> */}
+          
           {ismale === 'female' || ismale === 'male' ?
             <>
               <MyText title='User photo' />
@@ -133,7 +122,6 @@ const ContainerUploadLove = () => {
 
         </ScrollView>
       </View>
-      {/* {isVisible && <Popup isVisible={isVisible} onPress={handleCancel} />} */}
     </View>
   );
 };

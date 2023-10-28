@@ -7,31 +7,20 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import RenderList from '../../misc/RenderList';
-// import BottomImage from '../generate/BottomImage';
-import ImageButton from '../../misc/ImageButton';
 import { useData } from '../../context/useData';
-import pickImage from '../../util/pickImage';
-import axios from 'axios';
 import { colors } from '../../assets';
-import BottomListImage from '../aiprofile/BottomListImage';
 import ImageButtonTrust from './ImageBottomTrust';
 const infoHeight = 364.0;
 import Top from '../Top';
 const ContainerAiTrustFaced = () => {
     const navigation = useNavigation();
     const insets = useSafeAreaInsets();
-    const { CATEGORIES_PERSONALIZE,
-        selectedCategoryPerson,
-        setSelectedCategoryPerson,
-        selectSex,
+    const { 
         setSelectSex,
-        resultAiProfile,
-        setResultAiProfile ,
-        imagetrustface, setImagetrustface,
-        resImagetrustface, setResImagetrustface,
-        label, setLabel,
-        score, setScore,} = useData()
+        
+        resImagetrustface, 
+        label, 
+        score, } = useData()
 
 
     const handleTryAgain = async () => {
@@ -55,9 +44,7 @@ const ContainerAiTrustFaced = () => {
                         minHeight: infoHeight,
                     }}
                 >
-                    {/* <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
-                        selectedCategory={selectedCategoryPerson}
-                        setSelectedCategory={setSelectedCategoryPerson}></RenderList> */}
+               
                      <View style={{ flexGrow: 1, padding: 20 }}>
                         <Top srcImage={{ uri: `data:image/png;base64,${resImagetrustface}` }}></Top>
                     </View>
@@ -80,13 +67,10 @@ const styles = StyleSheet.create({
     contentContainer: {
         flex: 1,
         backgroundColor: colors.backround,
-        // borderTopLeftRadius: 32,
-        // borderTopRightRadius: 32,
+     
         shadowColor: 'grey',
         shadowOffset: { width: 1.1, height: 1.1 },
-        // shadowOpacity: 0.2,
-        // shadowRadius: 10.0,
-        // elevation: 16,
+       
     },
     scrollContainer: {
         borderTopLeftRadius: 32,

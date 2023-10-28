@@ -12,38 +12,22 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import CategoryListView from '../../home/CategoryListView';
-import PopulerCourseListView from '../../home/PopulerCourseListView';
+
 import MyPressable from '../MyPressable';
-import { CATEGORY_LIST, POPULAR_COURSE_LIST } from '../../home/model/category';
 import { colors } from '../../assets';
 import Config from '../../Config';
-// import Header from '../Header';
-// import HeaderLoveLens from './HeaderLove';
+
 import { useData } from '../../context/useData';
 import MyText from '../../misc/MyText';
 
 import ImageButton from '../../misc/ImageButton';
 import ViewImage from '../../misc/ViewImage';
-import { LibraryDirectoryPath } from 'react-native-fs';
 import axios from 'axios';
 import Popup from '../../misc/Popup';
-import Top from '../Top';
 
 
-const CategoryButton = ({ text, selectedCat, onPress }) => (
-  <View style={{ margin: 7 }}>
-    <View style={styleCatrgory(selectedCat === text).categoryBtnContainer}>
-      <MyPressable touchOpacity={0.6} onPress={onPress}>
-        <Text style={styleCatrgory(selectedCat === text).categoryBtnText}>
-          {text}
-        </Text>
-      </MyPressable>
-    </View>
-  </View>
-);
+
 const infoHeight = 364.0;
 
 
@@ -53,26 +37,18 @@ const ContainerTemplateLove = () => {
   const navigation = useNavigation();
   const [isVisible, setIsVisible] = useState(false)
   const [isCancel, setIsCancel] = useState(false)
-  const { CATEGORIES_PERSONALIZE,
-    CATEGORIES_PROTECT,
-    selectedCategoryPerson,
-    setSelectedCategoryPerson,
-    selectedCategoryProtect,
-    setSelectedCategoryProtect,
+  const { 
     LOVELENS_TEMPLATE,
     lovelenstemplate, setLoveLenstemplate,
-    imageLoveLensWoman, setImageLoveLensWoman,
-    imageLoveLensMan, setImageLoveLensMan,
-    ismale, setIsmale,
-    resultLoveLens, setResultLoveLens
+    imageLoveLensWoman, 
+    ismale,
+   setResultLoveLens
   } = useData()
 
   const paddingTop = Config.isIos
     ? Math.max(insets.top, 20)
     : StatusBar.currentHeight;
 
-
-  // const [chooseTemplate, setChooseTemplate] = useState()
 
   const handleTryNow = async () => {
     setIsCancel(false)
@@ -89,7 +65,6 @@ const ContainerTemplateLove = () => {
     setIsCancel(true)
     setIsVisible(false)
   }
-  // console.log(ismale)
   const uploadImage = async () => {
 
     const formData = new FormData();
@@ -111,7 +86,6 @@ const ContainerTemplateLove = () => {
       }
 
 
-      // console.log(formData)
       try {
         const response = await axios.post('https://aiclub.uit.edu.vn/namnh/soict-app/api/v1/ailovelens', formData, {
           headers: {
@@ -119,8 +93,7 @@ const ContainerTemplateLove = () => {
             'Content-Type': 'multipart/form-data',
           },
         })
-        // setImageResultSwap(`data:image/png;base64,${response.data.image_data}`)
-        // console.log(response.data.output_images)
+   
         setResultLoveLens(response.data.base64_image)
       } catch (error) {
         console.error('Error uploading image: ', error);

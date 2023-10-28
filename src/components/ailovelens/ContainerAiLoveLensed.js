@@ -40,6 +40,13 @@ const ContainerAiLoveLensed = () => {
         setSelectSex(text)
     }
 
+    const handleRegenerate = async () => {
+
+        navigation.navigate('AiUpScaler', {done : 'AiLoveLens'})
+
+    }
+
+
     return (
         <View style={{ flex: 1 }}>
             <View
@@ -53,9 +60,7 @@ const ContainerAiLoveLensed = () => {
                         minHeight: infoHeight,
                     }}
                 >
-                    {/* <RenderList title='Personalize Face' data={CATEGORIES_PERSONALIZE}
-                        selectedCategory={selectedCategoryPerson}
-                        setSelectedCategory={setSelectedCategoryPerson}></RenderList> */}
+                  
                        <View style={{ flexGrow: 1, padding: 20 }}>
                         <Top srcImage={{ uri: `data:image/png;base64,${resultLoveLens}` }}></Top>
                         </View>
@@ -64,7 +69,7 @@ const ContainerAiLoveLensed = () => {
                             paddingTop: insets.top,
                             paddingBottom: insets.bottom,
                         }}>
-                        <ImageButton text="High Quality (4K)" onPress={handleTryAgain} />
+                        <ImageButton text="High Quality (4K)" onPress={handleRegenerate} />
                         <ImageButton text="Download" onPress={handleTryAgain} isIcon={false} />
                     </View>
                 </ScrollView>

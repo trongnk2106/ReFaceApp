@@ -23,6 +23,9 @@ import TemplateAiLoveLens from "./TemplateAiLoveLens";
 import AiLoveLensed from "./AiLoveLensed";
 import AiTrustFaced from "./AiTrustFaced";
 import AiTrustFace from "./AiTrustFace";
+// import WellCome from "./Wellcome";
+import WellCome  from "./Wellcome";
+import SwiperComponent from "./NewWellCome";
 
 // This code is exporting several components from different files. Each component is being imported and then exported with a specific name. These components can be used in other parts of the application.
 
@@ -51,5 +54,6 @@ export {
     AiLoveLensed,
     AiTrustFaced,
     AiTrustFace,
-
+    WellCome,
+    SwiperComponent
 }

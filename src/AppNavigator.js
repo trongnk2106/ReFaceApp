@@ -26,7 +26,9 @@ import {
   TemplateAiLoveLens,
   AiLoveLensed,
   AiTrustFace,
-  AiTrustFaced
+  AiTrustFaced,
+  WellCome,
+  SwiperComponent
 } from './views';
 
 
@@ -43,6 +45,8 @@ export default () => {
       />
 
       <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {/* <Stack.Screen name="WellCome" component={WellCome} /> */}
+        <Stack.Screen name = "WellCome" component={SwiperComponent} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="FaceEnhance" component={FaceEnhance} />
         <Stack.Screen name="FaceEnhanced" component={FaceEnhanced} />

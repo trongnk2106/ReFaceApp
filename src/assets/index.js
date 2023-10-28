@@ -49,7 +49,7 @@ const AppImages = {
   ai_groom : require('./images/Groom.jpg'),
   ai_couple : require('./images/Couple.jpg'),
 
-
+  one : require('./images/2609607.png'),
   // template AI love lens
   love1 : require('./images/lovetemplate.png'),
 

@@ -14,7 +14,7 @@ import ContainerAiUpScaler from '../components/aiupscaler/ContainerAiUpScaler';
 
 const AiUpScaler = () => {
     const insets = useSafeAreaInsets();
-    const { resultAiReface, imageRegenAiProfile, resultAiAvatar } = useData()
+    const { resultAiReface, imageRegenAiProfile, resultAiAvatar, resultLoveLens } = useData()
     const route = useRoute();
     const [image, setImage] = useState()
 
@@ -34,6 +34,11 @@ const AiUpScaler = () => {
         else if (done === "AiAvatar") {
             setImage(resultAiAvatar)
         }
+
+        else if (done === 'AiLoveLens') {
+            setImage(resultLoveLens)
+        }
+
     }, [done])
 
     return (

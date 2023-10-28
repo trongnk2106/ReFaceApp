@@ -8,9 +8,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import { AppImages } from '../../assets';
-import Checkbox from '../../misc/Checkbox';
-import ImageButton from '../../misc/ImageButton';
+
 import MyPressable from '../MyPressable';
 
 export default function Bottom(
@@ -26,13 +24,6 @@ export default function Bottom(
 
 
     return (<>
-        {/* <View style={[styles.container,
-        {
-            paddingTop: insert.top,
-            paddingBottom: insert.bottom,
-        }]}>
-            <ImageButton text={title} />
-        </View> */}
         <View style={{
             paddingTop: insert.top,
             paddingBottom: insert.bottom,
