@@ -37,7 +37,56 @@ const HomeScreen = () => {
     <View style={{ flex: 1, backgroundColor: colors.backround, paddingTop }}>
       <StatusBar backgroundColor="white" barStyle="dark-content" />
       <Header />
-      <Text style={styles.sectionHeaderText}>Experience with yourself</Text>
+      <View style={{ marginTop: 16, marginBottom: 16 }}>
+        <View style={{
+          display: 'flex', flexDirection: 'row',
+          display: 'flex', justifyContent: 'space-between', marginRight: 90
+        }}>
+          <Text style={styles.sectionHeaderText}>Chat2Art</Text>
+          <MyPressable style={{
+            backgroundColor: '#1076D5', borderRadius: 20, display: 'flex',
+            justifyContent: 'center', marginTop: 10,
+            height: 25
+          }}>
+            <Text style={{
+              color: 'white',
+              paddingLeft: 40,
+              paddingRight: 40,
+              fontSize: 16,
+            }} >Try now</Text>
+          </MyPressable>
+        </View>
+        <Text style={[styles.sectionHeaderText, {
+          color: 'white', 
+          paddingTop: 8,
+          paddingLeft: 10,
+          paddingRight: 10,
+          marginLeft: 0,
+          paddingBottom: 5,
+          paddingTop: 5,
+          fontSize: 16,
+          paddingTop: 4,
+          paddingLeft: 18,
+          paddingRight: 16,
+          // textAlign: 'center'
+          marginLeft: 30
+        }]} >ChatGPT for personalizing your face</Text>
+      </View>
+      <View>
+        <Text style={[styles.sectionHeaderText, { marginBottom: 0 }]}>Experience with yourself</Text>
+        <Text style={[styles.sectionHeaderText, {
+          color: 'white',
+          paddingLeft: 10,
+          paddingRight: 10,
+          marginLeft: 0,
+          paddingBottom: 16,
+          fontSize: 16,
+          paddingLeft: 18,
+          paddingRight: 16,
+          // textAlign: 'center'
+          marginLeft: 30
+        }]} >ChatGPT for personalizing your face</Text>
+      </View>
       <FlatList
         contentContainerStyle={{
           flexGrow: 1,
@@ -98,9 +147,8 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingLeft: 18,
     paddingRight: 16,
-    marginBottom: 32,
-    marginTop: 16,
-    textAlign: 'center'
+    // textAlign: 'center'
+    marginLeft: 30
   },
   categoryRowContainer: {
     flexDirection: 'row',
