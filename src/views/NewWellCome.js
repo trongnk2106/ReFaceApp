@@ -4,6 +4,7 @@ import { colors, AppImages } from '../assets';
 import { useNavigation } from '@react-navigation/native';
 import Swiper from 'react-native-swiper'
 import { HomeScreen } from '../home';
+import AiReface from './AiReface';
 
 
 
@@ -11,7 +12,7 @@ const SwiperComponent = () => {
 
     const navigation = useNavigation();
     const handleClick = () => {
-        navigation.navigate('Home')
+        navigation.navigate('AiReface')
     }
     return (
         <>
@@ -26,8 +27,8 @@ const SwiperComponent = () => {
             }}>
 
                 <View style={styles.slide1}>
-                    <Image source={AppImages.one} />
-                    <Text style = {{textAlign: 'center', color: 'white', fontSize: 20, paddingTop : 30 }}> Professional profile pictures</Text>
+                    <Image style={{height:'80%', width:'80%', borderRadius:20}} source={AppImages.ai_reface} />
+                    <Text style = {{textAlign: 'center', color: 'white', fontSize: 20, paddingTop : 30 }}> ReColor Face App</Text>
                 </View>
                 <View style={styles.slide2}>
                     {/* <Image source={AppImages.thunail1} /> */}

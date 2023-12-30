@@ -48,7 +48,7 @@ export default () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {/* <Stack.Screen name="WellCome" component={WellCome} /> */}
         <Stack.Screen name = "WellCome" component={SwiperComponent} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        {/* <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="FaceEnhance" component={FaceEnhance} />
         <Stack.Screen name="FaceEnhanced" component={FaceEnhanced} />
         <Stack.Screen name="Generate" component={Generate} />
@@ -60,13 +60,13 @@ export default () => {
         <Stack.Screen name="AntiDreamBoothed" component={AntiDreamBoothed} />
 
         <Stack.Screen name="AiAvatar" component={AiAvatar}/>
-        <Stack.Screen name="AiAvatarNext" component={AiAvatarNext}/>
+        <Stack.Screen name="AiAvatarNext" component={AiAvatarNext}/>  */}
 
         <Stack.Screen name="AiReface" component={AiReface}/>
         <Stack.Screen name="AiRefaced" component={AiRefaced}/>
         
         <Stack.Screen name="AiUpScaler" component={AiUpScaler}/>
-        <Stack.Screen name="AiUpScalered" component={AiUpScalered}/>
+        {/* <Stack.Screen name="AiUpScalered" component={AiUpScalered}/>
         <Stack.Screen name="DeepFake" component={DeepFake} />
         <Stack.Screen name="DeepFaked" component={DeepFaked} />
         <Stack.Screen name="AiProfile" component={AiProfile} />
@@ -78,7 +78,7 @@ export default () => {
         <Stack.Screen name="TemplateAiLoveLens" component={TemplateAiLoveLens} />
         <Stack.Screen name="AiTrustFace" component={AiTrustFace} />
         <Stack.Screen name="AiTrustFaced" component={AiTrustFaced} />
-        <Stack.Screen name="Chatbox" component={Chatbox} />
+        <Stack.Screen name="Chatbox" component={Chatbox} /> */} 
 
       </Stack.Navigator>
     </>
