@@ -105,6 +105,7 @@ const AppImages = {
   client_avatar: require('./images/clientavatar.png'),
 
   image_attached : require('./images/image_attached.png'),
+  thunail1 : require('./images/thunailhomepage.png')
 };
 
 const colors =

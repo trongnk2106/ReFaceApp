@@ -20,7 +20,7 @@ const SwiperComponent = () => {
                 
                 if (index === 1) {
                     setTimeout(handleClick,
-                        100
+                        50
                     )
                 }
             }}>
@@ -30,8 +30,8 @@ const SwiperComponent = () => {
                     <Text style = {{textAlign: 'center', color: 'white', fontSize: 20, paddingTop : 30 }}> Professional profile pictures</Text>
                 </View>
                 <View style={styles.slide2}>
-                    <Image source={AppImages.one} />
-                    <Text style = {{textAlign: 'center', color: 'white', fontSize: 20, paddingTop : 30 }} > Professional artistic pictures</Text>
+                    {/* <Image source={AppImages.thunail1} /> */}
+                    {/* <Text style = {{textAlign: 'center', color: 'white', fontSize: 20, paddingTop : 30 }} > Professional artistic pictures</Text> */}
                 </View>
              
           
